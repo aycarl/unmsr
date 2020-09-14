@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+
+import { Button } from 'react-native-paper';
+import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 
 export const HomeScreen = ({ navigation }) => {
@@ -9,14 +11,15 @@ export const HomeScreen = ({ navigation }) => {
       <Text>Welcome to UNM Student Resources!</Text>
       <StatusBar style="auto" />
       <Button
+        mode="contained"
         onPress={() => { navigation.navigate("Settings"); }}
-        title="Go to settings page" />
+        >Go to settings page</Button>
     </View>
   );
 };
 
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',

@@ -28,7 +28,7 @@ const LoginScreen = ({ navigation }) => {
         placeholder="enter password"
       />
       <Button mode="contained" >Log in</Button>
-      <Button mode="text" onPress={() => navigation.navigate('Signup')} >Sign up</Button>
+      <Button mode="text" onPress={() => navigation.navigate('Signup', {email, password})} >Sign up</Button>
     </View>
   );
 };
