@@ -2,9 +2,9 @@ import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 
-const SignupScreen = ({ navigation }) => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+const SignupScreen = ({ navigation, route }) => {
+  const [email, setEmail] = React.useState(route.params.email);
+  const [password, setPassword] = React.useState(route.params.password);
   const [confirmPassword, setConfirmPassword] = React.useState("")
 
   const signup = () => {
