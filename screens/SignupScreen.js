@@ -9,10 +9,7 @@ const SignupScreen = ({ navigation, route }) => {
 
   const signup = () => {
     if (password === confirmPassword) {
-      navigation.navigate('Login', {
-        email,
-        password
-      })
+      navigation.navigate('HomeNav');
     }
   }
 

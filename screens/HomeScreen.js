@@ -12,8 +12,8 @@ export const HomeScreen = ({ navigation }) => {
       <StatusBar style="auto" />
       <Button
         mode="contained"
-        onPress={() => { navigation.navigate("Settings"); }}
-        >Go to settings page</Button>
+        onPress={() => { navigation.navigate("Auth", { screen: "Login"}); }}
+        >Go to login page</Button>
     </View>
   );
 };

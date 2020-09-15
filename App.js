@@ -2,6 +2,7 @@ import React from "react";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
 import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import DrawerNavContainer from "./navigation-containers/DrawerNavContainer";
 import AuthNavContainer from "./navigation-containers/AuthNavContainer";
@@ -16,20 +17,20 @@ const theme = {
   },
 };
 
+const Stack = createStackNavigator();
+
 export default function App() {
-  const [userToken, setUserToken] = React.useState(false);
 
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
-        {userToken ? (
-          <DrawerNavContainer
-            userToken={userToken}
-            setUserToken={setUserToken}
-          />
-        ) : (
-          <AuthNavContainer />
-        )}
+        <Stack.Navigator headerMode="none" >
+          {/* {userToken ? ( */}
+            <Stack.Screen name="Auth" component={AuthNavContainer} />
+          {/* ) : ( */}
+            <Stack.Screen name="HomeNav" component={DrawerNavContainer} />
+          {/* )} */}
+        </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
   );

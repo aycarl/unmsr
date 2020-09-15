@@ -6,6 +6,10 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
+  const login = () => {
+    navigation.navigate("HomeNav", { screen: "Home"});
+  }
+
   return (
     <View style={styles.container} >
       <Image 
@@ -27,7 +31,7 @@ const LoginScreen = ({ navigation }) => {
         mode="outlined"
         placeholder="enter password"
       />
-      <Button mode="contained" >Log in</Button>
+      <Button mode="contained" onPress={login} >Log in</Button>
       <Button mode="text" onPress={() => navigation.navigate('Signup', {email, password})} >Sign up</Button>
     </View>
   );
