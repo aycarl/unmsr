@@ -1,36 +1,37 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { SettingsScreen } from './screens/SettingsScreen';
-import { HomeScreen } from './screens/HomeScreen';
-import { ProfileScreen } from './screens/ProfileScreen';
-import { AppointmentsScreen } from './screens/AppointmentsScreen';
-import { InquiriesScreen } from './screens/InquiriesScreen';
+import DrawerNavContainer from "./navigation-containers/DrawerNavContainer";
+import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
-const Drawer = createDrawerNavigator();
+const theme = {
+  ...DefaultTheme,
+  roundness: 5,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#ba0c2f",
+    accent: "#a7a8aa",
+  },
+};
+
+const Stack = createStackNavigator();
 
 export default function App() {
+
   return (
-    <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Home" >
-        <Drawer.Screen name="Home" component={HomeScreen} />
-        <Drawer.Screen name="Profile" component={ProfileScreen} />
-        <Drawer.Screen name="Appointments" component={AppointmentsScreen} />
-        <Drawer.Screen name="Inquiries" component={InquiriesScreen} />
-        <Drawer.Screen name="Settings" component={SettingsScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <PaperProvider theme={theme}>
+      <NavigationContainer>
+        <Stack.Navigator headerMode="none" >
+          {/* {userToken ? ( */}
+            <Stack.Screen name="Auth" component={AuthNavContainer} />
+          {/* ) : ( */}
+            <Stack.Screen name="HomeNav" component={DrawerNavContainer} />
+          {/* )} */}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </PaperProvider>
   );
 }
-
-export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
