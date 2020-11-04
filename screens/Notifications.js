@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-export const InquiriesScreen = ({ navigation }) => {
+const Notifications = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>This will hold the user inquiries</Text>
@@ -15,7 +15,7 @@ export const InquiriesScreen = ({ navigation }) => {
   );
 };
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -23,3 +23,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Notifications;

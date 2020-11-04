@@ -3,10 +3,10 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-export const AppointmentsScreen = ({ navigation }) => {
+const Explore = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This will hold the user appointments</Text>
+      <Text>Search & Explore</Text>
       <StatusBar style="auto" />
       <Button
         onPress={() => { navigation.navigate("Home"); }}
@@ -15,7 +15,7 @@ export const AppointmentsScreen = ({ navigation }) => {
   );
 };
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -23,3 +23,5 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Explore;
