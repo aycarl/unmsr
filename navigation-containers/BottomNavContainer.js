@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from 'react-native';
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
@@ -11,7 +12,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 function BottomNavContainer() {
   return (
-    <Tab.Navigator initialRouteName="Home" activeColor="#ba0c2f" style={{ backgroundColor:"#ffffff" }}>
+    <Tab.Navigator initialRouteName="Home" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -37,5 +38,11 @@ function BottomNavContainer() {
     </Tab.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  bottomNav: {
+    backgroundColor: '#ffffff'
+  }
+});
 
 export default BottomNavContainer;
