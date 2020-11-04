@@ -4,7 +4,7 @@ import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import DrawerNavContainer from "./navigation-containers/DrawerNavContainer";
+import BottomNavContainer from "./navigation-containers/BottomNavContainer";
 import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
 const theme = {
@@ -14,6 +14,7 @@ const theme = {
     ...DefaultTheme.colors,
     primary: "#ba0c2f",
     accent: "#a7a8aa",
+    backdrop: "#ffffff"
   },
 };
 
@@ -28,7 +29,7 @@ export default function App() {
           {/* {userToken ? ( */}
             <Stack.Screen name="Auth" component={AuthNavContainer} />
           {/* ) : ( */}
-            <Stack.Screen name="HomeNav" component={DrawerNavContainer} />
+            <Stack.Screen name="HomeNav" component={BottomNavContainer} />
           {/* )} */}
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+
+import { Button } from 'react-native-paper';
+import { Text, View } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-export const ProfileScreen = ({ navigation }) => {
+const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This will hold the user profile</Text>
+      <Text>Welcome to UNM Student Resources!</Text>
       <StatusBar style="auto" />
       <Button
-        onPress={() => { navigation.navigate("Home"); }}
-        title="Go to home page" />
+        mode="contained"
+        onPress={() => { navigation.navigate("Auth", { screen: "Login"}); }}
+        >Go to login page</Button>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -23,3 +27,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Home;
