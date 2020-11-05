@@ -1,24 +1,23 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { Button, TextInput } from "react-native-paper";
+import { StatusBar } from "expo-status-bar";
 
 const SignupScreen = ({ navigation, route }) => {
   const [email, setEmail] = React.useState(route.params.email);
   const [password, setPassword] = React.useState(route.params.password);
-  const [confirmPassword, setConfirmPassword] = React.useState("")
+  const [confirmPassword, setConfirmPassword] = React.useState("");
 
   const signup = () => {
     if (password === confirmPassword) {
-      navigation.navigate('HomeNav');
+      navigation.navigate("HomeNav");
     }
-  }
+  };
 
   return (
-    <View style={styles.container} >
-      <Image 
-        style={styles.logo}
-        source={require('./../assets/logo.png')}
-      />
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <Image style={styles.logo} source={require("./../assets/logo.png")} />
       <TextInput
         label="Email"
         value={email}
@@ -42,7 +41,9 @@ const SignupScreen = ({ navigation, route }) => {
         mode="outlined"
         placeholder="enter password"
       />
-      <Button mode="contained" onPress={signup} >Sign up</Button>
+      <Button mode="contained" onPress={signup}>
+        Sign up
+      </Button>
     </View>
   );
 };
@@ -55,14 +56,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   logo: {
     width: 200,
     height: 200,
     resizeMode: "contain",
     alignSelf: "center",
-  }
+  },
 });
 
 export default SignupScreen;
