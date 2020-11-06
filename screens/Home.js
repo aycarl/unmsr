@@ -10,7 +10,7 @@ const bgImage = { uri: "./../assets/stucco.png" };
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require("./../assets/stucco.png")} style={styles.bgImage}>
+      <ImageBackground source={require("./../assets/330ppi/stucco330x.png")} style={styles.bgImage}>
         <Text>Welcome to UNM Student Resources!</Text>
         <StatusBar style="auto" />
         <Button

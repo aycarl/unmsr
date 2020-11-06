@@ -5,6 +5,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
+import ExploreNavContainer from "../navigation-containers/ExploreNavContainer";
 import Explore from "../screens/Explore";
 import Notifications from "../screens/Notifications";
 
@@ -20,7 +21,7 @@ function BottomNavContainer() {
           tabBarIcon: ({color}) => <MaterialCommunityIcons color={color} name="home" size={26} />,
         }}
       />
-      <Tab.Screen name="Explore" component={Explore} 
+      <Tab.Screen name="Explore" component={ExploreNavContainer} 
         options={{
           tabBarIcon: ({color}) => <MaterialCommunityIcons color={color} name="magnify" size={26} />,
         }}
