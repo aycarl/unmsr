@@ -1,26 +1,39 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-
-import { Button } from "react-native-paper";
 import { ImageBackground, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
+
+import { ScrollView } from "react-native-gesture-handler";
+import { color } from "react-native-reanimated";
+import { SafeAreaView } from "react-native-safe-area-context";
+
+import ScreenHeader from "./../custom-components/ScreenHeader";
+import UpdatePreviewCard from "./../custom-components/UpdatePreviewCard";
 
 const bgImage = { uri: "./../assets/stucco.png" };
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require("./../assets/330ppi/stucco330x.png")} style={styles.bgImage}>
-        <Text>Welcome to UNM Student Resources!</Text>
-        <StatusBar style="auto" />
-        <Button
-          mode="contained"
-          onPress={() => {
-            navigation.navigate("Auth", { screen: "Login" });
-          }}
-        >
-          Go to login page
-        </Button>
+      <ScreenHeader returnPage={false} title={"UNM Student Resource"} />
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+      >
+        <SafeAreaView>
+          <View style={styles.pageContent}>
+            <Text style={styles.text}>UPDATES</Text>
+            <ScrollView
+              horizontal
+              contentContainerStyle={styles.updatesHorizontalView}
+            >
+              <UpdatePreviewCard />
+              <UpdatePreviewCard />
+              <UpdatePreviewCard />
+            </ScrollView>
+            <Text styles={styles.textLink}>View all updates</Text>
+            <Text style={styles.text}>MY CLUBS & ORGANISATIONS</Text>
+          </View>
+        </SafeAreaView>
       </ImageBackground>
     </View>
   );
@@ -34,9 +47,28 @@ const styles = StyleSheet.create({
   bgImage: {
     flex: 1,
     resizeMode: "cover",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+  },
+  pageContent: {
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingTop: 0,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 15,
+  },
+  text: {
+    fontWeight: "bold",
+    paddingBottom: 10,
+  },
+  textLink: {
+    fontWeight: "bold",
+    color: "#ba0c2f",
+    alignSelf: "flex-start",
+    paddingBottom: 10,
+  },
+  updatesHorizontalView: {
+    paddingBottom: 10,
+  },
 });
 
 export default Home;
