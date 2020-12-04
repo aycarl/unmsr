@@ -1,21 +1,20 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 import { Button, TextInput } from "react-native-paper";
+import { StatusBar } from "expo-status-bar";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
   const login = () => {
-    navigation.navigate("HomeNav", { screen: "Home"});
-  }
+    navigation.navigate("HomeNav", { screen: "Home" });
+  };
 
   return (
-    <View style={styles.container} >
-      <Image 
-        style={styles.logo}
-        source={require('./../assets/logo.png')}
-      />
+    <View style={styles.container}>
+      <StatusBar style="auto" />
+      <Image style={styles.logo} source={require("./../assets/logo.png")} />
       <TextInput
         label="Email"
         value={email}
@@ -31,8 +30,15 @@ const LoginScreen = ({ navigation }) => {
         mode="outlined"
         placeholder="enter password"
       />
-      <Button mode="contained" onPress={login} >Log in</Button>
-      <Button mode="text" onPress={() => navigation.navigate('Signup', {email, password})} >Sign up</Button>
+      <Button mode="contained" onPress={login}>
+        Log in
+      </Button>
+      <Button
+        mode="text"
+        onPress={() => navigation.navigate("Signup", { email, password })}
+      >
+        Sign up
+      </Button>
     </View>
   );
 };
@@ -45,14 +51,14 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
   },
   logo: {
     width: 200,
     height: 200,
     resizeMode: "contain",
     alignSelf: "center",
-  }
+  },
 });
 
 export default LoginScreen;

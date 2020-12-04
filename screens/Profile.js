@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import { StyleSheet } from 'react-native';
 
-export const ProfileScreen = ({ navigation }) => {
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>This will hold the user profile</Text>
@@ -23,3 +23,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+export default Profile;
