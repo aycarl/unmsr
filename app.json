@@ -25,6 +25,7 @@
     "android": {
       "softwareKeyboardLayoutMode": "pan"
     },
-    "description": ""
+    "description": "",
+    "githubUrl": "https://github.com/aycarl/unmsr"
   }
 }
