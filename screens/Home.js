@@ -3,11 +3,10 @@ import { ImageBackground, Text, View } from "react-native";
 import { StyleSheet } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
-import { color } from "react-native-reanimated";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
-import UpdatePreviewCard from "./../custom-components/UpdatePreviewCard";
+import UpdatesPreviewCard from "./../custom-components/UpdatePreviewCard";
 
 const bgImage = { uri: "./../assets/stucco.png" };
 
@@ -26,11 +25,11 @@ const Home = ({ navigation }) => {
               horizontal
               contentContainerStyle={styles.updatesHorizontalView}
             >
-              <UpdatePreviewCard />
-              <UpdatePreviewCard />
-              <UpdatePreviewCard />
+              <UpdatesPreviewCard />
+              <UpdatesPreviewCard />
+              <UpdatesPreviewCard />
             </ScrollView>
-            <Text styles={styles.textLink}>View all updates</Text>
+            <Text style={styles.textLink}>View all updates</Text>
             <Text style={styles.text}>MY CLUBS & ORGANISATIONS</Text>
           </View>
         </SafeAreaView>
@@ -62,8 +61,9 @@ const styles = StyleSheet.create({
   },
   textLink: {
     fontWeight: "bold",
+    textDecorationLine: "underline",
     color: "#ba0c2f",
-    alignSelf: "flex-start",
+    alignSelf: "flex-end",
     paddingBottom: 10,
   },
   updatesHorizontalView: {
