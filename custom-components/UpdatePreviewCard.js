@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
-const UpdatePreviewCard = () => {
+const UpdatesPreviewCard = () => {
   return (
     <View style={styles.container}>
       <Image 
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default UpdatePreviewCard;
+export default UpdatesPreviewCard;
