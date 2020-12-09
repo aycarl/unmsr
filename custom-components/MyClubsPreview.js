@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
 
-const UpdatesPreviewCard = () => {
+// TODO: takes an image url and a url to Update page as props
+const MyClubsPreviewCard = () => {
   return (
     <View style={styles.container}>
       <Image 
@@ -14,8 +15,8 @@ const UpdatesPreviewCard = () => {
 
 const styles = StyleSheet.create({
   image: {
-    width: 300,
-    height: 300,
+    width: 200,
+    height: 100,
     resizeMode: "contain"
   },
   container: {
@@ -26,4 +27,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default UpdatesPreviewCard;
+export default MyClubsPreviewCard;
