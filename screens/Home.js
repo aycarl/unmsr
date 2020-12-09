@@ -1,12 +1,10 @@
 import React from "react";
-import { ImageBackground, Text, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { StyleSheet } from "react-native";
 
-import { ScrollView } from "react-native-gesture-handler";
-import { SafeAreaView } from "react-native-safe-area-context";
-
 import ScreenHeader from "./../custom-components/ScreenHeader";
-import UpdatesPreviewCard from "./../custom-components/UpdatePreviewCard";
+import UpdatesPreviewContainer from "../custom-components/UpdatesPreviewContainer";
+import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
 
 const bgImage = { uri: "./../assets/stucco.png" };
 
@@ -18,21 +16,10 @@ const Home = ({ navigation }) => {
         source={require("./../assets/330ppi/stucco330x.png")}
         style={styles.bgImage}
       >
-        <SafeAreaView>
-          <View style={styles.pageContent}>
-            <Text style={styles.text}>UPDATES</Text>
-            <ScrollView
-              horizontal
-              contentContainerStyle={styles.updatesHorizontalView}
-            >
-              <UpdatesPreviewCard />
-              <UpdatesPreviewCard />
-              <UpdatesPreviewCard />
-            </ScrollView>
-            <Text style={styles.textLink}>View all updates</Text>
-            <Text style={styles.text}>MY CLUBS & ORGANISATIONS</Text>
-          </View>
-        </SafeAreaView>
+        <View style={styles.pageContent}>
+          <UpdatesPreviewContainer />
+          <MyClubsPreviewContainer />
+        </View>
       </ImageBackground>
     </View>
   );
@@ -48,25 +35,12 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   pageContent: {
+    flex: 1,
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    paddingTop: 0,
+    paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 15,
-  },
-  text: {
-    fontWeight: "bold",
-    paddingBottom: 10,
-  },
-  textLink: {
-    fontWeight: "bold",
-    textDecorationLine: "underline",
-    color: "#ba0c2f",
-    alignSelf: "flex-end",
-    paddingBottom: 10,
-  },
-  updatesHorizontalView: {
     paddingBottom: 10,
   },
 });
