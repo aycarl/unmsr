@@ -4,40 +4,21 @@ import { FlatList } from "react-native-gesture-handler";
 
 import CategoryListItem from "./CategoryListItem";
 
+import CategoryListData from "./../mock-data/category-list-data"
+
+// TODO: properly style category lists of space evenly
+
 const CategoryList = () => {
-  const DATA = [
-    {
-      id: "0",
-      title: "recreation",
-    },
-    {
-      id: "1",
-      title: "sport",
-    },
-    {
-      id: "2",
-      title: "ASUNM",
-    },
-    {
-      id: "4",
-      title: "GPSA",
-    },
-    {
-      id: "5",
-      title: "religion",
-    },
-    {
-      id: "6",
-      title: "military",
-    },
-  ];
 
   return (
     <View style={styles.container}>
       <FlatList
-        data={DATA}
+        data={CategoryListData}
         renderItem={CategoryListItem}
         keyExtractor={(item) => item.id}
+        horizontal={false}
+        numColumns={2}
+        contentContainerStyle={styles.listContainer}
       />
     </View>
   );
@@ -45,9 +26,15 @@ const CategoryList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexWrap: "wrap",
     alignContent: "flex-start",
     flex: 0.85,
+  },
+  listContainer: {
+    flex: 1,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "space-around",
+    alignContent: "space-between",
   },
 });
 
