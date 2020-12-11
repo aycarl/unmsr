@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
   },
   textLink: {
     fontWeight: "bold",
-    textDecorationLine: "underline",
     color: "#ba0c2f",
     alignSelf: "flex-end",
     paddingBottom: 10,

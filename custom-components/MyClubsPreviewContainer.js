@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     width: 200,
     borderColor: "#707070",
     borderRadius: 5,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   clubName: {
     fontWeight: "bold",
     color: "#707070",
-    textTransform: "uppercase"
+    textTransform: "uppercase",
   }
 });
 
