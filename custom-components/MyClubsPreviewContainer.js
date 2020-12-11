@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-import MyClubPreviewCard from "./MyClubsPreview";
+import MyClubPreviewCard from "./MyClubsPreviewCard";
 
 const MyClubsPreviewContainer = () => {
   return (
