@@ -11,13 +11,15 @@ const CategoryListItem = ({item}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 30,
+    height: 50,
+    width: 150,
     borderWidth: 1,
     borderRadius: 5,
     alignContent: "center",
     justifyContent: "center",
     padding: 10,
-    marginVertical: 10,
+    marginVertical: 5,
+    marginHorizontal: 10,
   },
   text: {
     fontSize: 16,
