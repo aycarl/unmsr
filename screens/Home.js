@@ -1,26 +1,25 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-
-import { Button } from "react-native-paper";
-import { ImageBackground, Text, View } from "react-native";
+import { ImageBackground, View } from "react-native";
 import { StyleSheet } from "react-native";
+
+import ScreenHeader from "./../custom-components/ScreenHeader";
+import UpdatesPreviewContainer from "../custom-components/UpdatesPreviewContainer";
+import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
 
 const bgImage = { uri: "./../assets/stucco.png" };
 
 const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <ImageBackground source={require("./../assets/330ppi/stucco330x.png")} style={styles.bgImage}>
-        <Text>Welcome to UNM Student Resources!</Text>
-        <StatusBar style="auto" />
-        <Button
-          mode="contained"
-          onPress={() => {
-            navigation.navigate("Auth", { screen: "Login" });
-          }}
-        >
-          Go to login page
-        </Button>
+      <ScreenHeader returnPage={false} title={"UNM Student Resource"} />
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+      >
+        <View style={styles.pageContent}>
+          <UpdatesPreviewContainer />
+          <MyClubsPreviewContainer />
+        </View>
       </ImageBackground>
     </View>
   );
@@ -34,9 +33,16 @@ const styles = StyleSheet.create({
   bgImage: {
     flex: 1,
     resizeMode: "cover",
-    alignItems: "center",
-    justifyContent: "center"
-  }
+  },
+  pageContent: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    paddingTop: 10,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
+  },
 });
 
 export default Home;
