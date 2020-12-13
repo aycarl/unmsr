@@ -7,7 +7,7 @@ import MyClubPreviewCard from "./MyClubsPreviewCard";
 const MyClubsPreviewContainer = () => {
   return (
     <View style={styles.myClubs}>
-      <Text style={styles.text}>MY CLUBS & ORGANISATIONS</Text>
+      <Text style={styles.text}>My Clubs & Organisations</Text>
       <ScrollView horizontal contentContainerStyle={styles.horizontalScrollView}>
         <MyClubPreviewCard />
         <MyClubPreviewCard />
@@ -19,6 +19,7 @@ const MyClubsPreviewContainer = () => {
   );
 };
 
+// pointer to list of all clubs and organisations user is a part of
 const AllMyClubs = () => {
   return (
     <View style={styles.more} >
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     paddingBottom: 10,
+    textTransform: "uppercase",
   },
   textLink: {
     fontWeight: "bold",
