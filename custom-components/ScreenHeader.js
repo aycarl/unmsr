@@ -10,6 +10,8 @@ const ScreenHeader = ({title, returnPage}) => {
 
   const _handleMore = () => console.log('Shown more');
 
+  // FIXME: correct conditional showing of back action button instead of disabled feature.
+
   return (
     <Appbar.Header>
       {
