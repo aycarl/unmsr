@@ -26,14 +26,11 @@ const CategoryList = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignContent: "flex-start",
-    flex: 0.85,
+    alignContent: "stretch",
+    flex: 1,
   },
   listContainer: {
-    flex: 1,
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     alignContent: "space-between",
   },
 });

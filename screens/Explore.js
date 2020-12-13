@@ -1,7 +1,6 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
 
-import { Text, View, Button } from "react-native";
+import { Text, View, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 
@@ -14,16 +13,24 @@ const Explore = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <StatusBar style="auto" />
-      <View style={styles.searchContainer}>
-        <Searchbar
-          placeholder="Search Clubs & Organisations"
-          onChangeText={onChangeSearch}
-          value={searchQuery}
-        />
-        <Text style={styles.sectionHeaderText}>Explore by Category</Text>
-      </View>
-      <CategoryList />
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+      >
+        <View style={styles.pageContent}>
+          <View style={styles.searchContainer}>
+            <Searchbar
+              placeholder="Search Clubs & Organisations"
+              onChangeText={onChangeSearch}
+              value={searchQuery}
+            />
+            <Text style={styles.sectionHeaderText}>Explore by Category</Text>
+          </View>
+          <View style={styles.categoryListSection}>
+            <CategoryList />
+          </View>
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -32,19 +39,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 30,
+  },
+  bgImage: {
+    flex: 1,
+    resizeMode: "cover",
+  },
+  pageContent: {
+    flex: 1,
+    paddingTop: 35,
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 10,
   },
   searchContainer: {
-    flex: 0.15,
     alignSelf: "stretch",
   },
   sectionHeaderText: {
     alignSelf: "flex-start",
-    marginVertical: 15,
+    marginVertical: 10,
     fontWeight: "bold",
     fontSize: 16,
+    textTransform: "uppercase",
+  },
+  categoryListSection: {
+    flex: 1,
   },
 });
 
