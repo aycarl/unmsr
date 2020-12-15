@@ -1,19 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 
-import NotificationItem from "./../custom-components/NotificationItem";
+import ClubList from "./../custom-components/ClubList";
 
 const MyClubMemberships = () => {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Text style={styles.headerText}>Memberships</Text>
-        <NotificationItem />
-      </ScrollView>
+      <Text style={styles.headerText}>Memberships</Text>
+        <ClubList />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textTransform: "uppercase",
     marginBottom: 10,
-  }
+  },
 });
 
 export default MyClubMemberships;
