@@ -5,6 +5,8 @@ const NotificationItem = () => {
 
   let previewImage = false;
 
+  // FIXME: find solution for conditional display of image when available
+
   return (
     <View style={styles.container}>
       {previewImage ? <Image /> : <View style={styles.previewImagePlaecholder}></View>}
