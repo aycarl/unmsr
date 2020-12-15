@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     marginBottom: 10,
-    //width: "100%"
   },
   previewImagePlaecholder: {
     height: 75,
