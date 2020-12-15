@@ -3,22 +3,22 @@ import { View, StyleSheet, Text } from "react-native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import UpdatesPreviewCard from "./UpdatesPreviewCard";
+import EventPreviewCard from "./EventPreviewCard";
 
 // TODO: Takes a list of update objects
-const UpdatesPreviewContainer = () => {
+const EventsPreviewContainer = () => {
   return (
     <View style={styles.updates}>
-      <Text style={styles.text}>UPDATES</Text>
+      <Text style={styles.text}>UPCOMING EVENTS</Text>
       <ScrollView
         horizontal
         contentContainerStyle={styles.horizontalScrollView}
       >
-        <UpdatesPreviewCard />
-        <UpdatesPreviewCard />
-        <UpdatesPreviewCard />
+        <EventPreviewCard />
+        <EventPreviewCard />
+        <EventPreviewCard />
       </ScrollView>
-      <Text style={styles.textLink}>View all updates</Text>
+      <Text style={styles.textLink}>VIEW ALL EVENTS</Text>
     </View>
   );
 };
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UpdatesPreviewContainer;
+export default EventsPreviewContainer;
