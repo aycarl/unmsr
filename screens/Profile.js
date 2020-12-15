@@ -1,16 +1,23 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { Text, View, Button } from 'react-native';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { Text, View, StyleSheet, ImageBackground } from "react-native";
+
+import ScreenHeader from "./../custom-components/ScreenHeader";
+import ProfileSummary from "./../custom-components/ProfileSummary";
+import MyClubMemberships from "./../custom-components/MyClubMemberships";
 
 const Profile = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This will hold the user profile</Text>
-      <StatusBar style="auto" />
-      <Button
-        onPress={() => { navigation.navigate("Home"); }}
-        title="Go to home page" />
+      <ScreenHeader returnPage={false} title="Profile" />
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+        >
+        <View style={styles.pageContent}>
+          <ProfileSummary />
+          <MyClubMemberships />
+        </View>
+      </ImageBackground>
     </View>
   );
 };
@@ -18,9 +25,15 @@ const Profile = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+  },
+  bgImage: {
+    flex: 1,
+  },
+  pageContent: {
+    flex: 1,
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
 });
 
