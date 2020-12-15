@@ -6,9 +6,7 @@ import ScreenHeader from "./../custom-components/ScreenHeader";
 import UpdatesPreviewContainer from "../custom-components/UpdatesPreviewContainer";
 import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
 
-const bgImage = { uri: "./../assets/stucco.png" };
-
-const Home = ({ navigation }) => {
+const Home = () => {
   return (
     <View style={styles.container}>
       <ScreenHeader returnPage={false} title={"UNM Student Resource"} />
