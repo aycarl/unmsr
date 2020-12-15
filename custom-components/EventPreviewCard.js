@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 
 // TODO: takes an image url and a url to Update page as props
-const UpdatesPreviewCard = () => {
+const EventPreviewCard = () => {
   return (
     <View>
       <ImageBackground 
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default UpdatesPreviewCard;
+export default EventPreviewCard;

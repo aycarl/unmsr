@@ -2,19 +2,19 @@ import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Text, View, Button, StyleSheet, ImageBackground } from "react-native";
 
-import ScreenHeader from "./../custom-components/ScreenHeader";
-import NotificationItemContainer from "./../custom-components/NotificationItemContainer";
+import ScreenHeader from "../custom-components/ScreenHeader";
+import EventsList from "../custom-components/EventsList";
 
-const Notifications = () => {
+const Events = () => {
   return (
     <View style={styles.container}>
-      <ScreenHeader returnPage={false} title="Notifications" />
+      <ScreenHeader returnPage={false} title="Events" />
       <ImageBackground
         source={require("./../assets/330ppi/stucco330x.png")}
         style={styles.bgImage}
       >
         <View style={styles.pageContent}>
-          <NotificationItemContainer />
+          <EventsList />
         </View>
       </ImageBackground>
     </View>
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Notifications;
+export default Events;

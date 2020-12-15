@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const NotificationItem = () => {
+const EventListItem = () => {
 
   let previewImage = false;
 
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NotificationItem;
+export default EventListItem;

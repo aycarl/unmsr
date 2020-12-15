@@ -3,7 +3,7 @@ import { ImageBackground, View } from "react-native";
 import { StyleSheet } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
-import UpdatesPreviewContainer from "../custom-components/UpdatesPreviewContainer";
+import EventsPreviewContainer from "../custom-components/EventsPreviewContainer";
 import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
 
 const Home = () => {
@@ -15,7 +15,7 @@ const Home = () => {
         style={styles.bgImage}
       >
         <View style={styles.pageContent}>
-          <UpdatesPreviewContainer />
+          <EventsPreviewContainer />
           <MyClubsPreviewContainer />
         </View>
       </ImageBackground>

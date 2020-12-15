@@ -6,8 +6,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import ExploreNavContainer from "../navigation-containers/ExploreNavContainer";
-import Explore from "../screens/Explore";
-import Notifications from "../screens/Notifications";
+import Events from "../screens/Events";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -26,9 +25,9 @@ function BottomNavContainer() {
           tabBarIcon: ({color}) => <MaterialCommunityIcons color={color} name="magnify" size={26} />,
         }}
       />
-      <Tab.Screen name="Notifications" component={Notifications} 
+      <Tab.Screen name="Events" component={Events} 
         options={{
-          tabBarIcon: ({color}) => <MaterialCommunityIcons color={color} name="bell" size={26} />,
+          tabBarIcon: ({color}) => <MaterialCommunityIcons color={color} name="calendar" size={26} />,
         }}
       />
       <Tab.Screen name="Profile" component={Profile} 
