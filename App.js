@@ -1,6 +1,9 @@
 import React from "react";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+import { store, persistor } from "./redux/store";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -23,18 +26,20 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <Provider>
-      <PaperProvider theme={theme}>
-        <NavigationContainer>
-          <Stack.Navigator headerMode="none">
-            {/* {userToken ? ( */}
-            <Stack.Screen name="Auth" component={AuthNavContainer} />
-            {/* ) : ( */}
-            <Stack.Screen name="HomeNav" component={BottomNavContainer} />
-            {/* )} */}
-          </Stack.Navigator>
-        </NavigationContainer>
-      </PaperProvider>
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <PaperProvider theme={theme}>
+          <NavigationContainer>
+            <Stack.Navigator headerMode="none">
+              {/* {userToken ? ( */}
+              <Stack.Screen name="Auth" component={AuthNavContainer} />
+              {/* ) : ( */}
+              <Stack.Screen name="HomeNav" component={BottomNavContainer} />
+              {/* )} */}
+            </Stack.Navigator>
+          </NavigationContainer>
+        </PaperProvider>
+      </PersistGate>
     </Provider>
   );
 }
