@@ -1,11 +1,12 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Text, View, Button, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground, Button } from "react-native";
 
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/EventsList";
 
-const Events = () => {
+// TODO: replace button with event details screen navigation functionality
+
+const Events = ({ navigation}) => {
   return (
     <View style={styles.container}>
       <ScreenHeader returnPage={false} title="Events" />
@@ -14,6 +15,10 @@ const Events = () => {
         style={styles.bgImage}
       >
         <View style={styles.pageContent}>
+          <Button  
+            title="Event Details Screen"
+            onPress={() => navigation.navigate('EventDetails')}
+          />
           <EventsList />
         </View>
       </ImageBackground>
