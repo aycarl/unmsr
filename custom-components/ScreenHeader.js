@@ -14,11 +14,11 @@ const ScreenHeader = ({title, returnPage}) => {
 
   return (
     <Appbar.Header>
-      {
+      {/* {
         returnPage ?
         <Appbar.BackAction onPress={_goBack} />
         : <Appbar.BackAction onPress={_goBack} disabled />
-      }
+      } */}
         <Appbar.Content title={title}/>
     </Appbar.Header>
   );
