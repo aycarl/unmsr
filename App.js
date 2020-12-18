@@ -1,5 +1,6 @@
 import React from "react";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
+import { Provider } from "react-redux";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -14,25 +15,26 @@ const theme = {
     ...DefaultTheme.colors,
     primary: "#ba0c2f",
     accent: "#a7a8aa",
-    backdrop: "#ffffff"
+    backdrop: "#ffffff",
   },
 };
 
 const Stack = createStackNavigator();
 
 export default function App() {
-
   return (
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator headerMode="none" >
-          {/* {userToken ? ( */}
+    <Provider>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator headerMode="none">
+            {/* {userToken ? ( */}
             <Stack.Screen name="Auth" component={AuthNavContainer} />
-          {/* ) : ( */}
+            {/* ) : ( */}
             <Stack.Screen name="HomeNav" component={BottomNavContainer} />
-          {/* )} */}
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+            {/* )} */}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </PaperProvider>
+    </Provider>
   );
 }
