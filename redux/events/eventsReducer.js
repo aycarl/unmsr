@@ -1,7 +1,10 @@
 import { EventsActionTypes } from "./eventsActionTypes";
 
+// importing events list
+import EventsList from "./../../mock-data/opendata-event-list";
+
 const INITIAL_STATE = {
-  eventsList: [],
+  eventsList: EventsList.eventsList,
   isFetching: false,
   errorMessage: undefined,
 }

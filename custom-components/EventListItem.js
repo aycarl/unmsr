@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const EventListItem = () => {
+const EventListItem = ({eventName, eventLocation, eventSummary, eventStartDate}) => {
 
   let previewImage = false;
 
@@ -11,9 +11,10 @@ const EventListItem = () => {
     <View style={styles.container}>
       {previewImage ? <Image /> : <View style={styles.previewImagePlaecholder}></View>}
       <View style={styles.textContainer}>
-        <Text style={styles.headerText} >Club Name</Text>
-        <Text style={styles.bodyText} numberOfLines={2} ellipsizeMode={"tail"} >Evenly distribute children the alignment container the main axis. children the alignment container along the main axis The spacing betweess.</Text>
-        <Text style={styles.footerText} >Date * Venue</Text>
+        <Text style={styles.headerText} >{eventName}</Text>
+        <Text style={styles.bodyText} numberOfLines={1} ellipsizeMode={"tail"} >{eventSummary}</Text>
+        <Text style={styles.footerText} >{eventStartDate}</Text>
+        <Text style={styles.footerText} >{eventLocation}</Text>
       </View>
     </View>
   );

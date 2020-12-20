@@ -8,9 +8,9 @@ import rootReducer from "./RootReducer";
 // added reduc thunk to allow async call fetch
 const middleware = [thunk];
 
-if (process.env.NODE_ENV === "development") {
-  middleware.push(logger);
-}
+// if (process.env.NODE_ENV === "development") {
+//   middleware.push(logger);
+// }
 
 export const store = createStore(
   rootReducer,
