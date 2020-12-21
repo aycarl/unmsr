@@ -1,21 +1,41 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { View, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-import ScreenHeader from "./../custom-components/ScreenHeader";
+import {
+  selectEvent,
+} from "./../redux/events/eventsSelectors";
 
-const EventDetails = ({ navigation }) => {
+const EventDetails = (props) => {
+
+  const eventInfo = useSelector(selectEvent(props.route.params.eventID));
+
+  // to debug: console.log(eventInfo);
+
   return (
     <View style={styles.container}>
-      <ScreenHeader title="" navigation={navigation} />
       <ScrollView contentContainerStyle={styles.eventDetailsContainer}>
-        <Text style={styles.eventTitle} >Event Details Screen!</Text>
-        <Text>Hosted by <Text>ORGANIZER</Text></Text>
-        <Text style={styles.textHeaders} >Time</Text>
-        <Text style={styles.textHeaders} >Summary</Text>
-        <Text style={styles.textHeaders} >Description</Text>
-        <Text style={styles.textHeaders} >Categories</Text>
-        <Text style={styles.textHeaders} >Events type / class</Text>
+        <Text style={styles.eventTitle}>{eventInfo.SUMMARY}</Text>
+        <Text>
+          Hosted by <Text>{eventInfo.ORGANIZER}</Text>
+        </Text>
+        <Text style={styles.textHeaders}>Time</Text>
+        <Text>
+          {eventInfo.DTSTART}
+        </Text>
+        <Text style={styles.textHeaders}>Description</Text>
+        <Text>
+          {eventInfo.DESCRIPTION}
+        </Text>
+        <Text style={styles.textHeaders}>Categories</Text>
+        <Text>
+          {eventInfo.CATEGORIES}
+        </Text>
+        <Text style={styles.textHeaders}>Event type / class</Text>
+        <Text>
+          {eventInfo.CLASS}
+        </Text>
         <View></View>
         <Text></Text>
       </ScrollView>
@@ -42,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
     textTransform: "uppercase",
-    marginBottom: 10,
+    marginVertical: 10,
   },
 });
 
