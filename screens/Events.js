@@ -2,46 +2,38 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
-import { selectEventsList } from "./../redux/events/eventsSelectors";
+import { selectEventsListArray } from "./../redux/events/eventsSelectors";
 
-import { View, StyleSheet, ImageBackground, Button } from "react-native";
+import { View, StyleSheet, ImageBackground, Button, Text } from "react-native";
 
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/EventsList";
 
 // TODO: replace button with event details screen navigation functionality
 
-// <Button
-//   title="Event Details Screen"
-//   onPress={() => navigation.navigate('EventDetails')}
-// />
-
 class Events extends Component {
 
   constructor(props) {
     super(props);
-    const { eventsList, navigation } = props;
+
     this.state = {
-      data: eventsList,
-      navigation: navigation
+      data: props.eventsList,
     }
   }
 
   render() {
 
-    const { eventsList, navigation } = this.state;
-
-    console.log("This is " + navigation);
+    const { data, navigation } = this.state;
 
     return (
       <View style={styles.container}>
-        <ScreenHeader returnPage={false} title="Events" />
+        <ScreenHeader title="Events" />
         <ImageBackground
           source={require("./../assets/330ppi/stucco330x.png")}
           style={styles.bgImage}
         >
           <View style={styles.pageContent}>
-            <EventsList navigation={navigation} data={eventsList} />
+            <EventsList navigation={navigation} data={data} />
           </View>
         </ImageBackground>
       </View>
@@ -69,7 +61,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = createStructuredSelector({
-  eventsList: selectEventsList,
+  eventsList: selectEventsListArray
 });
 
 export default connect(mapStateToProps)(Events);
