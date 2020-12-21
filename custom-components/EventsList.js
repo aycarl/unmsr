@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { View, StyleSheet } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 
 import EventListItem from "./EventListItem";
 
