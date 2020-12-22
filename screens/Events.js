@@ -1,25 +1,52 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Text, View, Button, StyleSheet, ImageBackground } from "react-native";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import AsyncStorage from "@react-native-community/async-storage";
+
+import { selectEventsList } from "./../redux/events/eventsSelectors";
+
+import { View, StyleSheet, ImageBackground, Button } from "react-native";
 
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/EventsList";
 
-const Events = () => {
-  return (
-    <View style={styles.container}>
-      <ScreenHeader returnPage={false} title="Events" />
-      <ImageBackground
-        source={require("./../assets/330ppi/stucco330x.png")}
-        style={styles.bgImage}
-      >
-        <View style={styles.pageContent}>
-          <EventsList />
-        </View>
-      </ImageBackground>
-    </View>
-  );
-};
+// TODO: replace button with event details screen navigation functionality
+            // <Button 
+            //   title="clear storage"
+            //   onPress={async() => AsyncStorage.clear() }
+            // />
+
+class Events extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: props.eventsList,
+    }
+  }
+
+  render() {
+
+    const { data } = this.state;
+
+    console.log("events: "+ JSON.stringify(data));
+
+    return (
+      <View style={styles.container}>
+        <ScreenHeader title="Events" />
+        <ImageBackground
+          source={require("./../assets/330ppi/stucco330x.png")}
+          style={styles.bgImage}
+        >
+          <View style={styles.pageContent}>
+            <EventsList data={data} />
+          </View>
+        </ImageBackground>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -40,4 +67,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Events;
+const mapStateToProps = createStructuredSelector({
+  eventsList: selectEventsList
+});
+
+export default connect(mapStateToProps)(Events);
