@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
 import EventsPreviewContainer from "../custom-components/EventsPreviewContainer";
-import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
+import OrgPreviewContainer from "../custom-components/OrgItems/OrgPreviewContainer";
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       >
         <View style={styles.pageContent}>
           <EventsPreviewContainer />
-          <MyClubsPreviewContainer />
+          <OrgPreviewContainer />
         </View>
       </ImageBackground>
     </View>

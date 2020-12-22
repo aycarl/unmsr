@@ -4,7 +4,7 @@ import { FlatList } from "react-native-gesture-handler";
 
 import CategoryListItem from "./CategoryListItem";
 
-import CategoryListData from "./../mock-data/category-list-data"
+import CategoryListData from "./../../mock-data/category-list-data";
 
 // TODO: properly style category lists of space evenly
 

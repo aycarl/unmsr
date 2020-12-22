@@ -1,13 +1,13 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import ClubList from "./../custom-components/ClubList";
+import OrgList from "./OrgList";
 
-const MyClubMemberships = () => {
+const MyOrgMemberships = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Memberships</Text>
-        <ClubList />
+        <OrgList />
     </View>
   );
 };
@@ -26,4 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MyClubMemberships;
+export default MyOrgMemberships;
