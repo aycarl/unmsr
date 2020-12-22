@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image } from "react-native";
 
 // TODO: remember to make member count dynamic
 
-const ClubListItem = () => {
+const OrgListItem = () => {
   return (
     <View style={styles.container}>
       <View style={styles.clubLogoContainer}></View>
@@ -36,4 +36,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ClubListItem;
+export default OrgListItem;

@@ -1,11 +1,11 @@
 import React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
 import ProfileSummary from "./../custom-components/ProfileSummary";
-import MyClubMemberships from "./../custom-components/MyClubMemberships";
+import MyOrgMemberships from "../custom-components/OrgItems/MyOrgMemberships";
 
-const Profile = ({ navigation }) => {
+const Profile = () => {
   return (
     <View style={styles.container}>
       <ScreenHeader returnPage={false} title="Profile" />
@@ -15,7 +15,7 @@ const Profile = ({ navigation }) => {
         >
         <View style={styles.pageContent}>
           <ProfileSummary />
-          <MyClubMemberships />
+          <MyOrgMemberships />
         </View>
       </ImageBackground>
     </View>

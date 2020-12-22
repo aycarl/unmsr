@@ -2,25 +2,25 @@ import React from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
-import MyClubPreviewCard from "./MyClubsPreviewCard";
+import OrgPreviewCard from "./OrgPreviewCard";
 
-const MyClubsPreviewContainer = () => {
+const OrgPreviewContainer = () => {
   return (
     <View style={styles.myClubs}>
       <Text style={styles.text}>My Clubs & Organisations</Text>
       <ScrollView horizontal contentContainerStyle={styles.horizontalScrollView}>
-        <MyClubPreviewCard />
-        <MyClubPreviewCard />
-        <MyClubPreviewCard />
-        <MyClubPreviewCard />
-        <AllMyClubs />
+        <OrgPreviewCard />
+        <OrgPreviewCard />
+        <OrgPreviewCard />
+        <OrgPreviewCard />
+        <AllMyOrgs />
       </ScrollView>
     </View>
   );
 };
 
 // pointer to list of all clubs and organisations user is a part of
-const AllMyClubs = () => {
+const AllMyOrgs = () => {
   return (
     <View style={styles.more} >
       <Image 
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyClubsPreviewContainer;
+export default OrgPreviewContainer;
