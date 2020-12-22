@@ -25,7 +25,7 @@ const AllMyOrgs = () => {
     <View style={styles.more} >
       <Image 
         style={styles.moreImage}
-        source={require("./../assets/icons/chevron-right.png")}
+        source={require("./../../assets/icons/chevron-right.png")}
       />
       <Text style={styles.clubName}>View All</Text>
     </View>

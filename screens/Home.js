@@ -3,8 +3,8 @@ import { ImageBackground, View } from "react-native";
 import { StyleSheet } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
-import EventsPreviewContainer from "../custom-components/EventsPreviewContainer";
-import OrgPreviewContainer from "../custom-components/OrgItems/OrgPreviewContainer";
+import EventsPreviewContainer from "../custom-components/event-components/EventsPreviewContainer";
+import OrgPreviewContainer from "../custom-components/org-components/OrgPreviewContainer";
 
 const Home = () => {
   return (
