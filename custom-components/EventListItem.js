@@ -2,16 +2,22 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const EventListItem = (props) => {
+const EventListItem = ({
+  eventDescription,
+  eventLocation,
+  eventSummary,
+  eventStartDate,
+  eventID,
+}) => {
   const navigation = useNavigation();
 
-  const {
-    eventDescription,
-    eventLocation,
-    eventSummary,
-    eventStartDate,
-    eventID,
-  } = props;
+  // const {
+  //   eventDescription,
+  //   eventLocation,
+  //   eventSummary,
+  //   eventStartDate,
+  //   eventID,
+  // } = props;
 
   return (
     <TouchableHighlight
