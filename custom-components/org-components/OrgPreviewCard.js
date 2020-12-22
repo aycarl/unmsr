@@ -7,7 +7,7 @@ const OrgPreviewCard = () => {
     <View>
       <ImageBackground 
         style={styles.image}
-        source={require("./../assets/img/anime_club.jpg")}
+        source={require("./../../assets/img/anime_club.jpg")}
       >
         <Text style={styles.clubName} >ANIME CLUB</Text>
       </ImageBackground>

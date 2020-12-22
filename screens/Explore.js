@@ -4,7 +4,7 @@ import { Text, View, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 
-import CategoryList from "./../custom-components/CategoryItems/CatergoryList";
+import CategoryList from "./../custom-components/category-components/CatergoryList";
 
 const Explore = () => {
   const [searchQuery, setSearchQuery] = React.useState("");

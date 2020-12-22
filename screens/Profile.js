@@ -3,7 +3,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
 import ProfileSummary from "./../custom-components/ProfileSummary";
-import MyOrgMemberships from "../custom-components/OrgItems/MyOrgMemberships";
+import MyOrgMemberships from "../custom-components/org-components/MyOrgMemberships";
 
 const Profile = () => {
   return (

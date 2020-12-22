@@ -12,7 +12,7 @@ const CategoryListItem = ({item}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 5,
+    padding: 10,
     borderWidth: 1,
     borderRadius: 5,
     alignContent: "center",

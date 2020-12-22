@@ -7,7 +7,7 @@ const EventPreviewCard = () => {
     <View>
       <ImageBackground 
         style={styles.image}
-        source={require("./../assets/updates/PNMGC_Notice.png")}
+        source={require("./../../assets/updates/PNMGC_Notice.png")}
       ></ImageBackground>
     </View>
   );
