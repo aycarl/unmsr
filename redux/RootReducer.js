@@ -8,7 +8,7 @@ import eventsReducer from "./events/eventsReducer";
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['events']
+  // whitelist: ['events']
 }
 
 // TODO: add user reducer: user: userReducer,

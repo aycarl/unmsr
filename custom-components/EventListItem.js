@@ -2,20 +2,27 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const EventListItem = ({
-  eventDescription,
-  eventLocation,
-  eventSummary,
-  eventStartDate,
-  eventID,
-}) => {
-  
+const EventListItem = (props) => {
   const navigation = useNavigation();
 
+  const {
+    eventDescription,
+    eventLocation,
+    eventSummary,
+    eventStartDate,
+    eventID,
+  } = props;
+
   return (
-    <TouchableHighlight activeOpacity={0.8} underlayColor="#fff" onPress={() => {navigation.navigate("EventDetails", {
-      eventID: eventID
-    })}}>
+    <TouchableHighlight
+      activeOpacity={0.8}
+      underlayColor="#fff"
+      onPress={() => {
+        navigation.navigate("EventDetails", {
+          eventID: eventID,
+        });
+      }}
+    >
       <View style={styles.container}>
         <View style={styles.previewImagePlaecholder} />
         <View style={styles.textContainer}>
@@ -34,7 +41,13 @@ const EventListItem = ({
             {eventDescription}
           </Text>
           <Text style={styles.footerText}>{eventStartDate}</Text>
-          <Text style={styles.footerText}>{eventLocation}</Text>
+          <Text
+            style={styles.footerText}
+            numberOfLines={1}
+            ellipsizeMode={"tail"}
+          >
+            {eventLocation}
+          </Text>
         </View>
       </View>
     </TouchableHighlight>
@@ -56,7 +69,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   textContainer: {
-    justifyContent: "space-evenly",
+    justifyContent: "space-between",
     width: "95%",
   },
   headerText: {
@@ -69,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   footerText: {
-    fontSize: 14,
+    fontSize: 12,
   },
 });
 
