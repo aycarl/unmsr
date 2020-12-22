@@ -1,15 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import AsyncStorage from "@react-native-community/async-storage";
 
-import { selectEventsListArray } from "./../redux/events/eventsSelectors";
+import { selectEventsList } from "./../redux/events/eventsSelectors";
 
-import { View, StyleSheet, ImageBackground, Button, Text } from "react-native";
+import { View, StyleSheet, ImageBackground, Button } from "react-native";
 
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/EventsList";
 
 // TODO: replace button with event details screen navigation functionality
+            // <Button 
+            //   title="clear storage"
+            //   onPress={async() => AsyncStorage.clear() }
+            // />
 
 class Events extends Component {
 
@@ -23,7 +28,9 @@ class Events extends Component {
 
   render() {
 
-    const { data, navigation } = this.state;
+    const { data } = this.state;
+
+    console.log("events: "+ JSON.stringify(data));
 
     return (
       <View style={styles.container}>
@@ -33,7 +40,7 @@ class Events extends Component {
           style={styles.bgImage}
         >
           <View style={styles.pageContent}>
-            <EventsList navigation={navigation} data={data} />
+            <EventsList data={data} />
           </View>
         </ImageBackground>
       </View>
@@ -61,7 +68,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = createStructuredSelector({
-  eventsList: selectEventsListArray
+  eventsList: selectEventsList
 });
 
 export default connect(mapStateToProps)(Events);
