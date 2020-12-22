@@ -4,35 +4,29 @@ import { FlatList, ScrollView } from "react-native-gesture-handler";
 
 import EventListItem from "./EventListItem";
 
-// TODO: change scrollview to refreshable flatlist
-{
-  /* <FlatList 
-  data={data}
-  renderItem={EventListItem}
-  keyExtractor={eventItem => eventItem}
-/> */
-}
-
 const EventsList = ({ data }) => {
+
+  // used a render item to map array data to component props
+
+  const renderItem = ({item}) => 
+  <EventListItem
+    key={item.UID}
+    eventSummary={item.SUMMARY}
+    eventDescription={item.DESCRIPTION}
+    eventLocation={item.LOCATION}
+    eventStartDate={item.DTSTART}
+    eventID={item.UID}
+  />;
   return (
     <View style={styles.notificationContainer}>
-      <ScrollView contentContainerStyle={styles.notificationsScroll}>
-        {data.map((event) => (
-          <EventListItem
-            key={event.UID}
-            eventSummary={event.SUMMARY}
-            eventDescription={event.DESCRIPTION}
-            eventLocation={event.LOCATION}
-            eventStartDate={event.DTSTART}
-            eventID={event.UID}
-          />
-        ))}
-      </ScrollView>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.UID}
+      />
     </View>
   );
 };
-
-// FIXME: remove blue text background color
 
 const styles = StyleSheet.create({
   notificationContainer: {
