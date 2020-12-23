@@ -7,7 +7,6 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import ExploreNavContainer from "../navigation-containers/ExploreNavContainer";
 import EventsNavContainer from "../navigation-containers/EventsNavContainer";
-import Events from "../screens/Events";
 
 const Tab = createMaterialBottomTabNavigator();
 

@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginRight: 10,
     backgroundColor: "#ffffff",
-    overlayColor: "#ffffff",
     padding: 5,
     overflow: "hidden",
   },
