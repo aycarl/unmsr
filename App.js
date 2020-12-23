@@ -30,7 +30,7 @@ export default function App() {
       <PersistGate persistor={persistor}>
         <PaperProvider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator headerMode="none">
+            <Stack.Navigator headerMode="none" initialRouteName="HomeNav">
               {/* {userToken ? ( */}
               <Stack.Screen name="Auth" component={AuthNavContainer} />
               {/* ) : ( */}
