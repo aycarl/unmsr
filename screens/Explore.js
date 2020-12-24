@@ -24,9 +24,9 @@ const Explore = () => {
               onChangeText={onChangeSearch}
               value={searchQuery}
             />
-            <Text style={styles.sectionHeaderText}>Explore by Category</Text>
           </View>
           <View style={styles.categoryListSection}>
+            <Text style={styles.sectionHeaderText}>Explore by Category</Text>
             <CategoryList />
           </View>
         </View>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    resizeMode: "cover",
+    // resizeMode: "cover",
   },
   pageContent: {
     flex: 1,
