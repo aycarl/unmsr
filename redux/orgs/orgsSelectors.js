@@ -6,3 +6,8 @@ export const selectOrgsList = createSelector(
   [selectOrgs],
   orgs => orgs.orgsList 
 );
+
+export const selectCategoryList = createSelector(
+  [selectOrgs],
+  orgs => orgs.orgCategoryList
+);

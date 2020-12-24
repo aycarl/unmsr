@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    resizeMode: "cover",
+    // resizeMode: "cover",
   },
   pageContent: {
     flex: 1,

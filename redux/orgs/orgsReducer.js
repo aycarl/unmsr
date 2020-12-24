@@ -1,7 +1,11 @@
 //import OrgActionTypes from "./orgActionTypes";
 
+import CategoryListData from "./../../mock-data/category-list-data";
+
 const INITIAL_STATE = {
-  orgsList: {}
+  orgsList: {},
+  exploreSearchQuery: "",
+  orgCategoryList: CategoryListData,
 }
 
 const orgsReducer = (state = INITIAL_STATE, action) => {
