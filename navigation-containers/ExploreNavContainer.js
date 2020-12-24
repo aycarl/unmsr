@@ -8,12 +8,15 @@ const Stack = createStackNavigator();
 
 const ExploreNavContainer = () => {
   return (
-    <Stack.Navigator initialRouteName="OrgDetails" headerMode="none">
-      <Stack.Screen name="ExploreHome" component={Explore} />
+    <Stack.Navigator initialRouteName="OrgDetails" >
+      <Stack.Screen name="ExploreHome" component={Explore} options={{
+        headerShown: false,
+      }} />
       <Stack.Screen
         name="OrgDetails"
         component={OrgDetails}
         options={{
+          title: "",
           headerShown: true,
         }}
       />
