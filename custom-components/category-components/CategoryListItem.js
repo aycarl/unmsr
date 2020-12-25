@@ -4,7 +4,6 @@ import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 
 import { UpdatedExploreSearchQuery } from "./../../redux/orgs/orgActions";
 
-
 // displays single category
 // onPress: changes explore query string to category title
 const CategoryListItem = ({ item }) => {
@@ -15,10 +14,9 @@ const CategoryListItem = ({ item }) => {
       activeOpacity={0.8}
       underlayColor="#fff"
       onPress={() => dispatch(UpdatedExploreSearchQuery(item.title))}
+      style={styles.container}
     >
-      <View style={styles.container}>
-        <Text style={styles.text}>{item.title}</Text>
-      </View>
+      <Text style={styles.text}>{item.title}</Text>
     </TouchableHighlight>
   );
 };
