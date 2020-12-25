@@ -44,6 +44,10 @@ const OrgsList = {
           id: "1",
           title: "Academic",
         },
+        {
+          id: "14",
+          title: "Special Interest",
+        },
       ],
       eventsList: [
         {

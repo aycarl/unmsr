@@ -1,31 +1,30 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import OrgList from "./OrgList";
+import CategoryList from "./CatergoryList";
 
-// TODO: write selector for user organisation memberships
-
-const MyOrgMemberships = () => {
+// displays list of categories in two columns
+const CategoryListContainer = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.headerText}>Memberships</Text>
-        {/* <OrgList /> */}
+      <Text style={styles.headerText}>Explore by Category</Text>
+      <CategoryList />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 4,
+    flex: 1,
     width: "100%",
     paddingHorizontal: 10,
   },
   headerText: {
     fontWeight: "bold",
     fontSize: 14,
-    textTransform: "uppercase",
+    // textTransform: "lowercase",
     marginBottom: 10,
   },
 });
 
-export default MyOrgMemberships;
+export default CategoryListContainer;

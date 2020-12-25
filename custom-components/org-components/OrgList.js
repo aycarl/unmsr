@@ -10,12 +10,11 @@ import OrgListItem from "./OrgListItem";
 // render component for each item in flatlist
 const renderItem = ({ item }) => <OrgListItem {...item} />;
 
-// displays list of organisations
-
 // FIXME: only display data passed in as props NOT from selectOrgsListForPreview !!!
 
-const OrgList = () => {
-  const orgsListData = useSelector(selectOrgsListForPreview);
+// displays list of organisations
+const OrgList = ({orgsListData}) => {
+  // const orgsListData = useSelector(selectOrgsListForPreview);
   return (
     <View style={styles.container}>
       <FlatList

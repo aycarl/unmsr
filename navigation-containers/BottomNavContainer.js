@@ -14,7 +14,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 function BottomNavContainer() {
   return (
-    <Tab.Navigator initialRouteName="Profile" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
+    <Tab.Navigator initialRouteName="Explore" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
       <Tab.Screen
         name="Home"
         component={Home}

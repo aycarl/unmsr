@@ -8,21 +8,31 @@ export const selectOrgsList = createSelector(
   orgs => orgs.orgsList 
 );
 
-// select all organisations (UID, name & number of members) from state as array
+// select all organisations (UID, name, categories & member count) from state as array
 export const selectOrgsListForPreview = createSelector(
   [selectOrgsList],
   orgsList => orgsList ? Object.keys(orgsList).map(orgUID => {
-    const { UID, name, nickname, members } = orgsList[orgUID];
+    const { UID, name, nickname, members, categoryList } = orgsList[orgUID];
     return ({
       UID,
       name,
       nickname,
       memberCount: members.length,
+      categories: categoryList.map(category => category.title),
     });
   }) : []
 );
 
-// TODO: create selector for list of organisation that a use is a part of!!!
+// select a filtered list of organisations based on query (text or categories)
+export const selectOrgsListForExploreSearch = query => createSelector(
+  [selectOrgsListForPreview],
+  orgsList => orgsList ? orgsList.filter(org => org.name
+    .concat(" ", org.nickname, org.categories.toString())
+    .toLowerCase()
+    .includes(query.toLowerCase())) : []
+);
+
+// TODO: create selector for list of organisation that a user is a part of!!!
 
 // select the list of organization categories from state
 export const selectCategoryList = createSelector(
