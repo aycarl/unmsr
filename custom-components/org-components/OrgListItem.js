@@ -2,18 +2,22 @@ import React from "react";
 import { Text, View, StyleSheet, Image } from "react-native";
 
 // TODO: remember to make member count dynamic
+// TODO: include touchable component for linking to details page
 
-const OrgListItem = () => {
+const OrgListItem = ({ name, nickname, UID, memberCount }) => {
   return (
     <View style={styles.container}>
       <View style={styles.clubLogoContainer}></View>
       <View style={styles.textContainer}>
-        <Text style={styles.clubName}>Photography Club</Text>
-        <Text style={styles.memberCount}>100 members</Text>
+        <Text style={styles.clubName}>{name}</Text>
+        <Text style={styles.clubNickname}>{nickname}</Text>
+        <Text style={styles.memberCount}>
+          {memberCount} {memberCount > 1 ? `members` : `member`}
+        </Text>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -33,7 +37,11 @@ const styles = StyleSheet.create({
   clubName: {
     fontSize: 15,
     fontWeight: "bold",
-  }
+    textTransform: "uppercase",
+  },
+  clubNickname: {
+    fontSize: 14,
+  },
 });
 
 export default OrgListItem;
