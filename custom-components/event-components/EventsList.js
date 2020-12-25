@@ -1,14 +1,12 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 import EventListItem from "./EventListItem";
 
-const EventsList = ({ data }) => {
+// used a render item to map array data to component props
 
-  // used a render item to map array data to component props
-
-  const renderItem = ({item}) => 
+const renderItem = ({ item }) => (
   <EventListItem
     key={item.UID}
     eventSummary={item.SUMMARY}
@@ -16,33 +14,25 @@ const EventsList = ({ data }) => {
     eventLocation={item.LOCATION}
     eventStartDate={item.DTSTART}
     eventID={item.UID}
-  />;
+  />
+);
+
+const EventsList = ({ data }) => {
   return (
-    <View style={styles.notificationContainer}>
+    <View style={styles.container}>
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={item => item.UID}
+        keyExtractor={(item) => item.UID}
       />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  notificationContainer: {
+  container: {
     flex: 1,
     width: "100%",
-  },
-  text: {
-    fontWeight: "bold",
-    paddingBottom: 10,
-    textTransform: "uppercase",
-  },
-  notificationsScroll: {
-    paddingBottom: 10,
-  },
-  moreImage: {
-    height: 50,
   },
 });
 
