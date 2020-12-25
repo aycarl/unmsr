@@ -1,15 +1,23 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-import { Text, View, ImageBackground } from "react-native";
+import { View, ImageBackground } from "react-native";
 import { StyleSheet } from "react-native";
 import { Searchbar } from "react-native-paper";
 
-import CategoryList from "./../custom-components/category-components/CatergoryList";
+import CategoryListContainer from "./../custom-components/category-components/CategoryListContainer";
+import ExploreOrgList from "./../custom-components/org-components/ExploreOrgList";
+
+//import redux action to update search query in state
+import { UpdatedExploreSearchQuery } from "./../redux/orgs/orgActions";
+
+// select query from state
+import { selectExploreSearchQuery } from "./../redux/orgs/orgsSelectors";
 
 const Explore = () => {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const dispatch = useDispatch();
 
-  const onChangeSearch = (query) => setSearchQuery(query);
+  const searchQuery = useSelector(selectExploreSearchQuery);
 
   return (
     <View style={styles.container}>
@@ -21,13 +29,18 @@ const Explore = () => {
           <View style={styles.searchContainer}>
             <Searchbar
               placeholder="Search Clubs & Organisations"
-              onChangeText={onChangeSearch}
+              onChangeText={(query) =>
+                dispatch(UpdatedExploreSearchQuery(query))
+              }
               value={searchQuery}
             />
           </View>
-          <View style={styles.categoryListSection}>
-            <Text style={styles.sectionHeaderText}>Explore by Category</Text>
-            <CategoryList />
+          <View style={styles.exploreListSection}>
+            {searchQuery === "" ? (
+              <CategoryListContainer />
+            ) : (
+              <ExploreOrgList />
+            )}
           </View>
         </View>
       </ImageBackground>
@@ -47,22 +60,22 @@ const styles = StyleSheet.create({
   pageContent: {
     flex: 1,
     paddingTop: 40,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
   },
   searchContainer: {
     alignSelf: "stretch",
+    marginHorizontal: 10,
+    marginBottom: 10,
   },
   sectionHeaderText: {
     alignSelf: "flex-start",
     marginVertical: 10,
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     textTransform: "uppercase",
   },
-  categoryListSection: {
+  exploreListSection: {
     flex: 1,
+    paddingBottom: 10,
   },
 });
 

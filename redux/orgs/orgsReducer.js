@@ -5,7 +5,7 @@ import OrgsList from "../../mock-data/orgs-list";
 
 const INITIAL_STATE = {
   orgsList: OrgsList.orgsList,
-  exploreSearchQuery: "some search",
+  exploreSearchQuery: "",
   orgCategoryList: CategoryListData,
 }
 

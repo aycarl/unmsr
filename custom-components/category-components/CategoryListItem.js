@@ -1,13 +1,27 @@
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
 
-const CategoryListItem = ({item}) => {
+import { UpdatedExploreSearchQuery } from "./../../redux/orgs/orgActions";
+
+
+// displays single category
+// onPress: changes explore query string to category title
+const CategoryListItem = ({ item }) => {
+  const dispatch = useDispatch();
+
   return (
-    <View style={styles.container} >
-      <Text style={styles.text} >{item.title}</Text>
-    </View>
+    <TouchableHighlight
+      activeOpacity={0.8}
+      underlayColor="#fff"
+      onPress={() => dispatch(UpdatedExploreSearchQuery(item.title))}
+    >
+      <View style={styles.container}>
+        <Text style={styles.text}>{item.title}</Text>
+      </View>
+    </TouchableHighlight>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +40,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     textTransform: "uppercase",
-  }
+  },
 });
 
 export default CategoryListItem;

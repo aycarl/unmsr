@@ -10,11 +10,11 @@ import CategoryLabels from "./../custom-components/category-components/CategoryL
 // TODO: include category container styling and display
 // TODO: add events list data for organization
 
-const OrgDetails = () => {
-  const org = useSelector(selectOrg("org1"));
+const OrgDetails = (props) => {
 
-  // console.log("org: "+ JSON.stringify(org["orgsList"]));
-  console.log("org " + JSON.stringify(org));
+  const org = useSelector(selectOrg(props.route.params.orgID));
+
+  // console.log("org " + JSON.stringify(org));
 
   const memberCount = Object.keys(org.members).length;
 
