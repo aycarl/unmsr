@@ -1,13 +1,15 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-import ClubList from "./../custom-components/ClubList";
+import OrgList from "./OrgList";
 
-const MyClubMemberships = () => {
+// TODO: write selector for user organisation memberships
+
+const MyOrgMemberships = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Memberships</Text>
-        <ClubList />
+        {/* <OrgList /> */}
     </View>
   );
 };
@@ -20,10 +22,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontWeight: "bold",
-    fontSize: 16,
+    fontSize: 14,
     textTransform: "uppercase",
     marginBottom: 10,
   },
 });
 
-export default MyClubMemberships;
+export default MyOrgMemberships;

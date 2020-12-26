@@ -8,7 +8,7 @@ import { store, persistor } from "./redux/store";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import BottomNavContainer from "./navigation-containers/BottomNavContainer";
+import AppNavContainer from "./navigation-containers/AppNavContainer";
 import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
 const theme = {
@@ -22,6 +22,8 @@ const theme = {
   },
 };
 
+const userToken = "4356";
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -30,12 +32,12 @@ export default function App() {
       <PersistGate persistor={persistor}>
         <PaperProvider theme={theme}>
           <NavigationContainer>
-            <Stack.Navigator headerMode="none">
-              {/* {userToken ? ( */}
+            <Stack.Navigator headerMode="none" initialRouteName="HomeNav">
+              {!userToken ? (
               <Stack.Screen name="Auth" component={AuthNavContainer} />
-              {/* ) : ( */}
-              <Stack.Screen name="HomeNav" component={BottomNavContainer} />
-              {/* )} */}
+              ) : (
+              <Stack.Screen name="HomeNav" component={AppNavContainer} />
+              )}
             </Stack.Navigator>
           </NavigationContainer>
         </PaperProvider>

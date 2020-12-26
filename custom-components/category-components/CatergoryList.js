@@ -1,20 +1,30 @@
 import React from "react";
+import { useSelector, connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+
 import { View, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 
 import CategoryListItem from "./CategoryListItem";
 
-import CategoryListData from "./../mock-data/category-list-data"
+import { selectCategoryList } from "./../../redux/orgs/orgsSelectors";
 
 // TODO: properly style category lists of space evenly
 
 const CategoryList = () => {
 
+  // select list of categories from redux state
+  const categoryListData = useSelector(selectCategoryList);
+
+  console.log("categories: "+categoryListData);
+
+  const renderItem = item => (<CategoryListItem {...item} />);
+
   return (
     <View style={styles.container}>
       <FlatList
-        data={CategoryListData}
-        renderItem={CategoryListItem}
+        data={categoryListData}
+        renderItem={renderItem}
         keyExtractor={(item) => item.id}
         horizontal={false}
         numColumns={2}

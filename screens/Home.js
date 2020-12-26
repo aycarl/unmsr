@@ -3,8 +3,8 @@ import { ImageBackground, View } from "react-native";
 import { StyleSheet } from "react-native";
 
 import ScreenHeader from "./../custom-components/ScreenHeader";
-import EventsPreviewContainer from "../custom-components/EventsPreviewContainer";
-import MyClubsPreviewContainer from "../custom-components/MyClubsPreviewContainer";
+import EventsPreviewContainer from "../custom-components/event-components/EventsPreviewContainer";
+import OrgPreviewContainer from "../custom-components/org-components/OrgPreviewContainer";
 
 const Home = () => {
   return (
@@ -16,7 +16,7 @@ const Home = () => {
       >
         <View style={styles.pageContent}>
           <EventsPreviewContainer />
-          <MyClubsPreviewContainer />
+          <OrgPreviewContainer />
         </View>
       </ImageBackground>
     </View>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    resizeMode: "cover",
+    // resizeMode: "cover",
   },
   pageContent: {
     flex: 1,

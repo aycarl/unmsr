@@ -7,7 +7,7 @@ const EventPreviewCard = () => {
     <View>
       <ImageBackground 
         style={styles.image}
-        source={require("./../assets/updates/PNMGC_Notice.png")}
+        source={require("./../../assets/updates/PNMGC_Notice.png")}
       ></ImageBackground>
     </View>
   );
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: 300,
-    resizeMode: "contain",
+    // resizeMode: "contain",
     borderColor: "#707070",
     borderRadius: 5,
     borderWidth: 1,
