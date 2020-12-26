@@ -9,7 +9,7 @@ import CategoryListContainer from "./../custom-components/category-components/Ca
 import ExploreOrgList from "./../custom-components/org-components/ExploreOrgList";
 
 //import redux action to update search query in state
-import { UpdatedExploreSearchQuery } from "./../redux/orgs/orgActions";
+import { updatedExploreSearchQuery } from "./../redux/orgs/orgActions";
 
 // select query from state
 import { selectExploreSearchQuery } from "./../redux/orgs/orgsSelectors";
@@ -30,7 +30,7 @@ const Explore = () => {
             <Searchbar
               placeholder="Search Clubs & Organisations"
               onChangeText={(query) =>
-                dispatch(UpdatedExploreSearchQuery(query))
+                dispatch(updatedExploreSearchQuery(query))
               }
               value={searchQuery}
             />
