@@ -2,12 +2,12 @@ import React from "react";
 import { View, Image, StyleSheet, Text, ImageBackground } from "react-native";
 
 // TODO: takes an image url and a url to Update page as props
-const MyClubsPreviewCard = () => {
+const OrgPreviewCard = () => {
   return (
     <View>
       <ImageBackground 
         style={styles.image}
-        source={require("./../assets/img/anime_club.jpg")}
+        source={require("./../../assets/img/anime_club.jpg")}
       >
         <Text style={styles.clubName} >ANIME CLUB</Text>
       </ImageBackground>
@@ -22,14 +22,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "flex-end",
-    resizeMode: "contain",
+    // resizeMode: "contain",
     width: 200,
     borderColor: "#707070",
     borderRadius: 5,
     borderWidth: 1,
     marginRight: 10,
     backgroundColor: "#ffffff",
-    overlayColor: "#ffffff",
     padding: 5,
     overflow: "hidden",
   },
@@ -39,4 +38,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default MyClubsPreviewCard;
+export default OrgPreviewCard;

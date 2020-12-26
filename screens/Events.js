@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import AsyncStorage from "@react-native-community/async-storage";
 
 import { selectEventsList } from "./../redux/events/eventsSelectors";
 
-import { View, StyleSheet, ImageBackground, Button } from "react-native";
+import { View, StyleSheet, ImageBackground } from "react-native";
 
 import ScreenHeader from "../custom-components/ScreenHeader";
-import EventsList from "../custom-components/EventsList";
-
-// TODO: replace button with event details screen navigation functionality
-            // <Button 
-            //   title="clear storage"
-            //   onPress={async() => AsyncStorage.clear() }
-            // />
+import EventsList from "../custom-components/event-components/EventsList";
 
 class Events extends Component {
 

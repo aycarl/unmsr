@@ -3,7 +3,7 @@ import { persistStore } from "redux-persist";
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
-import rootReducer from "./RootReducer";
+import rootReducer from "./rootReducer";
 
 // added reduc thunk to allow async call fetch
 const middleware = [thunk];

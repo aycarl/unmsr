@@ -11,14 +11,6 @@ const EventListItem = ({
 }) => {
   const navigation = useNavigation();
 
-  // const {
-  //   eventDescription,
-  //   eventLocation,
-  //   eventSummary,
-  //   eventStartDate,
-  //   eventID,
-  // } = props;
-
   return (
     <TouchableHighlight
       activeOpacity={0.8}

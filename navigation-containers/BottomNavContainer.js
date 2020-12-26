@@ -7,13 +7,14 @@ import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import ExploreNavContainer from "../navigation-containers/ExploreNavContainer";
 import EventsNavContainer from "../navigation-containers/EventsNavContainer";
-import Events from "../screens/Events";
 
 const Tab = createMaterialBottomTabNavigator();
 
+// FIXME: remember to fix initialRouteName!!!
+
 function BottomNavContainer() {
   return (
-    <Tab.Navigator initialRouteName="Home" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
+    <Tab.Navigator initialRouteName="Explore" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -42,7 +43,8 @@ function BottomNavContainer() {
 
 const styles = StyleSheet.create({
   bottomNav: {
-    backgroundColor: '#ffffff'
+    backgroundColor: '#ffffff',
+    paddingVertical: 10,
   }
 });
 
