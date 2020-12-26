@@ -6,7 +6,6 @@ import OrgList from "./OrgList";
 
 import { selectExploreSearchQuery, selectOrgsListForExploreSearch } from "./../../redux/orgs/orgsSelectors";
 
-// TODO: display list of organisations based on category / search filter
 // pass data to org list
 
 const ExploreOrgList = () => {
