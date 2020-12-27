@@ -1,7 +1,7 @@
-const OrgActionTypes = {
+const OrgsActionTypes = {
   UPDATE_EXPLORE_SEARCH_QUERY: 'UPDATE_EXPLORE_SEARCH_QUERY',
   ADD_NEW_MEMBER: 'ADD_NEW_MEMBER',
   REMOVE_MEMBER: 'REMOVE_MEMBER',
 }
 
-export default OrgActionTypes;
+export default OrgsActionTypes;

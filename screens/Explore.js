@@ -9,7 +9,7 @@ import CategoryListContainer from "./../custom-components/category-components/Ca
 import ExploreOrgList from "./../custom-components/org-components/ExploreOrgList";
 
 //import redux action to update search query in state
-import { updatedExploreSearchQuery } from "./../redux/orgs/orgActions";
+import { updatedExploreSearchQuery } from "./../redux/orgs/orgsActions";
 
 // select query from state
 import { selectExploreSearchQuery } from "./../redux/orgs/orgsSelectors";

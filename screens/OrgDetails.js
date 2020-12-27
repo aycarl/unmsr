@@ -4,22 +4,33 @@ import { View, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { selectOrg } from "./../redux/orgs/orgsSelectors";
+import { selectIsInMembershipList } from "./../redux/user/userSelectors";
 import EventsList from "../custom-components/event-components/EventsList";
 import CategoryLabels from "./../custom-components/category-components/CategoryLabels";
-import OrgFAB from "./../custom-components/org-components/orgFAB";
+import {
+  JoinOrgFAB,
+  LeaveOrgFAB,
+} from "./../custom-components/org-components/orgFAB";
 
 // TODO: include category container styling and display
-// TODO: add events list data for organization
+// TODO: add events list data for organization without nesting !!!
 
 const OrgDetails = (props) => {
+  // select an organization
   const org = useSelector(selectOrg(props.route.params.orgID));
+
+  // check if current user is a member
+  const orgInUserMembershipList = useSelector(selectIsInMembershipList(org.UID));
+
+  console.log("membership: " + orgInUserMembershipList);
 
   // console.log("org " + JSON.stringify(org));
 
+  // count of members
   const memberCount = Object.keys(org.members).length;
 
   return (
-    <View style={styles.container} >
+    <View style={styles.container}>
       <ScrollView style={styles.container} nestedScrollEnabled={true}>
         <View style={styles.headerContainer}>
           <Text style={styles.nameHeader}>{org.name}</Text>
@@ -51,9 +62,14 @@ const OrgDetails = (props) => {
           <Text style={styles.sectionHeader}>org.membershipCriteria</Text>
           <Text style={styles.sectionHeader}>org.contactInfo</Text>
           <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
+          <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
         </View>
       </ScrollView>
-      <OrgFAB />
+      {orgInUserMembershipList ? (
+        <LeaveOrgFAB orgUID={org.UID} />
+      ) : (
+        <JoinOrgFAB orgUID={org.UID} />
+      )}
     </View>
   );
 };
