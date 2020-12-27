@@ -27,6 +27,7 @@ export const signUp = userAuthInfo => ({
   payload: userAuthInfo
 });
 
+// TODO: create action to dispatch login & load all other user info: membership list, demographics
 // user action to log in
 // auth information: email, password, user token, logInTimestamp, userID
 export const logIn = userAuthInfo => ({

@@ -6,12 +6,12 @@ import { ScrollView } from "react-native-gesture-handler";
 import { selectOrg } from "./../redux/orgs/orgsSelectors";
 import EventsList from "../custom-components/event-components/EventsList";
 import CategoryLabels from "./../custom-components/category-components/CategoryLabels";
+import OrgFAB from "./../custom-components/org-components/orgFAB";
 
 // TODO: include category container styling and display
 // TODO: add events list data for organization
 
 const OrgDetails = (props) => {
-
   const org = useSelector(selectOrg(props.route.params.orgID));
 
   // console.log("org " + JSON.stringify(org));
@@ -19,8 +19,8 @@ const OrgDetails = (props) => {
   const memberCount = Object.keys(org.members).length;
 
   return (
-    <View style={styles.container}>
-      <ScrollView>
+    <View style={styles.container} >
+      <ScrollView style={styles.container} nestedScrollEnabled={true}>
         <View style={styles.headerContainer}>
           <Text style={styles.nameHeader}>{org.name}</Text>
         </View>
@@ -46,13 +46,14 @@ const OrgDetails = (props) => {
               <Text>{org.meetingInfo.meetingVenue}</Text>
             </View>
           </View>
-          <Text style={styles.sectionHeader}>Events</Text>
-          <EventsList data={org.eventsList} />
+          {/* <Text style={styles.sectionHeader}>Events</Text>
+          <EventsList data={org.eventsList} /> */}
           <Text style={styles.sectionHeader}>org.membershipCriteria</Text>
           <Text style={styles.sectionHeader}>org.contactInfo</Text>
           <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
         </View>
       </ScrollView>
+      <OrgFAB />
     </View>
   );
 };
