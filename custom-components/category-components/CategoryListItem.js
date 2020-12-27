@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
-import { updatedExploreSearchQuery } from "./../../redux/orgs/orgActions";
+import { updatedExploreSearchQuery } from "./../../redux/orgs/orgsActions";
 
 // displays single category
 // onPress: changes explore query string to category title

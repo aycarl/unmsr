@@ -3,10 +3,10 @@ import { addOrgToMembershipList, removeOrgFromMembershipList } from "./userUtils
 
 // FIXME: edit user state - change to only needed items
 const INITIAL_STATE = {
-  userToken: "",
-  userID: "",
-  emailAddress: "",
-  password: "",
+  userToken: "alexis1234567890",
+  userID: "alexis",
+  emailAddress: "alexis@unm.edu",
+  password: "1234567890",
   createdAt: "",
   logInTimestamp: "",
   orgMembershipList: []

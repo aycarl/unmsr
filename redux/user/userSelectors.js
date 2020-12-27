@@ -1,17 +1,16 @@
 import { createSelector } from "reselect";
-import { selectCategoryList } from "../orgs/orgsSelectors";
 
 const selectUser = state => state.user;
 
 // selects current user ID
 export const selectUserID = createSelector(
-  [user],
+  [selectUser],
   user => user.userID
 );
 
 // selects current user token
 export const selectUserToken = createSelector(
-  [user],
+  [selectUser],
   user => user.userToken
 );
 
@@ -24,5 +23,5 @@ export const selectOrgMembershipList = createSelector(
 // returns boolean: checks if organisation is in membership list
 export const selectIsInMembershipList = orgUID => createSelector(
   [selectOrgMembershipList],
-  orgMembershipList => orgMembershipList ? orgMembershipList.includes(orgUID) : false
+  orgMembershipList => orgUID ? orgMembershipList.includes(orgUID) : false
 );
