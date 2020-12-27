@@ -12,7 +12,7 @@ export const removeMember = userID => ({
   payload: userID
 });
 
-// org actiont to add user to member list
+// org action to add user to member list
 export const addMember = userID => ({
   type: OrgActionTypes.ADD_NEW_MEMBER,
   payload: userID
