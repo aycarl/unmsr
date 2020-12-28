@@ -1,12 +1,16 @@
 import React from "react";
 import { View, StyleSheet, Text } from "react-native";
+import { Button } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 
 import { ScrollView } from "react-native-gesture-handler";
 
 import EventPreviewCard from "./EventPreviewCard";
 
-// TODO: Takes a list of update objects
+// TODO: Takes a list of event objects
 const EventsPreviewContainer = () => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.updates}>
       <Text style={styles.text}>UPCOMING EVENTS</Text>
@@ -18,7 +22,15 @@ const EventsPreviewContainer = () => {
         <EventPreviewCard />
         <EventPreviewCard />
       </ScrollView>
-      <Text style={styles.textLink}>VIEW ALL EVENTS</Text>
+      <Button
+        mode="text"
+        style={styles.textLink}
+        onPress={() => {
+          navigation.navigate("Events");
+        }}
+      >
+        VIEW ALL EVENTS
+      </Button>
     </View>
   );
 };
@@ -30,15 +42,17 @@ const styles = StyleSheet.create({
   text: {
     fontWeight: "bold",
     paddingBottom: 10,
+    marginHorizontal: 10,
+    textTransform: "uppercase",
   },
   textLink: {
     fontWeight: "bold",
     color: "#ba0c2f",
     alignSelf: "flex-end",
-    paddingBottom: 10,
   },
   horizontalScrollView: {
-    paddingBottom: 10,
+    marginBottom: 10,
+    justifyContent: "space-around",
   },
 });
 

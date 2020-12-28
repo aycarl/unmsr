@@ -10,11 +10,9 @@ import EventsNavContainer from "../navigation-containers/EventsNavContainer";
 
 const Tab = createMaterialBottomTabNavigator();
 
-// FIXME: remember to fix initialRouteName!!!
-
 function BottomNavContainer() {
   return (
-    <Tab.Navigator initialRouteName="Explore" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
+    <Tab.Navigator initialRouteName="Home" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
       <Tab.Screen
         name="Home"
         component={Home}
