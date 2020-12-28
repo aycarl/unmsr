@@ -1,15 +1,23 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 
 import OrgList from "./OrgList";
 
-// TODO: write selector for user organisation memberships
+import { selectOrgMembershipList } from "./../../redux/user/userSelectors";
+import { selectOrgsListForUserMembership } from "./../../redux/orgs/orgsSelectors";
 
+// displays organizationts that a user is a member of
 const MyOrgMemberships = () => {
+
+  const membershipList = useSelector(selectOrgMembershipList);
+
+  const orgMembershipData = useSelector(selectOrgsListForUserMembership(membershipList));
+
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Memberships</Text>
-        {/* <OrgList /> */}
+        <OrgList orgsListData={orgMembershipData} />
     </View>
   );
 };
