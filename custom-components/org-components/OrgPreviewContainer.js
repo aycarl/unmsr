@@ -1,78 +1,95 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { Button } from "react-native-paper";
+import { FlatList } from "react-native-gesture-handler";
 
 import OrgPreviewCard from "./OrgPreviewCard";
 
+import { selectOrgMembershipList } from "./../../redux/user/userSelectors";
+import { selectOrgsListForUserMembership } from "./../../redux/orgs/orgsSelectors";
+
+// render component for org preview card
+const renderItem = ({ item }) => <OrgPreviewCard {...item} />;
+
 const OrgPreviewContainer = () => {
+  const membershipList = useSelector(selectOrgMembershipList);
+
+  const orgMembershipData = useSelector(
+    selectOrgsListForUserMembership(membershipList)
+  );
+
   return (
-    <View style={styles.myClubs}>
+    <View style={styles.container}>
       <Text style={styles.text}>My Clubs & Organisations</Text>
-      <ScrollView horizontal contentContainerStyle={styles.horizontalScrollView}>
-        <OrgPreviewCard />
-        <OrgPreviewCard />
-        <OrgPreviewCard />
-        <OrgPreviewCard />
-        <AllMyOrgs />
-      </ScrollView>
+      <View style={styles.myClubs}>
+        {orgMembershipData.length > 0 ? (
+          <FlatList
+            horizontal
+            data={orgMembershipData}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.UID}
+          />
+        ) : (
+          <ExploreOrgs />
+        )}
+      </View>
     </View>
   );
 };
 
-// pointer to list of all clubs and organisations user is a part of
-const AllMyOrgs = () => {
+// component: explore organizations and connect!
+const ExploreOrgs = () => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.more} >
-      <Image 
-        style={styles.moreImage}
-        source={require("./../../assets/icons/chevron-right.png")}
-      />
-      <Text style={styles.clubName}>View All</Text>
+    <View style={styles.more}>
+      <Text style={styles.moreText}>Explore · Connect</Text>
+      <Button mode="text" onPress={() => navigation.navigate("Explore")}>
+        Find UNM Organizations & Clubs
+      </Button>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "stretch",
+  },
   myClubs: {
     flex: 1,
   },
   text: {
     fontWeight: "bold",
-    paddingBottom: 10,
+    marginBottom: 10,
+    marginHorizontal: 10,
     textTransform: "uppercase",
-  },
-  textLink: {
-    fontWeight: "bold",
-    textDecorationLine: "underline",
-    color: "#ba0c2f",
-    alignSelf: "flex-end",
-    paddingBottom: 10,
-  },
-  horizontalScrollView: {
-    paddingBottom: 10,
   },
   more: {
     flex: 1,
-    flexDirection: "column",
+    //flexDirection: "column",
     alignItems: "center",
-    justifyContent: "space-around",
-    width: 200,
+    justifyContent: "space-evenly",
     borderColor: "#707070",
     borderRadius: 5,
     borderWidth: 1,
-    marginRight: 10,
     backgroundColor: "#ffffff",
     padding: 5,
+    marginHorizontal: 10,
     overflow: "hidden",
   },
-  moreImage: {
-    height: 50,
+  moreText: {
+    fontSize: 18,
+    color: "#000",
+    textTransform: "uppercase",
+    fontWeight: "bold",
   },
   clubName: {
     fontWeight: "bold",
     color: "#707070",
     textTransform: "uppercase",
-  }
+  },
 });
 
 export default OrgPreviewContainer;
