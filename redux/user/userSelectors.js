@@ -25,3 +25,33 @@ export const selectIsInMembershipList = orgUID => createSelector(
   [selectOrgMembershipList],
   orgMembershipList => orgUID ? orgMembershipList.includes(orgUID) : false
 );
+
+// select user first name
+export const selectFirstName = createSelector(
+  [selectUser],
+  user => user.firstName
+);
+
+// select user last name
+export const selectLastName = createSelector(
+  [selectUser],
+  user => user.lastName
+);
+
+// select user email address
+export const selectEmailAddress = createSelector(
+  [selectUser],
+  user => user.emailAddress
+);
+
+// select user phone number
+export const selectPhoneNumber = createSelector(
+  [selectUser],
+  user => user.phoneNumber
+);
+
+// select user education level
+export const selectEducationLevel = createSelector(
+  [selectUser],
+  user => user.educationLevel
+);

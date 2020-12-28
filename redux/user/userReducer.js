@@ -7,6 +7,10 @@ const INITIAL_STATE = {
   userID: "alexis",
   emailAddress: "alexis@unm.edu",
   password: "1234567890",
+  firstName: "Lexis",
+  lastName: "A.",
+  phoneNumber: "(505) 123-4567",
+  educationLevel: "Graduate",
   createdAt: "",
   logInTimestamp: "",
   orgMembershipList: []
