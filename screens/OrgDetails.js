@@ -12,7 +12,7 @@ import {
   LeaveOrgFAB,
 } from "./../custom-components/org-components/orgFAB";
 
-// TODO: include category container styling and display
+// FIXME: edited styling for mini-table content
 // TODO: add events list data for organization without nesting !!!
 
 const OrgDetails = (props) => {
@@ -68,7 +68,21 @@ const OrgDetails = (props) => {
             </View>
           </View>
           <Text style={styles.sectionHeader}>Contact</Text>
-          <Text style={styles.sectionHeader}>Leadership</Text>
+          <View style={styles.infoTable}>
+            <View style={styles.infoLabels}>
+              <Text style={styles.label}>Email: </Text>
+              <Text style={styles.label}>Phone #: </Text>
+              <Text style={styles.label}>Location: </Text>
+              <Text style={styles.label}>Website: </Text>
+            </View>
+            <View style={styles.infoData}>
+              <Text>{org.contactInfo.emailAddress}</Text>
+              <Text>{org.contactInfo.phoneNumber}</Text>
+              <Text>{org.contactInfo.location}</Text>
+              <Text>{org.contactInfo.website}</Text>
+            </View>
+          </View>
+          {/* TODO: <Text style={styles.sectionHeader}>Leadership</Text> */}
         </View>
       </ScrollView>
       {orgInUserMembershipList ? (
