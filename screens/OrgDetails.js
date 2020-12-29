@@ -57,12 +57,18 @@ const OrgDetails = (props) => {
               <Text>{org.meetingInfo.meetingVenue}</Text>
             </View>
           </View>
-          {/* <Text style={styles.sectionHeader}>Events</Text>
-          <EventsList data={org.eventsList} /> */}
-          <Text style={styles.sectionHeader}>org.membershipCriteria</Text>
-          <Text style={styles.sectionHeader}>org.contactInfo</Text>
-          <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
-          <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
+          {/* TODO: render events from list of event UIDs */}
+          <Text style={styles.sectionHeader}>Membership Information</Text>
+          <View style={styles.infoTable}>
+            <View style={styles.infoLabels}>
+              <Text style={styles.label}>Criteria: </Text>
+            </View>
+            <View style={styles.infoData}>
+              <Text>{org.membershipCriteria.required ? org.membershipCriteria.details : "none"}</Text>
+            </View>
+          </View>
+          <Text style={styles.sectionHeader}>Contact</Text>
+          <Text style={styles.sectionHeader}>Leadership</Text>
         </View>
       </ScrollView>
       {orgInUserMembershipList ? (
