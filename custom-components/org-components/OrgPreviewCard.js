@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Image, StyleSheet, Text, ImageBackground } from "react-native";
+import { StyleSheet, Text, ImageBackground } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
 
 // TODO: takes an image url and a url to Update page as props
 const OrgPreviewCard = ({ name, nickname, UID }) => {
@@ -22,9 +23,22 @@ const OrgPreviewCard = ({ name, nickname, UID }) => {
         style={styles.image}
         source={require("./../../assets/img/anime_club.jpg")}
       >
-        <Text style={styles.clubName} numberOfLines={1} ellipsizeMode={"tail"}>
-          {name} ({nickname})
-        </Text>
+        <LinearGradient
+          style={styles.linearGradient}
+          colors={[
+            "transparent",
+            "transparent",
+            "rgba(0,0,0,0.8)",
+          ]}
+        >
+          <Text
+            style={styles.clubName}
+            numberOfLines={1}
+            ellipsizeMode={"tail"}
+          >
+            {name} ({nickname})
+          </Text>
+        </LinearGradient>
       </ImageBackground>
     </TouchableHighlight>
   );
@@ -45,6 +59,9 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   image: {
+    flex: 1,
+  },
+  linearGradient: {
     flex: 1,
     padding: 5,
     flexDirection: "row",

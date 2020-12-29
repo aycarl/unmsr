@@ -2,13 +2,13 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
-
+import { LinearGradient } from "expo-linear-gradient";
 
 // TODO: takes an image url and a url to Update page as props
-const EventPreviewCard = ({ SUMMARY, DTSTART, UID}) => {
+const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
   const navigation = useNavigation();
 
-  console.log("event UID for preview card: "+JSON.stringify(UID))
+  console.log("event UID for preview card: " + JSON.stringify(UID));
 
   return (
     <TouchableHighlight
@@ -25,12 +25,30 @@ const EventPreviewCard = ({ SUMMARY, DTSTART, UID}) => {
         style={styles.image}
         source={require("./../../assets/updates/PNMGC_Notice.png")}
       >
-        <Text style={styles.eventName} numberOfLines={1} ellipsizeMode={"tail"}>
-          {SUMMARY} Some event name
-        </Text>
-        <Text style={styles.eventTime} numberOfLines={1} ellipsizeMode={"tail"}>
-          {DTSTART} Some time
-        </Text>
+        <LinearGradient
+          style={styles.linearGradient}
+          colors={[
+            "transparent",
+            "transparent",
+            "transparent",
+            "rgba(0,0,0,0.8)",
+          ]}
+        >
+          <Text
+            style={styles.eventName}
+            numberOfLines={1}
+            ellipsizeMode={"tail"}
+          >
+            {SUMMARY}
+          </Text>
+          <Text
+            style={styles.eventTime}
+            numberOfLines={1}
+            ellipsizeMode={"tail"}
+          >
+            {DTSTART}
+          </Text>
+        </LinearGradient>
       </ImageBackground>
     </TouchableHighlight>
   );
@@ -48,17 +66,20 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    padding: 7,
+  },
+  linearGradient: {
+    flex: 1,
+    padding: 8,
     alignItems: "flex-start",
     justifyContent: "flex-end",
   },
   eventName: {
     fontWeight: "bold",
-    color: "#707070",
+    color: "#fff",
     textTransform: "uppercase",
   },
   eventTime: {
-    color: "#707070",
+    color: "#fff",
   },
 });
 
