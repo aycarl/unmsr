@@ -1,41 +1,60 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 import { View, Image, StyleSheet, Text, ImageBackground } from "react-native";
+import { TouchableHighlight } from "react-native-gesture-handler";
 
 // TODO: takes an image url and a url to Update page as props
-const OrgPreviewCard = () => {
+const OrgPreviewCard = ({ name, nickname, UID }) => {
+  const navigation = useNavigation();
+
   return (
-    <View>
-      <ImageBackground 
+    <TouchableHighlight
+      style={styles.container}
+      activeOpacity={0.8}
+      underlayColor="#fff"
+      onPress={() => {
+        navigation.navigate("OrgDetails", {
+          orgID: UID,
+        });
+      }}
+    >
+      <ImageBackground
         style={styles.image}
         source={require("./../../assets/img/anime_club.jpg")}
       >
-        <Text style={styles.clubName} >ANIME CLUB</Text>
+        <Text style={styles.clubName} numberOfLines={1} ellipsizeMode={"tail"}>
+          {name} ({nickname})
+        </Text>
       </ImageBackground>
-    </View>
+    </TouchableHighlight>
   );
-}
+};
 
 // TODO: add gradient overlay to make clube names stand out
 
 const styles = StyleSheet.create({
-  image: {
+  container: {
     flex: 1,
-    flexDirection: "row",
-    alignItems: "flex-end",
-    // resizeMode: "contain",
-    width: 200,
-    borderColor: "#707070",
     borderRadius: 5,
     borderWidth: 1,
-    marginRight: 10,
+    borderColor: "#707070",
+    marginHorizontal: 10,
     backgroundColor: "#ffffff",
-    padding: 5,
+    width: 200,
+    alignItems: "stretch",
     overflow: "hidden",
+  },
+  image: {
+    flex: 1,
+    //width: 200,
+    padding: 5,
+    flexDirection: "row",
   },
   clubName: {
     fontWeight: "bold",
     color: "#ffffff",
-  }
+    alignSelf: "flex-end",
+  },
 });
 
 export default OrgPreviewCard;

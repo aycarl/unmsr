@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
 
 import { View, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";

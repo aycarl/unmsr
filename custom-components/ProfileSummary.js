@@ -1,9 +1,19 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { View, Text, StyleSheet, Image } from "react-native";
+
+import { selectFirstName, selectLastName, selectEmailAddress, selectPhoneNumber, selectEducationLevel } from "./../redux/user/userSelectors";
 
 // TODO: add edit icon to edit profile information
 
 const ProfileSummary = () => {
+
+  const firstName = useSelector(selectFirstName);
+  const lastName = useSelector(selectLastName);
+  const emailAddress = useSelector(selectEmailAddress);
+  const phoneNumber = useSelector(selectPhoneNumber);
+  const educationalLevel = useSelector(selectEducationLevel);
+
   return (
     <View style={styles.container}>
       <View style={styles.profilePic} >
@@ -13,10 +23,10 @@ const ProfileSummary = () => {
         />
       </View>
       <View style={styles.profileText}>
-        <Text style={styles.userName} >Lexis</Text>
-        <Text style={styles.userEducationalLevel} >Graduate Student</Text>
-        <Text style={styles.userEmailAddress} >alexis@unm.edu</Text>
-        <Text style={styles.userPhoneNumber} >(505) XXX - XXXX</Text>
+        <Text style={styles.userName} >{firstName} {lastName}</Text>
+        <Text style={styles.userEducationalLevel} >{educationalLevel}</Text>
+        <Text style={styles.userEmailAddress} >{emailAddress}</Text>
+        <Text style={styles.userPhoneNumber} >{phoneNumber}</Text>
       </View>
     </View>
   );

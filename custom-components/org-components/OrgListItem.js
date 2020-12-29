@@ -21,7 +21,13 @@ const OrgListItem = ({ name, nickname, UID, memberCount }) => {
       <View style={styles.container}>
         <View style={styles.clubLogoContainer}></View>
         <View style={styles.textContainer}>
-          <Text style={styles.clubName}>{name}</Text>
+          <Text
+            style={styles.clubName}
+            numberOfLines={1}
+            ellipsizeMode={"tail"}
+          >
+            {name}
+          </Text>
           <Text style={styles.clubNickname}>{nickname}</Text>
           <Text style={styles.memberCount}>
             {memberCount} {memberCount > 1 ? `members` : `member`}

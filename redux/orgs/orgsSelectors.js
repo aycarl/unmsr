@@ -33,6 +33,12 @@ export const selectOrgsListForExploreSearch = query => createSelector(
 );
 
 // TODO: create selector for list of organisation that a user is a part of!!!
+export const selectOrgsListForUserMembership = membershipList => createSelector(
+  [selectOrgsListForPreview],
+  orgsList => membershipList ? orgsList.filter(
+    org => membershipList.includes(org.UID)
+  ) : []
+);
 
 // select the list of organization categories from state
 export const selectCategoryList = createSelector(

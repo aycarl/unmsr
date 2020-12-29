@@ -4,23 +4,34 @@ import { View, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { selectOrg } from "./../redux/orgs/orgsSelectors";
+import { selectIsInMembershipList } from "./../redux/user/userSelectors";
 import EventsList from "../custom-components/event-components/EventsList";
 import CategoryLabels from "./../custom-components/category-components/CategoryLabels";
+import {
+  JoinOrgFAB,
+  LeaveOrgFAB,
+} from "./../custom-components/org-components/orgFAB";
 
 // TODO: include category container styling and display
-// TODO: add events list data for organization
+// TODO: add events list data for organization without nesting !!!
 
 const OrgDetails = (props) => {
-
+  // select an organization
   const org = useSelector(selectOrg(props.route.params.orgID));
+
+  // check if current user is a member
+  const orgInUserMembershipList = useSelector(selectIsInMembershipList(org.UID));
+
+  console.log("membership: " + orgInUserMembershipList);
 
   // console.log("org " + JSON.stringify(org));
 
+  // count of members
   const memberCount = Object.keys(org.members).length;
 
   return (
     <View style={styles.container}>
-      <ScrollView>
+      <ScrollView style={styles.container} nestedScrollEnabled={true}>
         <View style={styles.headerContainer}>
           <Text style={styles.nameHeader}>{org.name}</Text>
         </View>
@@ -46,13 +57,19 @@ const OrgDetails = (props) => {
               <Text>{org.meetingInfo.meetingVenue}</Text>
             </View>
           </View>
-          <Text style={styles.sectionHeader}>Events</Text>
-          <EventsList data={org.eventsList} />
+          {/* <Text style={styles.sectionHeader}>Events</Text>
+          <EventsList data={org.eventsList} /> */}
           <Text style={styles.sectionHeader}>org.membershipCriteria</Text>
           <Text style={styles.sectionHeader}>org.contactInfo</Text>
           <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
+          <Text style={styles.sectionHeader}>org.leadershipInfo</Text>
         </View>
       </ScrollView>
+      {orgInUserMembershipList ? (
+        <LeaveOrgFAB orgUID={org.UID} />
+      ) : (
+        <JoinOrgFAB orgUID={org.UID} />
+      )}
     </View>
   );
 };

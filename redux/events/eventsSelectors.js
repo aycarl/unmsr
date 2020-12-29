@@ -20,3 +20,7 @@ export const selectEvent = eventUID => createSelector(
   [selectEventsListArray],
   eventsListArray => eventsListArray.find(event => event.UID === eventUID)
 );
+
+// TODO: create selector(s) to get events by orgnisations
+
+// TODO: create selector to get event by current user membership
