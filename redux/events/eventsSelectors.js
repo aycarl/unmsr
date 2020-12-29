@@ -9,9 +9,10 @@ export const selectEventsList = createSelector(
 );
 
 //select array list of all event objects
+// eventsList ? Object.keys(eventsList).map(eventUID => eventsList[eventUID]) : []
 export const selectEventsListArray = createSelector(
   [selectEventsList],
-  eventsList => eventsList ? Object.keys(eventsList).map(eventUID => eventsList[eventUID]) : []
+  eventsList => eventsList
 );
 
 // select an events data, given event UID

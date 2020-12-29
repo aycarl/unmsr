@@ -6,7 +6,7 @@ import EventsList from "./../../mock-data/opendata-event-list";
 // FIXME: convert events array to array of objects
 
 const INITIAL_STATE = {
-  eventsList: EventsList.eventsList.slice(0, 15),
+  eventsList: EventsList.eventsList.slice(0, 20),
   isFetching: false,
   errorMessage: undefined,
 }

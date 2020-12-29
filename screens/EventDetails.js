@@ -11,7 +11,9 @@ const EventDetails = (props) => {
 
   const eventInfo = useSelector(selectEvent(props.route.params.eventID));
 
-  // to debug: console.log(eventInfo);
+  // to debug: 
+  console.log(JSON.stringify("Event UID: "+ props.route.params.eventID));
+  console.log(JSON.stringify("Event Details: "+ JSON.stringify(eventInfo)));
 
   return (
     <View style={styles.container}>

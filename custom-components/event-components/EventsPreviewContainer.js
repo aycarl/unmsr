@@ -1,27 +1,38 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
 import { View, StyleSheet, Text } from "react-native";
 import { Button } from "react-native-paper";
-import { useNavigation } from "@react-navigation/native";
 
-import { ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 import EventPreviewCard from "./EventPreviewCard";
+
+import { selectEventsListArray, selectEventsList } from "./../../redux/events/eventsSelectors";
+
+// render item for events preview container flatlist
+const renderItem = ({item}) => <EventPreviewCard {...item} />;
 
 // TODO: Takes a list of event objects
 const EventsPreviewContainer = () => {
   const navigation = useNavigation();
 
+  const eventsPreviewList = useSelector(selectEventsList);
+
+  console.log(
+    "events for preview: " + JSON.stringify(eventsPreviewList)
+  );
+
   return (
     <View style={styles.updates}>
       <Text style={styles.text}>UPCOMING EVENTS</Text>
-      <ScrollView
+      <FlatList
+        style={styles.horizontalScrollView}
         horizontal
-        contentContainerStyle={styles.horizontalScrollView}
-      >
-        <EventPreviewCard />
-        <EventPreviewCard />
-        <EventPreviewCard />
-      </ScrollView>
+        data={eventsPreviewList.slice(0,5)}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.UID}
+      />
       <Button
         mode="text"
         style={styles.textLink}
@@ -46,13 +57,10 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
   },
   textLink: {
-    fontWeight: "bold",
-    color: "#ba0c2f",
     alignSelf: "flex-end",
   },
   horizontalScrollView: {
-    marginBottom: 10,
-    justifyContent: "space-around",
+    marginBottom: 1,
   },
 });
 
