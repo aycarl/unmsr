@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { StyleSheet, View, Text, TouchableHighlight } from "react-native";
+import { StyleSheet, Text, TouchableHighlight } from "react-native";
 
-import { UpdatedExploreSearchQuery } from "./../../redux/orgs/orgActions";
+import { updatedExploreSearchQuery } from "./../../redux/orgs/orgsActions";
 
 // displays single category
 // onPress: changes explore query string to category title
@@ -13,7 +13,7 @@ const CategoryListItem = ({ item }) => {
     <TouchableHighlight
       activeOpacity={0.8}
       underlayColor="#fff"
-      onPress={() => dispatch(UpdatedExploreSearchQuery(item.title))}
+      onPress={() => dispatch(updatedExploreSearchQuery(item.title))}
       style={styles.container}
     >
       <Text style={styles.text}>{item.title}</Text>

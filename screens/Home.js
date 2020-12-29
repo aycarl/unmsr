@@ -30,16 +30,11 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    // resizeMode: "cover",
   },
   pageContent: {
     flex: 1,
     justifyContent: "flex-start",
-    alignItems: "flex-start",
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
+    paddingVertical: 10,
   },
 });
 
