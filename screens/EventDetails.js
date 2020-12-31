@@ -5,7 +5,11 @@ import { ScrollView } from "react-native-gesture-handler";
 
 import { selectEvent } from "./../redux/events/eventsSelectors";
 
-import { convertStringToReadableDateTime, extractEmailAndMailToLink } from "./../utils/dateUtils";
+import {
+  convertStringToReadableDateTime,
+  extractEmailAndMailToLink,
+  replaceAmpersandWithSynbol
+} from "../utils/dataUtils";
 
 const EventDetails = (props) => {
   const eventInfo = useSelector(selectEvent(props.route.params.eventID));
@@ -14,14 +18,18 @@ const EventDetails = (props) => {
   console.log(JSON.stringify("Event UID: " + props.route.params.eventID));
   console.log(JSON.stringify("Event Details: " + JSON.stringify(eventInfo)));
 
-  let startDateTime = convertStringToReadableDateTime(eventInfo.DTSTART).fullUTCDateString;
-  let endDateTime = convertStringToReadableDateTime(eventInfo.DTEND).fullUTCDateString;
-  const { emailAddress, mailToLink } = extractEmailAndMailToLink(eventInfo.ORGANIZER);
+  let startDateTime = convertStringToReadableDateTime(eventInfo.DTSTART)
+    .fullUTCDateString;
+  let endDateTime = convertStringToReadableDateTime(eventInfo.DTEND)
+    .fullUTCDateString;
+  const { emailAddress, mailToLink } = extractEmailAndMailToLink(
+    eventInfo.ORGANIZER
+  );
 
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.eventDetailsContainer}>
-        <Text style={styles.eventTitle}>{eventInfo.SUMMARY}</Text>
+        <Text style={styles.eventTitle}>{replaceAmpersandWithSynbol(eventInfo.SUMMARY)}</Text>
         <Text>
           Hosted by{" "}
           <Text
@@ -35,14 +43,20 @@ const EventDetails = (props) => {
         <Text>{startDateTime}</Text>
         <Text style={styles.textHeaders}>End Time</Text>
         <Text>{endDateTime}</Text>
+        {eventInfo.LOCATION ? (
+          <View>
+            <Text style={styles.textHeaders}>Location</Text>
+            <Text>{replaceAmpersandWithSynbol(eventInfo.LOCATION)}</Text>
+          </View>
+        ) : (
+          <Text></Text>
+        )}
         <Text style={styles.textHeaders}>Description</Text>
-        <Text>{eventInfo.DESCRIPTION}</Text>
+        <Text>{replaceAmpersandWithSynbol(eventInfo.DESCRIPTION)}</Text>
         <Text style={styles.textHeaders}>Categories</Text>
-        <Text>{eventInfo.CATEGORIES}</Text>
-        <Text style={styles.textHeaders}>Event type</Text>
+        <Text>{replaceAmpersandWithSynbol(eventInfo.CATEGORIES)}</Text>
+        <Text style={styles.textHeaders}>Type</Text>
         <Text>{eventInfo.CLASS}</Text>
-        <View></View>
-        <Text></Text>
       </ScrollView>
     </View>
   );
@@ -64,10 +78,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textHeaders: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: "bold",
     textTransform: "uppercase",
-    marginVertical: 10,
+    marginTop: 15,
+    color: "#63666a",
   },
   textLink: {
     color: "#ba0c2f",
