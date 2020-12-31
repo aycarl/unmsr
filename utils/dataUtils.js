@@ -9,7 +9,8 @@ export const convertStringToReadableDateTime = (unformatedDate) => {
   let simpleDateString = ""
 
   // ISO format RegEx
-  const isoDateRegEx = /^[0-9]*[tT][0-9]*[zZ]$/gim;
+  const isoDateRegEx = /^[0-9]*[tT][0-9]*[zZ]$/gmi;
+
   if (isoDateRegEx.test(unformatedDate)) {
     formatedISO =
       unformatedDate.slice(0, 4) +
@@ -25,15 +26,34 @@ export const convertStringToReadableDateTime = (unformatedDate) => {
       unformatedDate.slice(9, 11) +
       "Z";
 
-    console.log("ISO: " + formatedISO);
+    //console.log("ISO: " + formatedISO);
 
     const sdate = new Date(formatedISO);
 
-    console.log("Date: " + sdate.toUTCString());
+    //console.log("Date: " + sdate.toUTCString());
 
     fullUTCDateString = sdate.toUTCString();
 
     simpleDateString = sdate.toDateString();
+  }
+
+  // VALUE=DATE:20200817
+  const valueDateRegEx = /^Value=Date:([0-9]+)*$/gmi;
+  const dateRegEx = /[0-9]+/gmi
+
+  if (valueDateRegEx.test(unformatedDate)) {
+    
+    const valueDate = dateRegEx.exec(unformatedDate);
+
+    console.log("Value Date: " + JSON.stringify(valueDate));
+
+    simpleDateString = valueDate[0].slice(4,6).concat("/",valueDate[0].slice(7,9),"/",valueDate[0].slice(0,4));
+
+    console.log("slice: " + valueDate.slice[4]);
+
+    fullUTCDateString = simpleDateString;
+
+    console.log("Value Date: " + simpleDateString);
   }
 
   return {
@@ -67,4 +87,9 @@ export const extractEmailAndMailToLink = emailString => {
     emailAddress,
     mailToLink
   }
+}
+
+// replaces ampersand charracter code with symbol
+export const replaceAmpersandWithSynbol = text => {
+  return text.replace(/&amp;/g, "&");
 }
