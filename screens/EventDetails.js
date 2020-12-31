@@ -8,7 +8,8 @@ import { selectEvent } from "./../redux/events/eventsSelectors";
 import {
   convertStringToReadableDateTime,
   extractEmailAndMailToLink,
-  replaceAmpersandWithSynbol
+  replaceAmpersandWithSynbol,
+  extractEventDetailsLink
 } from "../utils/dataUtils";
 
 const EventDetails = (props) => {
@@ -29,16 +30,22 @@ const EventDetails = (props) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.eventDetailsContainer}>
-        <Text style={styles.eventTitle}>{replaceAmpersandWithSynbol(eventInfo.SUMMARY)}</Text>
-        <Text>
-          Hosted by{" "}
-          <Text
-            style={styles.textLink}
-            onPress={() => Linking.openURL(mailToLink)}
-          >
-            {emailAddress}
-          </Text>
+        <Text style={styles.eventTitle}>
+          {replaceAmpersandWithSynbol(eventInfo.SUMMARY)}
         </Text>
+        {emailAddress ? (
+          <Text>
+            Hosted by{" "}
+            <Text
+              style={styles.textLink}
+              onPress={() => Linking.openURL(mailToLink)}
+            >
+              {emailAddress}
+            </Text>
+          </Text>
+        ) : (
+          <Text></Text>
+        )}
         <Text style={styles.textHeaders}>Start Time</Text>
         <Text>{startDateTime}</Text>
         <Text style={styles.textHeaders}>End Time</Text>
@@ -52,7 +59,7 @@ const EventDetails = (props) => {
           <Text></Text>
         )}
         <Text style={styles.textHeaders}>Description</Text>
-        <Text>{replaceAmpersandWithSynbol(eventInfo.DESCRIPTION)}</Text>
+        <Text>{extractEventDetailsLink(eventInfo.DESCRIPTION).description}</Text>
         <Text style={styles.textHeaders}>Categories</Text>
         <Text>{replaceAmpersandWithSynbol(eventInfo.CATEGORIES)}</Text>
         <Text style={styles.textHeaders}>Type</Text>
@@ -78,11 +85,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textHeaders: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "bold",
     textTransform: "uppercase",
     marginTop: 15,
-    color: "#63666a",
+    color: "#c05131",
   },
   textLink: {
     color: "#ba0c2f",

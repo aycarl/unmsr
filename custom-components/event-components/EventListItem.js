@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   previewImagePlaecholder: {
-    height: 75,
+    height: 85,
     width: 10,
     backgroundColor: "#ba0c2f",
     marginRight: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   footerText: {
-    fontSize: 12,
+    fontSize: 14,
   },
 });
 
