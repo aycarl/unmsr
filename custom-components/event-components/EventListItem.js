@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
+import { replaceAmpersandWithSynbol, convertStringToReadableDateTime } from "./../../utils/dataUtils";
+
 const EventListItem = ({
   eventDescription,
   eventLocation,
@@ -29,22 +31,22 @@ const EventListItem = ({
             numberOfLines={1}
             ellipsizeMode={"tail"}
           >
-            {eventSummary}
+            {replaceAmpersandWithSynbol(eventSummary)}
           </Text>
           <Text
             style={styles.bodyText}
             numberOfLines={1}
             ellipsizeMode={"tail"}
           >
-            {eventDescription}
+            {replaceAmpersandWithSynbol(eventDescription)}
           </Text>
-          <Text style={styles.footerText}>{eventStartDate}</Text>
+          <Text style={styles.footerText}>{convertStringToReadableDateTime(eventStartDate).simpleDateString}</Text>
           <Text
             style={styles.footerText}
             numberOfLines={1}
             ellipsizeMode={"tail"}
           >
-            {eventLocation}
+            {replaceAmpersandWithSynbol(eventLocation)}
           </Text>
         </View>
       </View>
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   previewImagePlaecholder: {
-    height: 75,
+    height: 85,
     width: 10,
     backgroundColor: "#ba0c2f",
     marginRight: 10,
@@ -80,7 +82,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   footerText: {
-    fontSize: 12,
+    fontSize: 14,
   },
 });
 

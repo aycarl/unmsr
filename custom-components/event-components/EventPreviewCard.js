@@ -1,14 +1,18 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { Text, StyleSheet, ImageBackground } from "react-native";
 import { TouchableHighlight } from "react-native-gesture-handler";
 import { LinearGradient } from "expo-linear-gradient";
 
-// TODO: takes an image url and a url to Update page as props
+import { convertStringToReadableDateTime } from "./../../utils/dataUtils";
+
+// TODO: takes an image url and  event UID to Update page as props
 const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
   const navigation = useNavigation();
 
   console.log("event UID for preview card: " + JSON.stringify(UID));
+
+  const eventStart = convertStringToReadableDateTime(DTSTART).simpleDateString;
 
   return (
     <TouchableHighlight
@@ -46,7 +50,7 @@ const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
             numberOfLines={1}
             ellipsizeMode={"tail"}
           >
-            {DTSTART}
+            {eventStart}
           </Text>
         </LinearGradient>
       </ImageBackground>
