@@ -3,13 +3,13 @@ import "firebase/firestore";
 import "firebase/auth";
 
 var firebaseConfig = {
-  apiKey: process.env.REACT_NATIVE_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_NATIVE_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_NATIVE_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_NATIVE_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_NATIVE_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_NATIVE_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_NATIVE_APP_FIREBASE_MEASUREMENT_ID
+  apiKey: "AIzaSyCovvF04YkM7FbyrSQQ4I5mVn6jPGBk80E",
+  authDomain: "unm-sr.firebaseapp.com",
+  projectId: "unm-sr",
+  storageBucket: "unm-sr.appspot.com",
+  messagingSenderId: "244200811509",
+  appId: "1:244200811509:web:04f9f69bf39da97dee4ebc",
+  measurementId: "G-3ZPVDC09BC"
 };
 
 // Initialize Firebase
