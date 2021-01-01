@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { View, Text, StyleSheet, Image } from "react-native";
 
 import { selectFirstName, selectLastName, selectEmailAddress, selectPhoneNumber, selectEducationLevel } from "./../redux/user/userSelectors";
