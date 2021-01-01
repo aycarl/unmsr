@@ -1,16 +1,42 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native";
+
+import { View, Image, StyleSheet, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StatusBar } from "expo-status-bar";
 
-const SignupScreen = ({ navigation, route }) => {
+import { signUpWithFirebase, logOutWithFirebase } from "./../redux/user/userActions";
+import { selectErrorMessage } from "./../redux/user/userSelectors";
+
+const SignupScreen = ({ route }) => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = React.useState(route.params.email);
   const [password, setPassword] = React.useState(route.params.password);
   const [confirmPassword, setConfirmPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const userErrorMessage = useSelector(selectErrorMessage);
+
+  const dispatch = useDispatch();
 
   const signup = () => {
-    if (password === confirmPassword) {
-      navigation.navigate("HomeNav");
+    
+    if (password !== confirmPassword) {
+      selectErrorMessage("Passwords did not match!")
+      return;
+    }
+
+    if (userErrorMessage) {
+      setErrorMessage(userErrorMessage);
+      return;
+    }
+
+    // TODO: validate email with regex
+
+    if (email && password) {
+      dispatch(signUpWithFirebase(email, password));
     }
   };
 
@@ -41,8 +67,12 @@ const SignupScreen = ({ navigation, route }) => {
         mode="outlined"
         placeholder="enter password"
       />
+      <Text>{errorMessage}</Text>
       <Button mode="contained" onPress={signup}>
         Sign up
+      </Button>
+      <Button mode="contained" onPress={() => dispatch(logOutWithFirebase())}>
+        Log Out
       </Button>
     </View>
   );
@@ -51,7 +81,7 @@ const SignupScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
-    paddingBottom: 100,
+    paddingBottom: 150,
     padding: 20,
     flex: 1,
     flexDirection: "column",

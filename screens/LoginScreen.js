@@ -1,14 +1,35 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigation } from "@react-navigation/native"
+
+import { View, Image, StyleSheet, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StatusBar } from "expo-status-bar";
 
-const LoginScreen = ({ navigation }) => {
+import { selectErrorMessage } from "./../redux/user/userSelectors";
+import { logInWithFirebase } from "./../redux/user/userActions";
+
+const LoginScreen = () => {
+  const navigation = useNavigation();
+
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+
+  const userErrorMessage = useSelector(selectErrorMessage);
+  const dispatch = useDispatch();
 
   const login = () => {
-    navigation.navigate("HomeNav", { screen: "Home" });
+    //navigation.navigate("HomeNav", { screen: "Home" });
+    if (userErrorMessage) {
+      setErrorMessage(userErrorMessage);
+      return;
+    }
+
+    setErrorMessage("");
+
+    // TODO validate email
+    dispatch(logInWithFirebase(email, password));
   };
 
   return (
@@ -30,6 +51,7 @@ const LoginScreen = ({ navigation }) => {
         mode="outlined"
         placeholder="enter password"
       />
+      <Text>Error: {errorMessage}</Text>
       <Button mode="contained" onPress={login}>
         Log in
       </Button>
