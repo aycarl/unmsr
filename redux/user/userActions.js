@@ -1,37 +1,50 @@
 import { addMember, removeMember } from "../orgs/orgsActions";
 import UserActionTypes from "./userActionTypes";
 
+// firebase
+import { auth, firestore } from "./../../utils/firebaseUtils";
+
 // user action to edit/update user profile info
-export const updatedUserProfile = userProfileData => ({
+export const updatedUserProfile = (userProfileData) => ({
   type: UserActionTypes.UPDATE_USER_PROFILE,
-  payload: userProfileData
+  payload: userProfileData,
 });
 
 // user action to join an organization
-export const joinOrg = orgUID => ({
+export const joinOrg = (orgUID) => ({
   type: UserActionTypes.JOIN_ORG,
-  payload: orgUID
+  payload: orgUID,
 });
 
 // user action to leave an organization
-export const leaveOrg = orgUID => ({
+export const leaveOrg = (orgUID) => ({
   type: UserActionTypes.LEAVE_ORG,
-  payload: orgUID
+  payload: orgUID,
 });
 
 // user action to sign up / create an account
 // auth info: email, password, createdAt, logInTimestamp, user token, userID
-export const signUp = userAuthInfo => ({
+export const signUp = (userAuthInfo) => ({
   type: UserActionTypes.SIGN_UP,
-  payload: userAuthInfo
+  payload: userAuthInfo,
+});
+
+export const signUpFailure = (errorMessage) => ({
+  type: UserActionTypes.SIGN_UP_FAILURE,
+  payload: errorMessage,
 });
 
 // TODO: create action to dispatch login & load all other user info: membership list, demographics
 // user action to log in
 // auth information: email, password, user token, logInTimestamp, userID
-export const logIn = userAuthInfo => ({
+export const logIn = (userAuthInfo) => ({
   type: UserActionTypes.LOG_IN,
-  payload: userAuthInfo
+  payload: userAuthInfo,
+});
+
+export const logInFailure = (errorMessage) => ({
+  type: UserActionTypes.LOG_IN_FAILURE,
+  payload: errorMessage,
 });
 
 // user action to log out
@@ -42,34 +55,81 @@ export const logOut = () => ({
 
 // DISPATCH FUNCTIONS
 
-// TODO: create action function to dispatch action to also add user from org member list
-export const currentUserJoinsOrg = membershipInfo => {
+// dispatch action to also add user from org member list
+// TODO: integrate firebase to reflect changes
+export const currentUserJoinsOrg = (membershipInfo) => {
   return (dispatch) => {
-
-    console.log("membership infor: "+ JSON.stringify(membershipInfo));
+    console.log("membership infor: " + JSON.stringify(membershipInfo));
 
     const { orgUID } = membershipInfo;
-    
+
     // add org to user list of organization memberships
     dispatch(joinOrg(orgUID));
 
     // add user to org membership list
     dispatch(addMember(membershipInfo));
-  }
-}
+  };
+};
 
-// TODO: create action function to dispatch action to also remove user from org member list
-export const currentUserLeavesOrg = membershipInfo => {
+// dispatch action to also remove user from org member list
+// TODO: integrate firebase to reflect changes
+export const currentUserLeavesOrg = (membershipInfo) => {
   return (dispatch) => {
-
-    console.log("membership infor: "+ JSON.stringify(membershipInfo));
+    console.log("membership infor: " + JSON.stringify(membershipInfo));
 
     const { orgUID } = membershipInfo;
-    
+
     // add org to user list of organization memberships
     dispatch(leaveOrg(orgUID));
 
     // add user to org membership list
     dispatch(removeMember(membershipInfo));
-  }
-}
+  };
+};
+
+// firebase sign up
+// TODO: add create profile function for new users
+export const signUpWithFirebase = (emailAddress, password, firstName, lastName, educationLevel) => {
+  return async (dispatch) => {
+    await auth
+      .createUserWithEmailAndPassword(emailAddress, password)
+      .then((user) => {
+        console.log("firebase create account: " + JSON.stringify(user));
+        const createdAt = new Date();
+        const userAuthInfo = {
+          userID: user.uid,
+          emailAddress,
+          createdAt,
+          logInTimestamp: createdAt,
+          orgMembershipList: [],
+          phoneNumber,
+          educationLevel,
+          firstName,
+          lastName
+        };
+        dispatch(signUp(userAuthInfo));
+      })
+      .catch((error) => dispatch(signUpFailure(error.message)));
+  };
+};
+
+// firebase log in
+// TODO: add load profile function for new users
+export const logInWithFirebase = (emailAddress, password) => {
+  return async (dispatch) => {
+    await auth
+      .signInWithEmailAndPassword(emailAddress, password)
+      .then((user) => {
+        console.log("firebase log in: " + JSON.stringify(user));
+        dispatch(logIn(userAuthInfo));
+      })
+      .catch((error) => dispatch(logInFailure(error.message)));
+  };
+};
+
+// firebase log out
+export const logOutWithFirebase = () => {
+  return async (dispatch) => {
+    await auth.signOut().then(() => dispatch(logOut()));
+  };
+};
