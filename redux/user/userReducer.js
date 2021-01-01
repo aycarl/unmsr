@@ -13,7 +13,8 @@ const INITIAL_STATE = {
   educationLevel: "Graduate",
   createdAt: "",
   logInTimestamp: "",
-  orgMembershipList: []
+  orgMembershipList: [],
+  error: null,
 };
 
 // TODO: add auth-related reducers
