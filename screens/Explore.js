@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     flex: 1,
-    // resizeMode: "cover",
   },
   pageContent: {
     flex: 1,
