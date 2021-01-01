@@ -29,17 +29,22 @@ $ npm install --global expo-cli
 $ git clone https://github.com/aycarl/unmsr.git
 ```
 
-3. Install app dependency packages
+3. navigate to local repository directory
+```
+$ cd unmsr
+```
+
+4. Install app dependency packages
 ```
 $ yarn install
 ```
 
-4. Run application locally
+5. Run application locally
 ```
 $ yarn start
 ```
 
-5. View application on a mobile device: 
+6. View application on a mobile device: 
 * Download the Expo client app for iOS or Android
   - [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) and greater.
   - [iOS App Store](https://itunes.com/apps/exponent) - iOS 10 and greater.
