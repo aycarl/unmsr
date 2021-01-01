@@ -11,6 +11,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import AppNavContainer from "./navigation-containers/AppNavContainer";
 import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
+// dotenv
+require("dotenv").config();
+
 const theme = {
   ...DefaultTheme,
   roundness: 5,
