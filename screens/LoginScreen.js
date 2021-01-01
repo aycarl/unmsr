@@ -51,7 +51,7 @@ const LoginScreen = () => {
         mode="outlined"
         placeholder="enter password"
       />
-      <Text>Error: {errorMessage}</Text>
+      <Text>{errorMessage}</Text>
       <Button mode="contained" onPress={login}>
         Log in
       </Button>
