@@ -1,23 +1,25 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { View, StyleSheet, Text, Linking } from "react-native";
+import { View, StyleSheet, Text, Linking, ImageBackground } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { selectEvent } from "./../redux/events/eventsSelectors";
+
+import MoreDetailsEventFAB from "./../custom-components/event-components/eventFAB";
 
 import {
   convertStringToReadableDateTime,
   extractEmailAndMailToLink,
   replaceAmpersandWithSynbol,
-  extractEventDetailsLink
+  extractEventDetailsLink,
 } from "../utils/dataUtils";
 
 const EventDetails = (props) => {
   const eventInfo = useSelector(selectEvent(props.route.params.eventID));
 
   // to debug:
-  console.log(JSON.stringify("Event UID: " + props.route.params.eventID));
-  console.log(JSON.stringify("Event Details: " + JSON.stringify(eventInfo)));
+  // console.log(JSON.stringify("Event UID: " + props.route.params.eventID));
+  // console.log(JSON.stringify("Event Details: " + JSON.stringify(eventInfo)));
 
   let startDateTime = convertStringToReadableDateTime(eventInfo.DTSTART)
     .fullUTCDateString;
@@ -29,42 +31,56 @@ const EventDetails = (props) => {
 
   return (
     <View style={styles.container}>
-      <ScrollView contentContainerStyle={styles.eventDetailsContainer}>
-        <Text style={styles.eventTitle}>
-          {replaceAmpersandWithSynbol(eventInfo.SUMMARY)}
-        </Text>
-        {emailAddress ? (
-          <Text>
-            Hosted by{" "}
-            <Text
-              style={styles.textLink}
-              onPress={() => Linking.openURL(mailToLink)}
-            >
-              {emailAddress}
-            </Text>
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+      >
+        <ScrollView contentContainerStyle={styles.eventDetailsContainer}>
+          <Text style={styles.eventTitle}>
+            {replaceAmpersandWithSynbol(eventInfo.SUMMARY)}
           </Text>
+          {emailAddress ? (
+            <Text>
+              Hosted by{" "}
+              <Text
+                style={styles.textLink}
+                onPress={() => Linking.openURL(mailToLink)}
+              >
+                {emailAddress}
+              </Text>
+            </Text>
+          ) : (
+            <Text></Text>
+          )}
+          <Text style={styles.textHeaders}>Start Time</Text>
+          <Text>{startDateTime}</Text>
+          <Text style={styles.textHeaders}>End Time</Text>
+          <Text>{endDateTime}</Text>
+          {eventInfo.LOCATION ? (
+            <View>
+              <Text style={styles.textHeaders}>Location</Text>
+              <Text>{replaceAmpersandWithSynbol(eventInfo.LOCATION)}</Text>
+            </View>
+          ) : (
+            <Text></Text>
+          )}
+          <Text style={styles.textHeaders}>Description</Text>
+          <Text>
+            {extractEventDetailsLink(eventInfo.DESCRIPTION).description}
+          </Text>
+          <Text style={styles.textHeaders}>Categories</Text>
+          <Text>{replaceAmpersandWithSynbol(eventInfo.CATEGORIES)}</Text>
+          <Text style={styles.textHeaders}>Type</Text>
+          <Text>{eventInfo.CLASS}</Text>
+        </ScrollView>
+        {extractEventDetailsLink(eventInfo.DESCRIPTION).eventLink ? (
+          <MoreDetailsEventFAB
+            link={extractEventDetailsLink(eventInfo.DESCRIPTION).eventLink}
+          />
         ) : (
-          <Text></Text>
+          <View></View>
         )}
-        <Text style={styles.textHeaders}>Start Time</Text>
-        <Text>{startDateTime}</Text>
-        <Text style={styles.textHeaders}>End Time</Text>
-        <Text>{endDateTime}</Text>
-        {eventInfo.LOCATION ? (
-          <View>
-            <Text style={styles.textHeaders}>Location</Text>
-            <Text>{replaceAmpersandWithSynbol(eventInfo.LOCATION)}</Text>
-          </View>
-        ) : (
-          <Text></Text>
-        )}
-        <Text style={styles.textHeaders}>Description</Text>
-        <Text>{extractEventDetailsLink(eventInfo.DESCRIPTION).description}</Text>
-        <Text style={styles.textHeaders}>Categories</Text>
-        <Text>{replaceAmpersandWithSynbol(eventInfo.CATEGORIES)}</Text>
-        <Text style={styles.textHeaders}>Type</Text>
-        <Text>{eventInfo.CLASS}</Text>
-      </ScrollView>
+      </ImageBackground>
     </View>
   );
 };
@@ -73,6 +89,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  bgImage: {
+    flex: 1,
   },
   eventDetailsContainer: {
     paddingHorizontal: 15,

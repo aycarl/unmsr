@@ -19,9 +19,10 @@ const EventsPreviewContainer = () => {
 
   const eventsPreviewList = useSelector(selectEventsList);
 
-  console.log(
-    "events for preview: " + JSON.stringify(eventsPreviewList)
-  );
+  // to debug
+  // console.log(
+  //   "events for preview: " + JSON.stringify(eventsPreviewList)
+  // );
 
   return (
     <View style={styles.updates}>
