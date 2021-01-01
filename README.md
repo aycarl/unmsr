@@ -10,7 +10,7 @@ student organizations from the [UNM Student Activities Center](https://unm-commu
 UNM-SR was built using [Expo](https://docs.expo.io/), is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.
 
 ## App Preview
-TODO: //
+// TODO: attach link to published app on expo.io
 
 ## Installation (Development Environment)
 ### Requirements
@@ -50,9 +50,9 @@ $ yarn start
 * **User name:** alexis
 * **Password:** asdf4321!!@
 
-## Team
+## Team Member
 
-### Sole Full-Stack Developer: [Carl Yao Agbenyega](https://github.com/aycarl)
+### [Carl Yao Agbenyega](https://github.com/aycarl) - Full-Stack Developer
 Carl is a recent graduate from the Masters in Information Systems and Assurance program at the UNM Anderson School of Management.
 He is a software developer with a passion for design.
 
