@@ -1,6 +1,5 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+import React from "react";
+import { useSelector } from "react-redux";
 
 import { selectEventsList } from "./../redux/events/eventsSelectors";
 
@@ -9,37 +8,26 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/event-components/EventsList";
 
-class Events extends Component {
+const Events = () => {
+  const data = useSelector(selectEventsList);
 
-  constructor(props) {
-    super(props);
+  // to debug
+  //console.log("events: "+ JSON.stringify(data));
 
-    this.state = {
-      data: props.eventsList,
-    }
-  }
-
-  render() {
-
-    const { data } = this.state;
-
-    console.log("events: "+ JSON.stringify(data));
-
-    return (
-      <View style={styles.container}>
-        <ScreenHeader title="Events" />
-        <ImageBackground
-          source={require("./../assets/330ppi/stucco330x.png")}
-          style={styles.bgImage}
-        >
-          <View style={styles.pageContent}>
-            <EventsList data={data} />
-          </View>
-        </ImageBackground>
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <ScreenHeader title="Events" />
+      <ImageBackground
+        source={require("./../assets/330ppi/stucco330x.png")}
+        style={styles.bgImage}
+      >
+        <View style={styles.pageContent}>
+          <EventsList data={data} />
+        </View>
+      </ImageBackground>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -60,8 +48,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = createStructuredSelector({
-  eventsList: selectEventsList
-});
-
-export default connect(mapStateToProps)(Events);
+export default Events;

@@ -10,7 +10,8 @@ import { convertStringToReadableDateTime } from "./../../utils/dataUtils";
 const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
   const navigation = useNavigation();
 
-  console.log("event UID for preview card: " + JSON.stringify(UID));
+  // to debug
+  // console.log("event UID for preview card: " + JSON.stringify(UID));
 
   const eventStart = convertStringToReadableDateTime(DTSTART).simpleDateString;
 

@@ -106,7 +106,7 @@ export const extractEventDetailsLink = description => {
   
   const descriptionArray = description.split("View the full event details here: ");
 
-  descriptionArray.forEach(desc => console.log(desc))
+  //descriptionArray.forEach(desc => console.log(desc))
 
   if (linkRegEx.test(descriptionArray[1])) {
     eventLink = descriptionArray[1];
