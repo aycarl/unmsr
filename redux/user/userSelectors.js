@@ -3,9 +3,9 @@ import { createSelector } from "reselect";
 const selectUser = state => state.user;
 
 // select current user information
-export const selectCurrentUserInfo = createSelector(
+export const selectCurrentUserData = createSelector(
   [selectUser],
-  user => user.currentUserInfo
+  user => user.currentUserData
 );
 
 // selects current user token
@@ -22,13 +22,13 @@ export const selectErrorMessage = createSelector(
 
 // selects current user ID
 export const selectUserID = createSelector(
-  [selectCurrentUserInfo],
+  [selectCurrentUserData],
   user => user.userID
 );
 
 // selects organisation membership list
 export const selectOrgMembershipList = createSelector(
-  [selectCurrentUserInfo],
+  [selectCurrentUserData],
   user => user.orgMembershipList
 );
 
@@ -40,30 +40,30 @@ export const selectIsInMembershipList = orgUID => createSelector(
 
 // select user first name
 export const selectFirstName = createSelector(
-  [selectCurrentUserInfo],
+  [selectCurrentUserData],
   user => user.firstName
 );
 
 // select user last name
 export const selectLastName = createSelector(
-  [selectCurrentUserInfo],
+  [selectCurrentUserData],
   user => user.lastName
 );
 
 // select user email address
 export const selectEmailAddress = createSelector(
-  [selectCurrentUserInfo],
+  [selectCurrentUserData],
   user => user.emailAddress
 );
 
 // select user phone number
-export const selectPhoneNumber = createSelector(
-  [selectCurrentUserInfo],
-  user => user.phoneNumber
-);
+// export const selectPhoneNumber = createSelector(
+//   [selectCurrentUserData],
+//   user => user.phoneNumber
+// );
 
 // select user education level
-export const selectEducationLevel = createSelector(
-  [selectCurrentUserInfo],
-  user => user.educationLevel
-);
+// export const selectEducationLevel = createSelector(
+//   [selectCurrentUserData],
+//   user => user.educationLevel
+// );
