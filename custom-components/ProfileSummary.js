@@ -2,35 +2,41 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-import { selectFirstName, selectLastName, selectEmailAddress, selectPhoneNumber, selectEducationLevel } from "./../redux/user/userSelectors";
+import {
+  selectFirstName,
+  selectLastName,
+  selectEmailAddress,
+} from "./../redux/user/userSelectors";
 
 // TODO: add edit icon to edit profile information
+// TODO: include other personal information?
 
 const ProfileSummary = () => {
-
   const firstName = useSelector(selectFirstName);
   const lastName = useSelector(selectLastName);
   const emailAddress = useSelector(selectEmailAddress);
-  const phoneNumber = useSelector(selectPhoneNumber);
-  const educationalLevel = useSelector(selectEducationLevel);
+  // const phoneNumber = useSelector(selectPhoneNumber);
+  // const educationalLevel = useSelector(selectEducationLevel);
+  // <Text style={styles.userEducationalLevel} >{educationalLevel}</Text>
+  // <Text style={styles.userPhoneNumber} >{phoneNumber}</Text>
 
   return (
     <View style={styles.container}>
-      <View style={styles.profilePic} >
-        <Image 
+      <View style={styles.profilePic}>
+        <Image
           style={styles.profileImage}
           source={require("./../assets/img/profile_img.jpg")}
         />
       </View>
       <View style={styles.profileText}>
-        <Text style={styles.userName} >{firstName} {lastName}</Text>
-        <Text style={styles.userEducationalLevel} >{educationalLevel}</Text>
-        <Text style={styles.userEmailAddress} >{emailAddress}</Text>
-        <Text style={styles.userPhoneNumber} >{phoneNumber}</Text>
+        <Text style={styles.displayName}>
+          {firstName} {lastName}
+        </Text>
+        <Text style={styles.userEmailAddress}>{emailAddress}</Text>
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -62,9 +68,10 @@ const styles = StyleSheet.create({
     height: 85,
     justifyContent: "space-between",
   },
-  userName: {
+  displayName: {
     fontSize: 16,
     fontWeight: "bold",
+    textTransform: "capitalize",
   },
   userEducationalLevel: {
     fontSize: 14,
@@ -75,7 +82,7 @@ const styles = StyleSheet.create({
   },
   userPhoneNumber: {
     fontSize: 14,
-  }
+  },
 });
 
 export default ProfileSummary;

@@ -2,18 +2,17 @@ import UserActionTypes from "./userActionTypes";
 import {
   addOrgToMembershipList,
   removeOrgFromMembershipList,
+  loadUserProfileToState,
 } from "./userUtils";
 
 // FIXME: edit user state - change to only needed items
 const INITIAL_STATE = {
   userToken: null,
-  currentUserInfo: {
+  currentUserData: {
     userID: "",
-    emailAddress: "",
+    email: "",
     firstName: "",
     lastName: "",
-    phoneNumber: "Add phone number (optional)",
-    educationLevel: "Add education level (optional)",
     createdAt: "",
     logInTimestamps: [],
     orgMembershipList: [],
@@ -42,17 +41,11 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userToken: null,
-        userID: "",
-        emailAddress: "",
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        educationLevel: "",
-        createdAt: "",
-        logInTimestamp: "",
-        orgMembershipList: [],
+        currentUserData: null,
         error: null,
       };
+    case UserActionTypes.LOAD_USER_PROFILE:
+      return loadUserProfileToState(state, action.payload);
     case UserActionTypes.JOIN_ORG:
       return {
         ...state,

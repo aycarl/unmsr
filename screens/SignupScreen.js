@@ -6,7 +6,7 @@ import { View, Image, StyleSheet, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StatusBar } from "expo-status-bar";
 
-import { signUpWithFirebase, logOutWithFirebase } from "./../redux/user/userActions";
+import { signUpWithFirebase, logOutWithFirebase, signUpFailure } from "./../redux/user/userActions";
 import { selectErrorMessage } from "./../redux/user/userSelectors";
 
 const SignupScreen = ({ route }) => {
@@ -15,28 +15,29 @@ const SignupScreen = ({ route }) => {
   const [email, setEmail] = React.useState(route.params.email);
   const [password, setPassword] = React.useState(route.params.password);
   const [confirmPassword, setConfirmPassword] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState("");
+  const [firstName, setFirstName] = React.useState("");
+  const [lastName, setLastName] = React.useState("");
 
-  const userErrorMessage = useSelector(selectErrorMessage);
+  let userErrorMessage = useSelector(selectErrorMessage);
 
   const dispatch = useDispatch();
 
   const signup = () => {
     
     if (password !== confirmPassword) {
-      selectErrorMessage("Passwords did not match!")
+      dispatch(signUpFailure("Passwords did not match!"));
       return;
     }
 
-    if (userErrorMessage) {
-      setErrorMessage(userErrorMessage);
+    if (email === "") {
+      dispatch(signUpFailure("Email is required!"));
       return;
     }
 
     // TODO: validate email with regex
 
     if (email && password) {
-      dispatch(signUpWithFirebase(email, password));
+      dispatch(signUpWithFirebase(email, password, firstName, lastName));
     }
   };
 
@@ -44,6 +45,20 @@ const SignupScreen = ({ route }) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <Image style={styles.logo} source={require("./../assets/logo.png")} />
+      <TextInput
+        label="First name"
+        value={firstName}
+        onChangeText={(text) => setFirstName(text)}
+        mode="outlined"
+        placeholder="enter first name"
+      />
+      <TextInput
+        label="Last name"
+        value={lastName}
+        onChangeText={(text) => setLastName(text)}
+        mode="outlined"
+        placeholder="enter last name"
+      />
       <TextInput
         label="Email"
         value={email}
@@ -67,7 +82,7 @@ const SignupScreen = ({ route }) => {
         mode="outlined"
         placeholder="enter password"
       />
-      <Text>{errorMessage}</Text>
+      <Text style={styles.error}>{userErrorMessage}</Text>
       <Button mode="contained" onPress={signup}>
         Sign up
       </Button>
@@ -80,9 +95,9 @@ const SignupScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 30,
     paddingBottom: 150,
-    padding: 20,
+    paddingHorizontal: 20,
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-between",
@@ -93,6 +108,11 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: "contain",
     alignSelf: "center",
+  },
+  error: {
+    color: "#ba0c2f",
+    alignSelf: "center",
+    marginBottom: 15,
   },
 });
 
