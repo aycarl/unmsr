@@ -3,13 +3,16 @@ import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 
 import OrgList from "./OrgList";
+import StartNewOrg from "./StartNewOrg";
 
-import { selectExploreSearchQuery, selectOrgsListForExploreSearch } from "./../../redux/orgs/orgsSelectors";
+import {
+  selectExploreSearchQuery,
+  selectOrgsListForExploreSearch,
+} from "./../../redux/orgs/orgsSelectors";
 
 // pass data to org list
 
 const ExploreOrgList = () => {
-
   const query = useSelector(selectExploreSearchQuery);
 
   const data = useSelector(selectOrgsListForExploreSearch(query));
@@ -17,7 +20,7 @@ const ExploreOrgList = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>{data.length} clubs & organisations</Text>
-        <OrgList orgsListData={data} />
+      {data.length == 0 ? <StartNewOrg /> : <OrgList orgsListData={data} />}
     </View>
   );
 };

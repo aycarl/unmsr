@@ -14,22 +14,14 @@ const LoginScreen = () => {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [errorMessage, setErrorMessage] = React.useState("");
 
   const userErrorMessage = useSelector(selectErrorMessage);
   const dispatch = useDispatch();
 
   const login = () => {
-    //navigation.navigate("HomeNav", { screen: "Home" });
-
-    // if (userErrorMessage) {
-    //   setErrorMessage(userErrorMessage);
-    // }
 
     // TODO validate email
     dispatch(logInWithFirebase(email, password));
-
-    setErrorMessage("");
   };
 
   return (  
@@ -42,6 +34,7 @@ const LoginScreen = () => {
         onChangeText={(email) => setEmail(email)}
         mode="outlined"
         placeholder="enter unm email address"
+        dense
       />
       <TextInput
         label="Password"
@@ -50,6 +43,7 @@ const LoginScreen = () => {
         onChangeText={(password) => setPassword(password)}
         mode="outlined"
         placeholder="enter password"
+        dense
       />
       <Text style={styles.error}>{userErrorMessage}</Text>
       <Button mode="contained" onPress={login}>
