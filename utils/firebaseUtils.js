@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import { add } from "react-native-reanimated";
 
 var firebaseConfig = {
   apiKey: "AIzaSyCovvF04YkM7FbyrSQQ4I5mVn6jPGBk80E",
@@ -22,26 +23,23 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // create user profile
-export const createUserProfileDocument = async (userAuth, additionalData) => {
-  if (!userAuth) {
+export const createUserProfileDocument = async (user, additionalData) => {
+  if (!user) {
     return;
   }
 
-  const userRef = firestore.doc(`users/${userAuth.uid}`);
+  console.log("user uid: "+ user.uid);
+
+  const userRef = firestore.doc(`users/${user.uid}`);
 
   const snapShot = await userRef.get();
 
   if (!snapShot.exists) {
     
-    const { email } = userAuth;
-
-    const createdAt = new Date();
+    // console.log("additional data: \n" + JSON.stringify(additionalData));
 
     try {
       await userRef.set({
-        emailAddress,
-        createdAt,
-        userID: userAuth.uid,
         ...additionalData
       });
     } catch (error) {
@@ -50,4 +48,26 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 
   return userRef;
+}
+
+export const loadUserProfileDocument = async (userID) => {
+
+  let userProfileData = {};
+
+  if (!userID) {
+    return;
+  }
+
+  const userRef = firestore.doc(`users/${userID}`);
+
+  const snapShot = await userRef.get();
+
+  if (snapShot.exists) {
+
+    userProfileData = snapShot.data();
+    
+    console.log("user profile data loaded : \n" + JSON.stringify(userProfileData));
+  }
+
+  return userProfileData;
 }
