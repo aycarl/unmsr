@@ -6,7 +6,7 @@ import { View, Image, StyleSheet, Text } from "react-native";
 import { Button, TextInput } from "react-native-paper";
 import { StatusBar } from "expo-status-bar";
 
-import { signUpWithFirebase, logOutWithFirebase, signUpFailure } from "./../redux/user/userActions";
+import { signUpWithFirebase, signUpFailure } from "./../redux/user/userActions";
 import { selectErrorMessage } from "./../redux/user/userSelectors";
 
 const SignupScreen = ({ route }) => {
@@ -51,6 +51,7 @@ const SignupScreen = ({ route }) => {
         onChangeText={(text) => setFirstName(text)}
         mode="outlined"
         placeholder="enter first name"
+        dense
       />
       <TextInput
         label="Last name"
@@ -58,6 +59,7 @@ const SignupScreen = ({ route }) => {
         onChangeText={(text) => setLastName(text)}
         mode="outlined"
         placeholder="enter last name"
+        dense
       />
       <TextInput
         label="Email"
@@ -65,6 +67,7 @@ const SignupScreen = ({ route }) => {
         onChangeText={(email) => setEmail(email)}
         mode="outlined"
         placeholder="enter unm email address"
+        dense
       />
       <TextInput
         label="Password"
@@ -73,6 +76,7 @@ const SignupScreen = ({ route }) => {
         onChangeText={(password) => setPassword(password)}
         mode="outlined"
         placeholder="enter password"
+        dense
       />
       <TextInput
         label="Confirm Password"
@@ -81,13 +85,17 @@ const SignupScreen = ({ route }) => {
         onChangeText={(password) => setConfirmPassword(password)}
         mode="outlined"
         placeholder="enter password"
+        dense
       />
       <Text style={styles.error}>{userErrorMessage}</Text>
       <Button mode="contained" onPress={signup}>
         Sign up
       </Button>
-      <Button mode="contained" onPress={() => dispatch(logOutWithFirebase())}>
-        Log Out
+      <Button
+        mode="outlined"
+        onPress={() => navigation.navigate("Login")}
+      >
+        I already have an account.
       </Button>
     </View>
   );

@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
 
-import OrgList from "./OrgList";
+import OrgListItem from "./../org-components/OrgListItem";
+import ExploreOrgs from "./../org-components/ExploreOrgs";
 
 import { selectOrgMembershipList } from "./../../redux/user/userSelectors";
 import { selectOrgsListForUserMembership } from "./../../redux/orgs/orgsSelectors";
@@ -17,14 +18,18 @@ const MyOrgMemberships = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.headerText}>Memberships</Text>
-        <OrgList orgsListData={orgMembershipData} />
+        {
+          orgMembershipData ?
+          orgMembershipData.map(
+            org => (<OrgListItem key={org.UID} {...org} />)
+          ) : <ExploreOrgs />
+        }
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 4,
     width: "100%",
     paddingHorizontal: 10,
   },

@@ -40,7 +40,7 @@ const ProfileSummary = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: 120,
     flexDirection: "row",
     alignItems: "center",
     marginBottom: 10,
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   profileText: {
     height: 85,
     justifyContent: "space-between",
+    paddingVertical: 15,
   },
   displayName: {
     fontSize: 16,

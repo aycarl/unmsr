@@ -72,14 +72,14 @@ const OrgsList = {
         details: null,
       },
     },
-    org2: {
-      UID: "org2",
-      name: "Advancing IT Club",
-      nickname: "ZTX",
+    unmsr: {
+      UID: "unmsr",
+      name: "UNM Student Resource App Users",
+      nickname: "UNM SR",
       about: {
-        summary: null,
+        summary: "We use the UNM SR app to connect with our lobo communities and events",
         longDescription:
-          "Only IT Stuff everyday. We code 24/7 and fix computers.",
+          "",
         dateEstablished: "",
       },
       photos: [
@@ -97,68 +97,29 @@ const OrgsList = {
           department: "",
           departmentPosition: "",
         },
-        {
-          position: "Faculty Advisor",
-          name: "Corrine Meyers",
-          email: "	cemyers@unm.edu",
-          academicStatus: "",
-          department: "Earth and Planetary Sciences",
-          departmentPosition: "Assistant Professor",
-        },
       ],
       members: [],
       categoryList: [
         {
-          id: "6",
-          title: "Honorary",
+          id: "14",
+          title: "Special Interest",
         },
         {
           id: "12",
           title: "Service",
         },
       ],
-      eventsList: [
-        {
-          ORGANIZER: "mailto:hsnow@salud.unm.edu",
-          DTSTART: "20200805T160000Z",
-          DTEND: "20200805T170000Z",
-          DTSTAMP: "20200728T114509Z",
-          LOCATION: "Zoom",
-          SUMMARY: "CTSC Database Overview",
-          DESCRIPTION:
-            "his informational session provides an overview to data resources available to HSC researchers through the CTSC. Topics include how to request data through the CTSC Clinical Data Warehouse.\nView the full event details here: https://unmevents.unm.edu/site/hsc/event/ctsc-database-overview-26/",
-          CATEGORIES:
-            "Clinical &amp; Translational Science Center (CTSC)  Bioinformatics  Biostatistics  Research",
-          CONTACT: "Harry Snow hsnow@salud.unm.edu",
-          CLASS: "PUBLIC",
-          UID: "471c89d3-c9fc-4971-af32-bfa6f29fda3d",
-        },
-        {
-          ORGANIZER: "mailto:Acureton@salud.unm.edu",
-          DTSTART: "20200806T220000Z",
-          DTEND: "20200806T233000Z",
-          DTSTAMP: "20200728T114509Z",
-          LOCATION:
-            "Meeting via Zoom - Contact ACureton@salud.unm.edu to request the invitation. UNM Comprehensive Cancer Center 1201 Camino de Salud NE Albuquerque NM 87102",
-          SUMMARY: "Family &amp; Friends Journaling Group",
-          DESCRIPTION:
-            "A journaling support group for family &amp; friends of cancer patients. Discover the healing power of writing to express thoughts and feelings. No prior writing experience needed; spelling and grammar do not matter. In partnership with Cancer Support Now\nView the full event details here: https://unmevents.unm.edu/site/hsc/event/family--friends-journaling-group-30/",
-          CATEGORIES: "Support Groups  Comprehensive Cancer Center",
-          CONTACT: "Anjanette Cureton Acureton@salud.unm.edu 925-0104",
-          CLASS: "PUBLIC",
-          UID: "b6fe9d27-f38d-44b0-8d73-c7e35cd2f996",
-        },
-      ],
+      eventsList: [],
       contactInfo: {
-        emailAddress: "awsunm@unm.edu",
-        phoneNumber: "(505) 440-2455",
-        location: "SUB, Ground Floor",
-        website: "https://www.facebook.com/AdvancingWomenInScienceUNM/",
+        emailAddress: "aycarl@unm.edu",
+        phoneNumber: "(505) 259-1888",
+        location: "We are virtual!",
+        website: "https://github.com/aycarl/unmsr",
       },
       meetingInfo: {
         meetingHours: "16:00 - 17:45 MT",
         meetingDays: "Thursdays",
-        meetingVenue: "SUB, Ground Floor Open Area",
+        meetingVenue: "TBD",
       },
       createdAt: "TIMESTAMP",
       dues: {

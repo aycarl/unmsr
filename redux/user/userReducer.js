@@ -41,27 +41,41 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userToken: null,
-        currentUserData: null,
-        error: null,
+        currentUserData: {
+          userID: "",
+          email: "",
+          firstName: "",
+          lastName: "",
+          createdAt: "",
+          logInTimestamps: [],
+          orgMembershipList: [],
+        },
+        errorMessage: null,
       };
     case UserActionTypes.LOAD_USER_PROFILE:
       return loadUserProfileToState(state, action.payload);
     case UserActionTypes.JOIN_ORG:
       return {
         ...state,
-        orgMembershipList: addOrgToMembershipList(
-          state.orgMembershipList,
-          action.payload
-        ),
+        currentUserData: {
+          ...state.currentUserData,
+          orgMembershipList: addOrgToMembershipList(
+            state.currentUserData.orgMembershipList,
+            action.payload
+          ),
+        },
       };
 
     case UserActionTypes.LEAVE_ORG:
       return {
         ...state,
-        orgMembershipList: removeOrgFromMembershipList(
-          state.orgMembershipList,
-          action.payload
-        ),
+        currentUserData: {
+          ...state.currentUserData,
+          orgMembershipList: removeOrgFromMembershipList(
+            state.currentUserData.orgMembershipList,
+            action.payload
+          ),
+        },
       };
 
     default:

@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   headerText: {
     fontWeight: "bold",
     fontSize: 14,
-    // textTransform: "lowercase",
     marginBottom: 10,
   },
 });
