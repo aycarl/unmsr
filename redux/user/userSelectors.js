@@ -53,7 +53,7 @@ export const selectLastName = createSelector(
 // select user email address
 export const selectEmailAddress = createSelector(
   [selectCurrentUserData],
-  user => user.emailAddress
+  user => user.email
 );
 
 // select user phone number

@@ -15,6 +15,8 @@ const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
 
   const eventStart = convertStringToReadableDateTime(DTSTART).simpleDateString;
 
+  const image = { uri: "https://picsum.photos/200/300" }
+
   return (
     <TouchableHighlight
       style={styles.container}
@@ -28,7 +30,8 @@ const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
     >
       <ImageBackground
         style={styles.image}
-        source={require("./../../assets/updates/PNMGC_Notice.png")}
+        // source={require("./../../assets/updates/PNMGC_Notice.png")}
+        source={image}
       >
         <LinearGradient
           style={styles.linearGradient}
@@ -74,7 +77,7 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     flex: 1,
-    padding: 8,
+    padding: 10,
     alignItems: "flex-start",
     justifyContent: "flex-end",
   },
