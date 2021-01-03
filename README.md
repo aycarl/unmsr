@@ -9,6 +9,11 @@ student organizations from the [UNM Student Activities Center](https://unm-commu
 ---
 UNM-SR was built using [Expo](https://docs.expo.io/), is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.
 
+## Planning & Design
+* Initial concepts and prototype: [Adobe XD Prototype](https://xd.adobe.com/view/52291350-7d85-4961-86e0-dd6a36e02399-077a/)
+* User Flow planning, application state design, NoSQL database objects: [Whimsical Board](https://whimsical.com/aycarl-62GQVYzpH9AFv9Z7QNUr6T@VsSo8s35UiUnYLpBRNbYeV)
+* Planning and Project Management: [Trello board](https://trello.com/invite/b/tPcqzi9f/d70b5feab85a388f43ad1e2452c51811/unm-sr) (PS. you can only view)
+
 ## App Preview
 The following are three screenshots of the app running on a device (from the left):
 * 1st screenshot: The explore sreen where users (students) can search for UNM organizations
@@ -65,6 +70,22 @@ $ yarn start
   - [iOS App Store](https://itunes.com/apps/exponent) - iOS 10 and greater.
 * Open Expo Client App
 * Scan QR code displayed in command prompt window or in Expo Developer Tools in your local browser
+
+## Tools and Development Dependencies
+UNM-SR is 100% built with Javascript. Tools used include:
+* [Expo CLI](https://docs.expo.io/)
+* [React Native](https://reactnative.dev/) (multi-platform javascript mobile application framework)
+* [React Navigation](https://reactnavigation.org/docs/getting-started/) (screen navigation management)
+* [React Native Paper](https://callstack.github.io/react-native-paper/index.html) (styling)
+* [React Redux](https://redux.js.org/) (state management)
+* [Reselect](https://github.com/reduxjs/reselect) (memoized data selectors from app state)
+
+Data Sources
+* Events data [UNM Open Data](https://opendata.unm.edu/index.html)
+* Test organization data mocked from the [UNM Student Activities Center](https://unm-community.symplicity.com/index.php?s=student_group)
+
+Database & User Authentication
+* [Google Firebase](https://firebase.google.com/)
 
 ## Team Member
 
