@@ -2,12 +2,11 @@ import React from "react";
 import { View, Text, StyleSheet, Linking } from "react-native";
 import { Button } from "react-native-paper";
 
-// https://sac.unm.edu/student-organizations/start-a-club.html
 // component: explore organizations and connect!
 const StartNewOrg = () => {
   return (
     <View style={styles.more}>
-      <Text style={styles.moreText}>Not what you're interested in?</Text>
+      <Text style={styles.moreText}>Nothing found?</Text>
       <Button mode="text" onPress={() => Linking.openURL("https://sac.unm.edu/student-organizations/start-a-club.html")}>
         Start you own group!
       </Button>
