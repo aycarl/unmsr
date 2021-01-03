@@ -14,7 +14,9 @@ import {
   extractEventDetailsLink,
 } from "../utils/dataUtils";
 
+// event details screen
 const EventDetails = (props) => {
+  // selects event object given an event UID
   const eventInfo = useSelector(selectEvent(props.route.params.eventID));
 
   // to debug:

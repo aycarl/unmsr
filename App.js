@@ -14,9 +14,6 @@ import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
 import { selectUserToken } from "./redux/user/userSelectors";
 
-// dotenv
-//require("dotenv").config();
-
 const theme = {
   ...DefaultTheme,
   roundness: 5,
@@ -27,8 +24,6 @@ const theme = {
     backdrop: "#ffffff",
   },
 };
-
-const Stack = createStackNavigator();
 
 export default function App() {
   return (
@@ -42,8 +37,13 @@ export default function App() {
   );
 }
 
+// creates stack navaigation for application container
+const Stack = createStackNavigator();
+
 // aplication container component to ensure that the userToken is accessible thru the redux provider
 const ApplicationContainer = () => {
+
+  // conditionally redirect to Home if user token exists
   const userToken = useSelector(selectUserToken);
 
   return (

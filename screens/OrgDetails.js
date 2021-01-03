@@ -15,6 +15,7 @@ import {
 // FIXME: edited styling for mini-table content
 // TODO: add events list data for organization without nesting !!!
 
+// Events screen component
 const OrgDetails = (props) => {
   // select an organization
   const org = useSelector(selectOrg(props.route.params.orgID));
@@ -28,7 +29,7 @@ const OrgDetails = (props) => {
 
   // console.log("org " + JSON.stringify(org));
 
-  // count of members
+  // count of organization members
   const memberCount = Object.keys(org.members).length;
 
   // image randomizer for organization preview card
