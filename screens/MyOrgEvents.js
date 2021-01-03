@@ -1,16 +1,19 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { selectEventsList, selectEventsListByUserMembership } from "./../redux/events/eventsSelectors";
+import {
+  selectEventsList,
+  selectEventsListByUserMembership,
+} from "./../redux/events/eventsSelectors";
 import { selectOrgMembershipList } from "./../redux/user/userSelectors";
 
 import { View, StyleSheet, ImageBackground } from "react-native";
 
 import EventsList from "../custom-components/event-components/EventsList";
+import NoEventsAvailable from "./../custom-components/event-components/NoEventsAvailable";
 
 // Events Home Screen component
 const MyOrgEvents = () => {
-
   // select event data for user
   const userMembership = useSelector(selectOrgMembershipList);
   const data = useSelector(selectEventsListByUserMembership(userMembership));
@@ -25,7 +28,7 @@ const MyOrgEvents = () => {
         style={styles.bgImage}
       >
         <View style={styles.pageContent}>
-          <EventsList data={data} />
+          {data.length > 0 ? <EventsList data={data} /> : <NoEventsAvailable />}
         </View>
       </ImageBackground>
     </View>
