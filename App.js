@@ -20,7 +20,8 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: "#ba0c2f",
-    accent: "#a7a8aa",
+    accent: "#ba0c2f",
+    //accent: "#a7a8aa",
     backdrop: "#ffffff",
   },
 };
