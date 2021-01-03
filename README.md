@@ -57,8 +57,8 @@ $ yarn start
 * Scan QR code displayed in command prompt window or in Expo Developer Tools in your local browser
 
 ### Test Account
-* **User name:** alexis
-* **Password:** asdf4321!!@
+* **Email:** alexis@unm.edu
+* **Password:** asdf4321
 
 ## Team Member
 
