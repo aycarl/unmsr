@@ -11,6 +11,7 @@ import {
 // TODO: add edit icon to edit profile information
 // TODO: include other personal information?
 
+// User Profile summary component
 const ProfileSummary = () => {
   const firstName = useSelector(selectFirstName);
   const lastName = useSelector(selectLastName);
