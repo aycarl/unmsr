@@ -16,6 +16,21 @@ const EventsList = {
       UID: "c4bdbfde-747d-425c-bc13-db8bb49454e2",
     },
     {
+      ORGANIZER: "tron",
+      DTSTART: "20200526T160000Z",
+      DTEND: "20200801T220000Z",
+      DTSTAMP: "20200728T114509Z",
+      LOCATION: "Virtual! - Zoom link to be shared",
+      SUMMARY:
+        "Creative Robot Building Collaborative Workshop: Test Event!!!",
+      DESCRIPTION:
+        "Test your maker skills in the virtual robotics workshop\nView the full event details here: https://github.com/aycarl/unmsr",
+      CATEGORIES: "Science & Robotics",
+      CONTACT: "Tron tron@unm.edu 5052773901",
+      CLASS: "PUBLIC",
+      UID: "tron-xyz",
+    },
+    {
       ORGANIZER: "mailto:tamarind@unm.edu",
       DTSTART: "20200526T160000Z",
       DTEND: "20200801T220000Z",

@@ -1,25 +1,46 @@
 import React from "react";
-import { FAB } from "react-native-paper";
+import { FAB, Portal, Provider } from "react-native-paper";
 import { Linking, StyleSheet } from "react-native";
 
-const MoreDetailsEventFAB = ({ link }) => {
+const MoreDetailsEventFAB = ({ link, email }) => {
+  const [state, setState] = React.useState({ open: false });
+
+  const onStateChange = ({ open }) => setState({open});
+
+  const { open } = state;
+
   return (
-    <FAB
-      style={styles.FAB}
-      large
-      label="View more details"
-      onPress={() => Linking.openURL(link)}
-    />
+    <Provider>
+      <Portal>
+        <FAB.Group
+          style={styles.FAB}
+          open={open}
+          icon={open ? "calendar-today" : "menu"}
+          actions={[
+            {
+              icon: "link",
+              label: "More Details",
+              onPress: () => Linking.openURL(link),
+            },
+            {
+              icon: "email",
+              label: "Event Contact",
+              onPress: () => Linking.openURL(`mailto:${email}`),
+            },
+          ]}
+          onStateChange={onStateChange}
+        />
+      </Portal>
+    </Provider>
   );
 };
 
 const styles = StyleSheet.create({
   FAB: {
     position: "absolute",
-    margin: 20,
+    padding: 20,
     right: 0,
     bottom: 0,
-    backgroundColor: "#c05131",
   },
 });
 
