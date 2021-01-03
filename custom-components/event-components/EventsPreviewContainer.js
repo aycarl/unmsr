@@ -8,12 +8,12 @@ import { FlatList } from "react-native-gesture-handler";
 
 import EventPreviewCard from "./EventPreviewCard";
 
-import { selectEventsListArray, selectEventsList } from "./../../redux/events/eventsSelectors";
+import { selectEventsList } from "./../../redux/events/eventsSelectors";
 
 // render item for events preview container flatlist
 const renderItem = ({item}) => <EventPreviewCard {...item} />;
 
-// TODO: Takes a list of event objects
+// Event Preview Card Container: Takes a list of first five event preview cards
 const EventsPreviewContainer = () => {
   const navigation = useNavigation();
 

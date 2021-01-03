@@ -111,7 +111,7 @@ export const signUpWithFirebase = (email, password, firstName, lastName) => {
           lastName,
           createdAt,
           logInTimestamp: createdAt,
-          orgMembershipList: ["unmsr",],
+          orgMembershipList: [],
           userID: data.user.uid
         };
 
