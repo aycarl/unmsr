@@ -1,11 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ImageBackground, Linking } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { LinearGradient } from "expo-linear-gradient";
 
 import { selectOrg } from "./../redux/orgs/orgsSelectors";
 import { selectIsInMembershipList } from "./../redux/user/userSelectors";
-import EventsList from "../custom-components/event-components/EventsList";
 import CategoryLabels from "./../custom-components/category-components/CategoryLabels";
 import {
   JoinOrgFAB,
@@ -20,7 +20,9 @@ const OrgDetails = (props) => {
   const org = useSelector(selectOrg(props.route.params.orgID));
 
   // check if current user is a member
-  const orgInUserMembershipList = useSelector(selectIsInMembershipList(org.UID));
+  const orgInUserMembershipList = useSelector(
+    selectIsInMembershipList(org.UID)
+  );
 
   console.log("membership: " + orgInUserMembershipList);
 
@@ -29,11 +31,21 @@ const OrgDetails = (props) => {
   // count of members
   const memberCount = Object.keys(org.members).length;
 
+  // image randomizer for organization preview card
+  const image = { uri: "https://picsum.photos/500/500" };
+
   return (
     <View style={styles.container}>
       <ScrollView style={styles.container} nestedScrollEnabled={true}>
         <View style={styles.headerContainer}>
-          <Text style={styles.nameHeader}>{org.name}</Text>
+          <ImageBackground style={styles.image} source={image}>
+            <LinearGradient
+              style={styles.linearGradient}
+              colors={["transparent", "transparent", "rgba(0,0,0,0.8)"]}
+            >
+              <Text style={styles.nameHeader}>{org.name}</Text>
+            </LinearGradient>
+          </ImageBackground>
         </View>
         <View style={styles.bodyContainer}>
           <Text style={styles.description}>
@@ -64,7 +76,11 @@ const OrgDetails = (props) => {
               <Text style={styles.label}>Criteria: </Text>
             </View>
             <View style={styles.infoData}>
-              <Text>{org.membershipCriteria.required ? org.membershipCriteria.details : "none"}</Text>
+              <Text>
+                {org.membershipCriteria.required
+                  ? org.membershipCriteria.details
+                  : "none"}
+              </Text>
             </View>
           </View>
           <Text style={styles.sectionHeader}>Contact</Text>
@@ -79,7 +95,9 @@ const OrgDetails = (props) => {
               <Text>{org.contactInfo.emailAddress}</Text>
               <Text>{org.contactInfo.phoneNumber}</Text>
               <Text>{org.contactInfo.location}</Text>
-              <Text>{org.contactInfo.website}</Text>
+              <Text style={styles.link} onPress={() => Linking.openURL(org.contactInfo.website)}>
+                {org.contactInfo.website}
+              </Text>
             </View>
           </View>
           {/* TODO: <Text style={styles.sectionHeader}>Leadership</Text> */}
@@ -99,13 +117,21 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerContainer: {
-    flexDirection: "row",
-    backgroundColor: "#fff",
-    marginBottom: 5,
     height: 200,
     backgroundColor: "#D14081",
+    overflow: "hidden",
+    marginBottom: 5,
+  },
+  image: {
+    flex: 1,
+    flexDirection: "row",
     borderBottomLeftRadius: 5,
     borderBottomRightRadius: 5,
+  },
+  linearGradient: {
+    flex: 1,
+    padding: 5,
+    flexDirection: "row",
   },
   nameHeader: {
     alignSelf: "flex-end",
@@ -113,6 +139,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textTransform: "uppercase",
     padding: 10,
+    color: "#ffffff",
   },
   bodyContainer: {
     padding: 10,
@@ -147,6 +174,9 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     marginBottom: 5,
     marginTop: 10,
+  },
+  link: {
+    color: "#D14081"
   },
 });
 

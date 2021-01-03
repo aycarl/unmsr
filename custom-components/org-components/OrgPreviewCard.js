@@ -7,6 +7,9 @@ import { LinearGradient } from "expo-linear-gradient";
 // TODO: takes an image url and a url to Update page as props
 const OrgPreviewCard = ({ name, nickname, UID }) => {
   const navigation = useNavigation();
+  
+  // image randomizer for organization preview card
+  const image = { uri: "https://picsum.photos/300/400" }
 
   return (
     <TouchableHighlight
@@ -21,7 +24,7 @@ const OrgPreviewCard = ({ name, nickname, UID }) => {
     >
       <ImageBackground
         style={styles.image}
-        source={require("./../../assets/img/anime_club.jpg")}
+        source={image}
       >
         <LinearGradient
           style={styles.linearGradient}
