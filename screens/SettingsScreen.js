@@ -3,6 +3,9 @@ import React from 'react';
 import { Text, View, Button } from 'react-native';
 import { StyleSheet } from 'react-native';
 
+// TODO: link to Profile Home Screen component
+
+// setting screen component
 export const SettingsScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>

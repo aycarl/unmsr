@@ -8,6 +8,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import ScreenHeader from "../custom-components/ScreenHeader";
 import EventsList from "../custom-components/event-components/EventsList";
 
+// Events Home Screen component
 const Events = () => {
   const data = useSelector(selectEventsList);
 

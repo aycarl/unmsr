@@ -8,8 +8,10 @@ import Profile from "../screens/Profile";
 import ExploreNavContainer from "../navigation-containers/ExploreNavContainer";
 import EventsNavContainer from "../navigation-containers/EventsNavContainer";
 
+// creates Tab navigation for bottom navigation container
 const Tab = createMaterialBottomTabNavigator();
 
+// Navigation container for Application Home screens
 function BottomNavContainer() {
   return (
     <Tab.Navigator initialRouteName="Home" activeColor="#ba0c2f" barStyle={styles.bottomNav}>
