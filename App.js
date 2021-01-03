@@ -37,7 +37,7 @@ export default function App() {
   );
 }
 
-// creats stack navaigation for application container
+// creates stack navaigation for application container
 const Stack = createStackNavigator();
 
 // aplication container component to ensure that the userToken is accessible thru the redux provider
