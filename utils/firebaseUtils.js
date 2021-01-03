@@ -12,6 +12,7 @@ import {
   REACT_NATIVE_FIREBASE_MEASUREMENTID
 } from "@env";
 
+// firebase configuration with api key & IDs
 var firebaseConfig = {
   apiKey: REACT_NATIVE_FIREBASE_APIKEY,
   authDomain: REACT_NATIVE_FIREBASE_AUTHDOMAIN,
@@ -33,7 +34,7 @@ export const auth = firebase.auth();
 // firestore library
 export const firestore = firebase.firestore();
 
-// create user profile
+// create user profile in firestore
 export const createUserProfileDocument = async (user, additionalData) => {
   if (!user) {
     return;
@@ -62,6 +63,7 @@ export const createUserProfileDocument = async (user, additionalData) => {
   return userRef;
 };
 
+// load user profile from firestore
 export const loadUserProfileDocument = async (userID) => {
   let userProfileData = {};
 

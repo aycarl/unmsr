@@ -25,8 +25,6 @@ const theme = {
   },
 };
 
-const Stack = createStackNavigator();
-
 export default function App() {
   return (
     <Provider store={store}>
@@ -39,8 +37,13 @@ export default function App() {
   );
 }
 
+// creats stack navaigation for application container
+const Stack = createStackNavigator();
+
 // aplication container component to ensure that the userToken is accessible thru the redux provider
 const ApplicationContainer = () => {
+
+  // conditionally redirect to Home if user token exists
   const userToken = useSelector(selectUserToken);
 
   return (
