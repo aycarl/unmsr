@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { selectEventsList } from "./../redux/events/eventsSelectors";
+import { selectEventsList, selectEventsListByUserMembership } from "./../redux/events/eventsSelectors";
+import { selectOrgMembershipList } from "./../redux/user/userSelectors";
 
 import { View, StyleSheet, ImageBackground } from "react-native";
 
@@ -9,7 +10,10 @@ import EventsList from "../custom-components/event-components/EventsList";
 
 // Events Home Screen component
 const MyOrgEvents = () => {
-  const data = useSelector(selectEventsList);
+
+  // select event data for user
+  const userMembership = useSelector(selectOrgMembershipList);
+  const data = useSelector(selectEventsListByUserMembership(userMembership));
 
   // to debug
   //console.log("events: "+ JSON.stringify(data));
