@@ -9,6 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { signUpWithFirebase, signUpFailure } from "./../redux/user/userActions";
 import { selectErrorMessage } from "./../redux/user/userSelectors";
 
+// sign up screen component
 const SignupScreen = ({ route }) => {
   const navigation = useNavigation();
 
@@ -29,12 +30,12 @@ const SignupScreen = ({ route }) => {
       return;
     }
 
+    // TODO: validate email with regex
+
     if (email === "") {
       dispatch(signUpFailure("Email is required!"));
       return;
     }
-
-    // TODO: validate email with regex
 
     if (email && password) {
       dispatch(signUpWithFirebase(email, password, firstName, lastName));
@@ -104,7 +105,7 @@ const SignupScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     paddingTop: 30,
-    paddingBottom: 150,
+    paddingBottom: 120,
     paddingHorizontal: 20,
     flex: 1,
     flexDirection: "column",
