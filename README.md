@@ -1,7 +1,7 @@
 # UNM Student Resource App (UNM-SR)
 
 UNM-SR is a resource application for all UNM students. The goal of this app is to connect students to clubs, organizations, resources and events on campus.
-For new and continuing students, finding and connecting with communities and friends with similar intersts could be challenging especially in recently times due to the COVID-19 pandemic restrictions. 
+For new and continuing students, finding and connecting with communities and friends with similar interests could be challenging especially in recently times due to the COVID-19 pandemic restrictions. 
 UNM-SR empowers students to **explore**, **discover** and **connect** with student clubs, organizations and other on-campus resources, as well as their respective events and updated.
 Currently, UNM-SR displays UNM events from the [UNM Open data store](https://opendata.unm.edu/) and data on a few 
 student organizations from the [UNM Student Activities Center](https://unm-community.symplicity.com/index.php?s=student_group)
