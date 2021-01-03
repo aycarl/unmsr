@@ -15,6 +15,7 @@ const EventPreviewCard = ({ SUMMARY, DTSTART, UID }) => {
 
   const eventStart = convertStringToReadableDateTime(DTSTART).simpleDateString;
 
+  // image randomizer for event pre view card
   const image = { uri: "https://picsum.photos/200/300" }
 
   return (

@@ -22,7 +22,8 @@ const CategoryListData = [
   {
     id: "5",
     title: "Graduate",
-  },{
+  },
+  {
     id: "6",
     title: "Honorary",
   },
