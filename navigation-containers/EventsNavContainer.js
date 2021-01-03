@@ -3,11 +3,10 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import Events from "./../screens/Events";
 
+// creates stack navigation for Events container
 const Stack = createStackNavigator();
 
-// TODO: use redux to pass data to Detiails screen
-// headerMode="none"
-
+// Navigation container for Event-related screens
 const EventsNavContainer = () => {
   return(
     <Stack.Navigator initialRouteName="EventsHome" > 

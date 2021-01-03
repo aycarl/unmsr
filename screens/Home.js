@@ -6,6 +6,7 @@ import ScreenHeader from "./../custom-components/ScreenHeader";
 import EventsPreviewContainer from "../custom-components/event-components/EventsPreviewContainer";
 import OrgPreviewContainer from "../custom-components/org-components/OrgPreviewContainer";
 
+// Home landing screen component
 const Home = () => {
   return (
     <View style={styles.container}>

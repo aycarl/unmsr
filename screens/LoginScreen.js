@@ -9,6 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { selectErrorMessage } from "./../redux/user/userSelectors";
 import { logInWithFirebase } from "./../redux/user/userActions";
 
+// Login Screen component
 const LoginScreen = () => {
   const navigation = useNavigation();
 

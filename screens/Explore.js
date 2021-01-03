@@ -14,6 +14,7 @@ import { updatedExploreSearchQuery } from "./../redux/orgs/orgsActions";
 // select query from state
 import { selectExploreSearchQuery } from "./../redux/orgs/orgsSelectors";
 
+// Explore Home Screen component
 const Explore = () => {
   const dispatch = useDispatch();
 

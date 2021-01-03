@@ -10,6 +10,7 @@ import MyOrgMemberships from "../custom-components/org-components/MyOrgMembershi
 
 import { logOutWithFirebase } from "./../redux/user/userActions";
 
+// Home profile screen component
 const Profile = () => {
   const dispatch = useDispatch();
 

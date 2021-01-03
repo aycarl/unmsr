@@ -5,6 +5,7 @@ import BottomNavContainer from "./BottomNavContainer";
 import EventDetails from "./../screens/EventDetails";
 import OrgDetails from "./../screens/OrgDetails";
 
+// creates stack navigation for application container
 const Stack = createStackNavigator();
 
 // a stack navigator to house all other application navigations apart from auth flow
