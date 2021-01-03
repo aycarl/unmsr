@@ -10,7 +10,7 @@ const Tab = createMaterialTopTabNavigator();
 // Navigation container for Event list screens
 const EventsTopNavContainer = () => {
   return (
-    <Tab.Navigator initialRouteName="" lazy tabBarOptions={{
+    <Tab.Navigator initialRouteName="MyOrgEvents" lazy tabBarOptions={{
       labelStyle: {fontSize: 14, color: "#ffffff", fontWeight: "bold"},
       tabStyle: { marginTop: 20 },
       style: { backgroundColor: "#ba0c2f" },
@@ -25,7 +25,7 @@ const EventsTopNavContainer = () => {
         }}
       />
       <Tab.Screen
-        name="EventsHome"
+        name="AllUNMEvents"
         component={Events}
         options={{
           headerShown: false,

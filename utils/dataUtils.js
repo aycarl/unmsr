@@ -119,7 +119,7 @@ export const extractEventDetailsLink = (description) => {
   };
 };
 
-// extract event contact email
+// extract event contact information
 export const extractEventContactInfo = (contactString) => {
   let contactName = "";
   let contactEmail = "";
