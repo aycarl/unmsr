@@ -14,9 +14,6 @@ import AuthNavContainer from "./navigation-containers/AuthNavContainer";
 
 import { selectUserToken } from "./redux/user/userSelectors";
 
-// dotenv
-//require("dotenv").config();
-
 const theme = {
   ...DefaultTheme,
   roundness: 5,
