@@ -10,7 +10,12 @@ student organizations from the [UNM Student Activities Center](https://unm-commu
 UNM-SR was built using [Expo](https://docs.expo.io/), is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.
 
 ## App Preview
-// TODO: attach link to published app on expo.io
+The following are three screenshots of the app running on a device (from the left):
+* 1st screenshot: The explore sreen where users (students) can search for UNM organizations
+* 2ns screenshot: The details page of a sample/demo student organization
+* 3rd screenshot: The user's profile page
+
+![3 Screenshots of the UNMSR App](https://github.com/aycarl/unmsr/blob/dev/assets/330ppi/app-screenshots%40330x-01.png)
 
 ## Installation (Development Environment)
 ### Requirements
