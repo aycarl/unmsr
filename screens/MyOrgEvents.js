@@ -8,7 +8,7 @@ import { View, StyleSheet, ImageBackground } from "react-native";
 import EventsList from "../custom-components/event-components/EventsList";
 
 // Events Home Screen component
-const Events = () => {
+const MyOrgEvents = () => {
   const data = useSelector(selectEventsList);
 
   // to debug
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Events;
+export default MyOrgEvents;
