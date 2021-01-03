@@ -19,7 +19,7 @@ const MyOrgMemberships = () => {
     <View style={styles.container}>
       <Text style={styles.headerText}>Memberships</Text>
         {
-          orgMembershipData ?
+          orgMembershipData.length > 0 ?
           orgMembershipData.map(
             org => (<OrgListItem key={org.UID} {...org} />)
           ) : <ExploreOrgs />
@@ -30,6 +30,7 @@ const MyOrgMemberships = () => {
 
 const styles = StyleSheet.create({
   container: {
+    minHeight: 150,
     width: "100%",
     paddingHorizontal: 10,
   },
