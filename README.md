@@ -17,6 +17,16 @@ The following are three screenshots of the app running on a device (from the lef
 
 ![3 Screenshots of the UNMSR App](https://github.com/aycarl/unmsr/blob/dev/assets/330ppi/app-screenshots%40330x-01.png)
 
+### Try it out!
+
+Test the app on the Expo project page: https://expo.io/@aycarl/projects/unmsr
+
+#### User Authentication
+Use the test account below or sign up and create your own!
+* **Email:** `alexis@unm.edu`
+* **Password:** `asdf4321`
+
+
 ## Installation (Development Environment)
 ### Requirements
 * [Node.js LTS release](https://nodejs.org/en/)
@@ -55,10 +65,6 @@ $ yarn start
   - [iOS App Store](https://itunes.com/apps/exponent) - iOS 10 and greater.
 * Open Expo Client App
 * Scan QR code displayed in command prompt window or in Expo Developer Tools in your local browser
-
-### Test Account
-* **Email:** alexis@unm.edu
-* **Password:** asdf4321
 
 ## Team Member
 
