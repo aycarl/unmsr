@@ -5,7 +5,7 @@ export const addNewMemberToOrg = (orgsList, membershipInfo) => {
   // get org by UID
   const currentOrg = orgsList[orgUID]
 
-  console.log("currentOrg - " + JSON.stringify(currentOrg));
+  //console.log("currentOrg - " + JSON.stringify(currentOrg));
 
   if (currentOrg.members && currentOrg.members.includes(userID)) {
     return {
