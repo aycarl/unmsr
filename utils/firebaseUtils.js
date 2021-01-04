@@ -23,8 +23,6 @@ var firebaseConfig = {
   measurementId: REACT_NATIVE_FIREBASE_MEASUREMENTID,
 };
 
-console.log("firebase config: " + JSON.stringify(firebaseConfig));
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
