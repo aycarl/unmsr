@@ -2,7 +2,12 @@ import { addMember, removeMember } from "../orgs/orgsActions";
 import UserActionTypes from "./userActionTypes";
 
 // firebase
-import { auth, createUserProfileDocument, loadUserProfileDocument } from "./../../utils/firebaseUtils";
+import {
+  auth,
+  createUserProfileDocument,
+  loadUserProfileDocument,
+  updateUserProfile,
+} from "./../../utils/firebaseUtils";
 
 // user action to join an organization
 export const joinOrg = (orgUID) => ({
@@ -50,7 +55,7 @@ export const logOut = () => ({
 // user action to load user profile info from firebase into state
 export const loadUserProfile = (userProfileData) => ({
   type: UserActionTypes.LOAD_USER_PROFILE,
-  payload: userProfileData
+  payload: userProfileData,
 });
 
 // user action to edit/update user profile info
@@ -78,7 +83,6 @@ export const currentUserJoinsOrg = (membershipInfo) => {
 };
 
 // dispatch action to also remove user from org member list
-// TODO: integrate firebase to reflect changes
 export const currentUserLeavesOrg = (membershipInfo) => {
   return (dispatch) => {
     console.log("membership infor: " + JSON.stringify(membershipInfo));
@@ -94,7 +98,6 @@ export const currentUserLeavesOrg = (membershipInfo) => {
 };
 
 // firebase sign up
-// TODO: add create profile function for new users
 // FIXME: use actual randomly generated user token instead of user uid
 export const signUpWithFirebase = (email, password, firstName, lastName) => {
   return async (dispatch) => {
@@ -110,9 +113,8 @@ export const signUpWithFirebase = (email, password, firstName, lastName) => {
           firstName,
           lastName,
           createdAt,
-          logInTimestamp: createdAt,
           orgMembershipList: [],
-          userID: data.user.uid
+          userID: data.user.uid,
         };
 
         createUserProfileDocument(data.user, userProfileData);
@@ -125,27 +127,45 @@ export const signUpWithFirebase = (email, password, firstName, lastName) => {
 };
 
 // firebase log in
-// TODO: add load profile function for new users
+// loads user profile data
 export const logInWithFirebase = (email, password) => {
   return async (dispatch) => {
     await auth
       .signInWithEmailAndPassword(email, password)
       .then((data) => {
-        //console.log("firebase log in: " + JSON.stringify(user));
+        //console.log("firebase log in: " + JSON.stringify(data.user));
 
-        loadUserProfileDocument(data.user.uid).then(
-          data => dispatch(loadUserProfile(data))
-        );
+        const userID = data.user.uid;
 
-        dispatch(logIn(data.user.uid));
+        loadUserProfileDocument(userID).then((data) => {
+          dispatch(loadUserProfile(data));
+
+          //updated organization data if there is a change in membership
+          if (
+            data.orgMembershipList.length &&
+            data.orgMembershipList.length > 0
+          ) {
+            data.orgMembershipList.forEach((orgUID) => {
+              // add user to org membership list
+              console.log(orgUID+" "+ userID );
+              dispatch(addMember({ orgUID, userID }));
+            });
+          }
+        });
+
+        dispatch(logIn(userID));
       })
       .catch((error) => dispatch(logInFailure(error.message)));
   };
 };
 
 // firebase log out
-export const logOutWithFirebase = () => {
+// write changes to user profile data to firebase
+export const logOutWithFirebase = (userID, userProfileData) => {
   return async (dispatch) => {
+    updateUserProfile(userID, userProfileData).catch((error) =>
+      console.log(error.message)
+    );
     await auth.signOut().then(() => dispatch(logOut()));
   };
 };
