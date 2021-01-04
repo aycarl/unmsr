@@ -2,13 +2,13 @@ import { createSelector } from "reselect";
 
 const selectOrgs = state => state.orgs;
 
-// select all organizations from state as object
+// selects all organizations from state as object
 export const selectOrgsList = createSelector(
   [selectOrgs],
   orgs => orgs.orgsList 
 );
 
-// select all organisations (UID, name, categories & member count) from state as array
+// selects all organisations (UID, name, categories & member count) from state as array
 export const selectOrgsListForPreview = createSelector(
   [selectOrgsList],
   orgsList => orgsList ? Object.keys(orgsList).map(orgUID => {
@@ -23,7 +23,7 @@ export const selectOrgsListForPreview = createSelector(
   }) : []
 );
 
-// select a filtered list of organisations based on query (text or categories)
+// selects a filtered list of organisations based on query (text or categories)
 export const selectOrgsListForExploreSearch = query => createSelector(
   [selectOrgsListForPreview],
   orgsList => orgsList ? orgsList.filter(org => org.name
@@ -32,7 +32,7 @@ export const selectOrgsListForExploreSearch = query => createSelector(
     .includes(query.toLowerCase())) : []
 );
 
-// TODO: create selector for list of organisation that a user is a part of!!!
+// selects list of organisation that a user is a part of!!!
 export const selectOrgsListForUserMembership = membershipList => createSelector(
   [selectOrgsListForPreview],
   orgsList => membershipList ? orgsList.filter(
@@ -40,19 +40,19 @@ export const selectOrgsListForUserMembership = membershipList => createSelector(
   ) : []
 );
 
-// select the list of organization categories from state
+// selects the list of organization categories from state
 export const selectCategoryList = createSelector(
   [selectOrgs],
   orgs => orgs.orgCategoryList
 );
 
-// select an organization with orgUID from state
+// selects an organization with orgUID from state
 export const selectOrg = orgUID => createSelector(
   [selectOrgsList],
   orgsList => orgsList[orgUID]
 );
 
-// select the exploreSearchQuery from state
+// selects the exploreSearchQuery from state
 export const selectExploreSearchQuery = createSelector(
   [selectOrgs],
   orgs => orgs.exploreSearchQuery

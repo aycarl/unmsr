@@ -23,8 +23,6 @@ var firebaseConfig = {
   measurementId: REACT_NATIVE_FIREBASE_MEASUREMENTID,
 };
 
-console.log("firebase config: " + JSON.stringify(firebaseConfig));
-
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
@@ -35,7 +33,7 @@ export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
 // create user profile in firestore
-export const createUserProfileDocument = async (user, additionalData) => {
+export const createUserProfileDocument = async (user, userProfileData) => {
   if (!user) {
     return;
   }
@@ -53,7 +51,7 @@ export const createUserProfileDocument = async (user, additionalData) => {
 
     try {
       await userRef.set({
-        ...additionalData,
+        ...userProfileData,
       });
     } catch (error) {
       console.log("Error creating user profile", error.message);
@@ -84,3 +82,25 @@ export const loadUserProfileDocument = async (userID) => {
 
   return userProfileData;
 };
+
+// update user profile in firestore
+export const updateUserProfile = async (userID, userProfileData) => {
+  if (!userID) return;
+
+  const userRef = firestore.doc(`users/${userID}`);
+
+  const snapShot = await userRef.get();
+
+  if (snapShot.exists) {
+    try {
+
+      await userRef.set({
+        ...userProfileData,
+      });
+      
+    } catch (error) {
+      console.log("Error updating user profile: "+ error.message)
+    }
+  }
+
+}

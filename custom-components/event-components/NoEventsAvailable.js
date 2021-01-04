@@ -1,14 +1,16 @@
 import React from "react";
-import { View, Text, StyleSheet, Linking } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 
 // component: explore organizations and connect!
-const StartNewOrg = () => {
+const NoEventsAvailable = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.more}>
-      <Text style={styles.moreText}>Nothing found?</Text>
-      <Button mode="text" onPress={() => Linking.openURL("https://sac.unm.edu/student-organizations/start-a-club.html")}>
-        Start you own group!
+      <Text style={styles.moreText}>All Caught Up!</Text>
+      <Button mode="text" onPress={() => navigation.navigate("AllUNMEvents")}>
+        Explore other events?
       </Button>
     </View>
   );
@@ -27,7 +29,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#ffffff",
     padding: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
+    marginVertical: 10,
     overflow: "hidden",
   },
   moreText: {
@@ -43,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default StartNewOrg;
+export default NoEventsAvailable;

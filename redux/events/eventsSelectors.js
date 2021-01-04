@@ -25,3 +25,7 @@ export const selectEvent = eventUID => createSelector(
 // TODO: create selector(s) to get events by orgnisations
 
 // TODO: create selector to get event by current user membership
+export const selectEventsListByUserMembership = userMembershipList => createSelector(
+  [selectEventsList],
+  eventsList => userMembershipList ? eventsList.filter(orgEvent => userMembershipList.includes(orgEvent.ORGANIZER)) : []
+);

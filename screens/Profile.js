@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import { Button } from "react-native-paper";
 import { ScrollView } from "react-native-gesture-handler";
@@ -9,10 +9,14 @@ import ProfileSummary from "./../custom-components/ProfileSummary";
 import MyOrgMemberships from "../custom-components/org-components/MyOrgMemberships";
 
 import { logOutWithFirebase } from "./../redux/user/userActions";
+import { selectCurrentUserData, selectUserID } from "./../redux/user/userSelectors";
 
 // Home profile screen component
 const Profile = () => {
   const dispatch = useDispatch();
+
+  const userID = useSelector(selectUserID);
+  const userProfileData = useSelector(selectCurrentUserData);
 
   return (
     <View style={styles.container}>
@@ -28,7 +32,7 @@ const Profile = () => {
             <Button
               style={styles.logoutBtn}
               mode="outlined"
-              onPress={() => dispatch(logOutWithFirebase())}
+              onPress={() => dispatch(logOutWithFirebase(userID, userProfileData))}
             >
               Log Out
             </Button>
