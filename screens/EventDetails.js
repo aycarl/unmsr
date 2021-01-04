@@ -12,6 +12,7 @@ import {
   extractEmailAndMailToLink,
   replaceAmpersandWithSynbol,
   extractEventDetailsLink,
+  extractEventContactInfo
 } from "../utils/dataUtils";
 
 // event details screen
@@ -31,6 +32,8 @@ const EventDetails = (props) => {
     eventInfo.ORGANIZER
   );
 
+  const { contactEmail, contactName } = extractEventContactInfo(eventInfo.CONTACT);
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -48,7 +51,7 @@ const EventDetails = (props) => {
                 style={styles.textLink}
                 onPress={() => Linking.openURL(mailToLink)}
               >
-                {emailAddress}
+                {contactName}
               </Text>
             </Text>
           ) : (
@@ -78,6 +81,7 @@ const EventDetails = (props) => {
         {extractEventDetailsLink(eventInfo.DESCRIPTION).eventLink ? (
           <MoreDetailsEventFAB
             link={extractEventDetailsLink(eventInfo.DESCRIPTION).eventLink}
+            email={contactEmail}
           />
         ) : (
           <View></View>
