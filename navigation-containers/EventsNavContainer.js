@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import Events from "./../screens/Events";
+import EventsTopNavContainer from "./EventsTopNavContainer";
 
 // creates stack navigation for Events container
 const Stack = createStackNavigator();
@@ -9,8 +9,8 @@ const Stack = createStackNavigator();
 // Navigation container for Event-related screens
 const EventsNavContainer = () => {
   return(
-    <Stack.Navigator initialRouteName="EventsHome" > 
-      <Stack.Screen name="EventsHome" component={Events} 
+    <Stack.Navigator initialRouteName="EventsTopTab" > 
+      <Stack.Screen name="EventsTopTab" component={EventsTopNavContainer} 
         options={{
           headerShown: false,
         }}

@@ -22,13 +22,7 @@ export const loadUserProfileToState = (state, userData) => {
           email: userData.email,
           firstName: userData.firstName,
           lastName: userData.lastName,
-          phoneNumber: userData.phoneNumber,
-          educationLevel: userData.educationLevel,
           createdAt: userData.createdAt,
-          logInTimestamps: [
-            ...state.currentUserData.logInTimestamps,
-            userData.logInTimestamp,
-          ],
           orgMembershipList: [...userData.orgMembershipList],
         },
         errorMessage: null,

@@ -1,13 +1,13 @@
 const OrgsList = {
   orgsList: {
-    org1: {
-      UID: "org1",
-      name: "Advancing Women in Science",
-      nickname: "AWS",
+    tron: {
+      UID: "tron",
+      name: "Test Robot Orgnisation",
+      nickname: "TRO-Z",
       about: {
         summary: null,
         longDescription:
-          "We promote the full participation and equal treatment of diverse women in all levels of science, technology, engineering, and mathematic study, research and employment. We do this through activism, public outreach, and by providing mentorship to students in STEM fields. All genders are welcome.",
+          "We promote the full participation and equal treatment of diverse robots in all levels of science, technology, engineering, and mathematic study, research and employment. We do this through activism, public outreach, and by providing mentorship to students in STEM fields. All beings are welcome.",
         dateEstablished: "",
       },
       photos: [
@@ -18,20 +18,12 @@ const OrgsList = {
       ],
       leadershipInfo: [
         {
-          position: "President",
+          position: "",
           name: "",
           email: "",
           academicStatus: "",
           department: "",
           departmentPosition: "",
-        },
-        {
-          position: "Faculty Advisor",
-          name: "Corrine Meyers",
-          email: "	cemyers@unm.edu",
-          academicStatus: "",
-          department: "Earth and Planetary Sciences",
-          departmentPosition: "Assistant Professor",
         },
       ],
       members: [],
@@ -46,16 +38,14 @@ const OrgsList = {
         },
       ],
       eventsList: [
-        "e099a75e-f653-4c75-92af-7e1f65ea5bf9",
+        "tron-xyz",
         "471c89d3-c9fc-4971-af32-bfa6f29fda3d",
-        "f434c57a-d2f1-4350-b62c-d770e2a77b61",
-        "b6fe9d27-f38d-44b0-8d73-c7e35cd2f996",
       ],
       contactInfo: {
-        emailAddress: "awsunm@unm.edu",
+        emailAddress: "tron@unm.edu",
         phoneNumber: "(505) 440-2455",
         location: "SUB, Ground Floor",
-        website: "https://www.facebook.com/AdvancingWomenInScienceUNM/",
+        website: ".",
       },
       meetingInfo: {
         meetingHours: "16:00 - 17:45 MT",

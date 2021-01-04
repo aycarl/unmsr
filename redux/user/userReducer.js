@@ -14,7 +14,6 @@ const INITIAL_STATE = {
     firstName: "",
     lastName: "",
     createdAt: "",
-    logInTimestamps: [],
     orgMembershipList: [],
   },
   errorMessage: null,
