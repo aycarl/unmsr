@@ -33,7 +33,7 @@ export const signUpFailure = (errorMessage) => ({
   payload: errorMessage,
 });
 
-// TODO: create action to dispatch login & load all other user info: membership list, demographics
+// creates action to dispatch login & load all other user info: membership list, demographics
 // user action to log in
 // auth information: email, password, user token, logInTimestamp, userID
 export const logIn = (userID) => ({
@@ -67,7 +67,6 @@ export const updatedUserProfile = (userProfileData) => ({
 // DISPATCH FUNCTIONS
 
 // dispatch action to also add user from org member list
-// TODO: integrate firebase to reflect changes
 export const currentUserJoinsOrg = (membershipInfo) => {
   return (dispatch) => {
     console.log("membership infor: " + JSON.stringify(membershipInfo));
@@ -147,7 +146,7 @@ export const logInWithFirebase = (email, password) => {
           ) {
             data.orgMembershipList.forEach((orgUID) => {
               // add user to org membership list
-              console.log(orgUID+" "+ userID );
+              //console.log(orgUID + " " + userID);
               dispatch(addMember({ orgUID, userID }));
             });
           }
