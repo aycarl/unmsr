@@ -54,17 +54,20 @@ $ git clone https://github.com/aycarl/unmsr.git
 $ cd unmsr
 ```
 
-4. Install app dependency packages
+4. Paste a copy of the `.env` file containing the environment variables in the root directory of your local clone
+- `.env` file available on [request](#contact-info)
+
+5. Install app dependency packages
 ```
 $ yarn install
 ```
 
-5. Run application locally
+6. Run application locally
 ```
 $ yarn start
 ```
 
-6. View application on a mobile device: 
+7. View application on a mobile device: 
 * Download the Expo client app for iOS or Android
   - [Android Play Store](https://play.google.com/store/apps/details?id=host.exp.exponent) - Android Lollipop (5) and greater.
   - [iOS App Store](https://itunes.com/apps/exponent) - iOS 10 and greater.
