@@ -98,4 +98,3 @@ He is a software developer with a passion for design.
 
 ## Contact Info
 - **Email:** aycarl@unm.edu / aycarl@hotmail.com
-- **Phone #:** (505) 359-1888
