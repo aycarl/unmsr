@@ -28,6 +28,7 @@ The following are three screenshots of the app running on a device (from the lef
 ### Try it out!
 
 Download the APK file here: [UNM SR App](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40aycarl/unmsr-f8a11a3afa224199a71c15cf637a6fc3-signed.apk)
+* Note this is only for Andoird devices & you must enable the the installation of apps from "unknown" sources since tha UNM SR App is not yet on the Andoird play store/
 
 **OR**
 
