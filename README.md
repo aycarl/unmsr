@@ -9,6 +9,9 @@ student organizations from the [UNM Student Activities Center](https://unm-commu
 ---
 UNM-SR was built using [Expo](https://docs.expo.io/), is an open-source platform for making universal native apps for Android, iOS, and the web with JavaScript and React.
 
+## Development & Maintenance
+For more more information on development and maintenance of the app, visit the [wiki](https://github.com/aycarl/unmsr/wiki).
+
 ## Planning & Design
 * Initial concepts and prototype: [Adobe XD Prototype](https://xd.adobe.com/view/52291350-7d85-4961-86e0-dd6a36e02399-077a/)
 * User Flow planning, application state design, NoSQL database objects: [Whimsical Board](https://whimsical.com/aycarl-62GQVYzpH9AFv9Z7QNUr6T@VsSo8s35UiUnYLpBRNbYeV)
@@ -24,7 +27,11 @@ The following are three screenshots of the app running on a device (from the lef
 
 ### Try it out!
 
-Test the app on the Expo project page: https://expo.io/@aycarl/projects/unmsr
+Download the APK file here: [UNM SR App](https://exp-shell-app-assets.s3.us-west-1.amazonaws.com/android/%40aycarl/unmsr-f8a11a3afa224199a71c15cf637a6fc3-signed.apk)
+
+**OR**
+
+Test the app in a development environment with the Expo Mobile App: https://expo.io/@aycarl/projects/unmsr
 
 #### User Authentication
 Use the test account below or sign up and create your own!
