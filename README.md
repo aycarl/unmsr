@@ -49,7 +49,7 @@ Use the test account below or sign up and create your own!
 ### Steps (in your command prompt window)
 1. [Install the Expo CLI](https://docs.expo.io/get-started/installation/)
 ```
-$ npm install --global expo-cli
+$ npm global expo-cli
 ```
 
 2. Clone this repository
