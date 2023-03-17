@@ -47,10 +47,7 @@ Use the test account below or sign up and create your own!
 * [Git](https://git-scm.com)
 
 ### Steps (in your command prompt window)
-1. [Install the Expo CLI](https://docs.expo.io/get-started/installation/)
-```
-$ npm global expo-cli
-```
+1. Install the Expo CLI [here](https://docs.expo.io/get-started/installation/)
 
 2. Clone this repository
 ```

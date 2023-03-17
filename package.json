@@ -1,11 +1,11 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "npx expo start",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios",
+    "web": "npx expo start --web",
+    "eject": "npx expo eject"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.13.2",
@@ -17,7 +17,7 @@
     "@react-navigation/native": "^5.7.3",
     "@react-navigation/stack": "^5.9.0",
     "expo": "~38.0.8",
-    "expo-cli": "^4.0.17",
+    "expo-cli": "^4.13.0",
     "expo-linear-gradient": "~8.2.1",
     "expo-status-bar": "^1.0.2",
     "firebase": "^8.2.1",
